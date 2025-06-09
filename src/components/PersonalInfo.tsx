@@ -154,9 +154,9 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
         {/* Content */}
         <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 pb-24 overflow-y-auto">
           {/* Profile Photo Section */}
-          <div className="flex justify-center mb-8 -mt-12">
+          <div className="flex justify-center mb-4 -mt-6">
             <div className="relative">
-              <Avatar className="w-24 h-24 border-4 border-white shadow-lg">
+              <Avatar className="w-16 h-16 border-2 border-white shadow-lg">
                 <AvatarImage
                   src={
                     avatarFile
@@ -165,32 +165,32 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
                   }
                   alt={name}
                 />
-                <AvatarFallback className="bg-gray-200 text-gray-700 text-xl font-semibold">
+                <AvatarFallback className="bg-gray-200 text-gray-700 text-sm font-semibold">
                   {name
                     .split(" ")
                     .map((n) => n[0])
                     .join("")}
                 </AvatarFallback>
               </Avatar>
-              <button className="absolute bottom-0 right-0 w-8 h-8 bg-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-800 transition-colors">
+              <button className="absolute bottom-0 right-0 w-6 h-6 bg-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-800 transition-colors">
                 <input
                   type="file"
                   accept="image/*"
                   onChange={handleAvatarChange}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
-                <Camera className="h-4 w-4 text-white" />
+                <Camera className="h-3 w-3 text-white" />
               </button>
             </div>
           </div>
 
           {/* Form */}
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-3">
             {/* Name Field */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label
                 htmlFor="name"
-                className="text-sm font-medium text-gray-700"
+                className="text-xs font-medium text-gray-700"
               >
                 Name
               </label>
@@ -200,24 +200,24 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 className={cn(
-                  "h-12 rounded-xl border-gray-200",
+                  "h-8 rounded-lg border-gray-200 text-sm",
                   nameError ? "border-red-500" : "",
                 )}
                 required
               />
               {nameError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
-                  <AlertCircle className="h-4 w-4" />
+                <div className="flex items-center gap-1 text-red-500 text-xs">
+                  <AlertCircle className="h-3 w-3" />
                   <span>{nameError}</span>
                 </div>
               )}
             </div>
 
             {/* Email Field */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label
                 htmlFor="email"
-                className="text-sm font-medium text-gray-700"
+                className="text-xs font-medium text-gray-700"
               >
                 E mail address
               </label>
@@ -227,24 +227,24 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className={cn(
-                  "h-12 rounded-xl border-gray-200",
+                  "h-8 rounded-lg border-gray-200 text-sm",
                   emailError ? "border-red-500" : "",
                 )}
                 required
               />
               {emailError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
-                  <AlertCircle className="h-4 w-4" />
+                <div className="flex items-center gap-1 text-red-500 text-xs">
+                  <AlertCircle className="h-3 w-3" />
                   <span>{emailError}</span>
                 </div>
               )}
             </div>
 
             {/* Password Field */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label
                 htmlFor="password"
-                className="text-sm font-medium text-gray-700"
+                className="text-xs font-medium text-gray-700"
               >
                 Password
               </label>
@@ -255,7 +255,7 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className={cn(
-                    "h-12 rounded-xl border-gray-200 pr-12",
+                    "h-8 rounded-lg border-gray-200 pr-8 text-sm",
                     passwordError ? "border-red-500" : "",
                   )}
                   required
@@ -263,34 +263,34 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
                 <button
                   type="button"
                   onClick={togglePasswordVisibility}
-                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
                 >
                   {showPassword ? (
-                    <EyeOff className="h-5 w-5" />
+                    <EyeOff className="h-3 w-3" />
                   ) : (
-                    <Eye className="h-5 w-5" />
+                    <Eye className="h-3 w-3" />
                   )}
                 </button>
               </div>
               {passwordError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
-                  <AlertCircle className="h-4 w-4" />
+                <div className="flex items-center gap-1 text-red-500 text-xs">
+                  <AlertCircle className="h-3 w-3" />
                   <span>{passwordError}</span>
                 </div>
               )}
             </div>
 
             {/* Phone Number Field */}
-            <div className="space-y-2">
+            <div className="space-y-1">
               <label
                 htmlFor="phone"
-                className="text-sm font-medium text-gray-700"
+                className="text-xs font-medium text-gray-700"
               >
                 Phone number
               </label>
-              <div className="flex gap-2">
+              <div className="flex gap-1">
                 <Select value={countryCode} onValueChange={setCountryCode}>
-                  <SelectTrigger className="w-20 h-12 rounded-xl border-gray-200">
+                  <SelectTrigger className="w-16 h-8 rounded-lg border-gray-200 text-xs">
                     <SelectValue />
                   </SelectTrigger>
                   <SelectContent>
@@ -307,7 +307,7 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className={cn(
-                    "flex-1 h-12 rounded-xl border-gray-200",
+                    "flex-1 h-8 rounded-lg border-gray-200 text-sm",
                     phoneError ? "border-red-500" : "",
                   )}
                   placeholder="Phone number"
@@ -315,8 +315,8 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
                 />
               </div>
               {phoneError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
-                  <AlertCircle className="h-4 w-4" />
+                <div className="flex items-center gap-1 text-red-500 text-xs">
+                  <AlertCircle className="h-3 w-3" />
                   <span>{phoneError}</span>
                 </div>
               )}
