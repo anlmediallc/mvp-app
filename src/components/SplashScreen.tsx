@@ -42,17 +42,18 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
         )}
         {...props}
       >
-        {/* Background Gradient */}
+        {/* Background Gradient with responsive mobile image */}
         <div
-          className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00]"
+          className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00] sm:bg-gradient-to-br"
           style={{
-            "@media (max-width: 640px)": {
-              backgroundImage:
-                "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2Fa353560963de4121ab0b9d86f096f4db)",
-              backgroundRepeat: "no-repeat",
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            },
+            backgroundImage:
+              window.innerWidth <= 640
+                ? "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2Fa353560963de4121ab0b9d86f096f4db)"
+                : undefined,
+            backgroundRepeat:
+              window.innerWidth <= 640 ? "no-repeat" : undefined,
+            backgroundPosition: window.innerWidth <= 640 ? "center" : undefined,
+            backgroundSize: window.innerWidth <= 640 ? "cover" : undefined,
           }}
         />
 
