@@ -35,8 +35,29 @@ const Index = () => {
           App Ready!
         </h1>
         <p className="mt-4 text-slate-600 max-w-md">
-          Your onboarding screen has been successfully integrated
+          Your Buscomfy+ app screens are ready! Test the login form with error
+          states.
         </p>
+        <div className="mt-4 p-4 bg-white rounded-lg shadow-sm text-left max-w-md">
+          <h3 className="font-semibold text-slate-700 mb-2">
+            🧪 Test Login Form:
+          </h3>
+          <ul className="text-sm text-slate-600 space-y-1">
+            <li>
+              • <code className="bg-gray-100 px-1 rounded">test@test.com</code>{" "}
+              + <code className="bg-gray-100 px-1 rounded">wrongpassword</code>{" "}
+              = Password error
+            </li>
+            <li>
+              •{" "}
+              <code className="bg-gray-100 px-1 rounded">
+                invalid@email.com
+              </code>{" "}
+              + any password = Email error
+            </li>
+            <li>• Any other email + password = Success</li>
+          </ul>
+        </div>
         <div className="mt-6 flex flex-col gap-3">
           <Button asChild size="lg">
             <Link to="/splash">🚌 Buscomfy+ Splash</Link>
