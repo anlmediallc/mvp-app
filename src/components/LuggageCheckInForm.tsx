@@ -185,7 +185,7 @@ const LuggageCheckInForm = React.forwardRef<
 
               {/* Image Upload Area */}
               <div className="space-y-1">
-                <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center bg-gray-50">
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-1.5 text-center bg-gray-50">
                   <input
                     type="file"
                     accept="image/*"
