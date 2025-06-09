@@ -139,9 +139,9 @@ export default function TripDetails({
       {/* Content */}
       <div className="flex-1 bg-gradient-to-br from-orange-500 to-orange-600 p-4 overflow-y-auto scrollbar-hide">
         {/* Trip Card */}
-        <div className="bg-white rounded-2xl p-6 mb-4">
+        <div className="bg-white rounded-2xl p-4 mb-4">
           {/* Transport Header */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-3">
             <div className="flex items-center gap-3">
               <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">MSS</span>
@@ -154,7 +154,7 @@ export default function TripDetails({
           </div>
 
           {/* Trip Time Info */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-3">
             <div className="text-center">
               <div className="text-3xl font-bold">3:05</div>
               <div className="text-gray-600">Chennai</div>
@@ -172,7 +172,7 @@ export default function TripDetails({
           </div>
 
           {/* Route Map */}
-          <div className="bg-gray-50 rounded-xl h-32 mb-6 relative overflow-hidden border border-gray-200">
+          <div className="bg-gray-50 rounded-xl h-24 mb-3 relative overflow-hidden border border-gray-200">
             {/* Map background pattern */}
             <div className="absolute inset-0">
               {/* Grid pattern to simulate map */}
