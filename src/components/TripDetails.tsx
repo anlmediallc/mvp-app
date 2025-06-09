@@ -231,10 +231,8 @@ export default function TripDetails({
               ></div>
             </div>
           </div>
-        </div>
 
-        {/* Amenities */}
-        <div className="bg-white rounded-xl p-3 mb-3">
+          {/* Amenities - Inside MSS Transport Card */}
           <div className="flex gap-6 justify-center">
             <div className="text-center">
               <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mb-2">
