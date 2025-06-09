@@ -47,7 +47,7 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
 
         {/* Logo Container */}
         <div className="relative z-10 flex flex-col items-center justify-center">
-          {/* Location Pin with Better Bus Illustration */}
+          {/* Location Pin with Figma Bus Design */}
           <div className="mb-6">
             <svg
               className="w-20 h-24 drop-shadow-lg"
@@ -60,48 +60,46 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
                 d="M40 0C18 0 0 18 0 40C0 62 40 96 40 96C40 96 80 62 80 40C80 18 62 0 40 0Z"
                 fill="white"
               />
-              {/* Better bus illustration */}
-              <g transform="translate(40, 30)">
-                {/* Bus body */}
-                <rect
-                  x="-16"
-                  y="-8"
-                  width="32"
-                  height="16"
-                  rx="2"
-                  fill="#F97316"
-                />
-                {/* Bus top */}
+              {/* Figma bus design */}
+              <g transform="translate(40, 28)">
+                {/* Bus top curved section */}
                 <rect
                   x="-12"
-                  y="-12"
+                  y="-8"
                   width="24"
                   height="6"
                   rx="3"
                   fill="#F97316"
                 />
-                {/* Bus windows */}
+                {/* Bus main body */}
                 <rect
-                  x="-10"
-                  y="-10"
-                  width="4"
-                  height="3"
-                  rx="1"
-                  fill="white"
+                  x="-14"
+                  y="-2"
+                  width="28"
+                  height="12"
+                  rx="2"
+                  fill="#F97316"
                 />
-                <rect x="-4" y="-10" width="4" height="3" rx="1" fill="white" />
-                <rect x="2" y="-10" width="4" height="3" rx="1" fill="white" />
-                <rect x="8" y="-10" width="4" height="3" rx="1" fill="white" />
-                {/* Front windows */}
-                <rect x="-14" y="-6" width="6" height="4" rx="1" fill="white" />
-                <rect x="-6" y="-6" width="6" height="4" rx="1" fill="white" />
-                <rect x="2" y="-6" width="6" height="4" rx="1" fill="white" />
-                <rect x="10" y="-6" width="6" height="4" rx="1" fill="white" />
-                {/* Bus wheels */}
-                <circle cx="-10" cy="10" r="3" fill="#F97316" />
-                <circle cx="10" cy="10" r="3" fill="#F97316" />
-                {/* Door */}
-                <rect x="-2" y="0" width="4" height="8" rx="1" fill="white" />
+                {/* Bus headlights/windows (two white circles) */}
+                <circle cx="-6" cy="2" r="3" fill="white" />
+                <circle cx="6" cy="2" r="3" fill="white" />
+                {/* Small detail elements on sides */}
+                <rect
+                  x="-16"
+                  y="-6"
+                  width="2"
+                  height="4"
+                  rx="1"
+                  fill="#F97316"
+                />
+                <rect
+                  x="14"
+                  y="-6"
+                  width="2"
+                  height="4"
+                  rx="1"
+                  fill="#F97316"
+                />
               </g>
             </svg>
           </div>
