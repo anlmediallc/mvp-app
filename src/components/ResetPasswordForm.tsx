@@ -55,6 +55,12 @@ const ResetPasswordForm = React.forwardRef<
           "w-full max-w-md mx-auto bg-white rounded-3xl p-8 shadow-lg font-inter",
           className,
         )}
+        style={{
+          backgroundImage: "url(/form-bg.svg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
         {...props}
       >
         {/* Title */}
