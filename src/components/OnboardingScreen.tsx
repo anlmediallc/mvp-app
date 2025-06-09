@@ -33,8 +33,7 @@ const OnboardingScreen = React.forwardRef<
         ref={ref}
         className={cn(
           "relative flex h-screen w-full max-w-md mx-auto flex-col overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 font-inter",
-          className
-        )}
+          className,
         )}
         {...props}
       >
