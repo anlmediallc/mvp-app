@@ -117,6 +117,9 @@ const Index = () => {
           <Button asChild size="lg">
             <Link to="/splash">🚌 Buscomfy+ Splash</Link>
           </Button>
+          <Button asChild size="lg" variant="secondary">
+            <Link to="/luggage-check-in">🧳 Luggage Check-In</Link>
+          </Button>
           <Button asChild>
             <Link to="/login">📝 Login Form</Link>
           </Button>
