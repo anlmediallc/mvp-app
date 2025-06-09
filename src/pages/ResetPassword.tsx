@@ -57,9 +57,9 @@ const ResetPassword = () => {
 
   return (
     <div
-      className="min-h-screen bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center p-4"
+      className="h-screen bg-white flex items-center justify-center p-2 overflow-hidden"
       style={{
-        backgroundImage: "url(/orange-bg.svg)",
+        backgroundImage: "url(/login-bg.svg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
