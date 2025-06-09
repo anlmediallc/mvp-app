@@ -305,51 +305,54 @@ export default function TripDetails({
               </h3>
 
               {/* Boarding Timeline */}
-              <div className="space-y-4">
-                {/* Starting point with bus icon */}
-                <div className="flex items-start gap-3">
-                  <div className="flex flex-col items-center">
-                    <div className="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-                      <svg
-                        className="w-4 h-4 text-white"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
-                      </svg>
-                    </div>
-                    <div className="w-px h-8 bg-orange-400"></div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium">Chennai, Nungambakkam</div>
-                    <div className="text-gray-600 text-sm">3:05 PM</div>
-                  </div>
-                </div>
+              <div className="relative">
+                {/* Continuous timeline line */}
+                <div className="absolute left-3 top-6 bottom-6 w-px bg-orange-300"></div>
 
-                {/* Intermediate stop */}
-                <div className="flex items-start gap-3">
-                  <div className="flex flex-col items-center">
-                    <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
-                    <div className="w-px h-8 bg-orange-300"></div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium">
-                      Kochi, Bus station ernakulam
+                <div className="space-y-6">
+                  {/* Starting point with bus icon */}
+                  <div className="flex items-start gap-3 relative">
+                    <div className="flex flex-col items-center relative z-10">
+                      <div className="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
+                        <svg
+                          className="w-4 h-4 text-white"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
+                        </svg>
+                      </div>
                     </div>
-                    <div className="text-gray-600 text-sm">3:05 PM</div>
+                    <div className="flex-1 pt-1">
+                      <div className="font-medium">Chennai, Nungambakkam</div>
+                      <div className="text-gray-600 text-sm">3:05 PM</div>
+                    </div>
                   </div>
-                </div>
 
-                {/* Final destination */}
-                <div className="flex items-start gap-3">
-                  <div className="flex flex-col items-center">
-                    <div className="w-4 h-4 bg-orange-500 rounded-full border-2 border-white shadow-sm"></div>
-                  </div>
-                  <div className="flex-1">
-                    <div className="font-medium">
-                      Kochi, Bus station ernakulam
+                  {/* Intermediate stop */}
+                  <div className="flex items-start gap-3 relative">
+                    <div className="flex flex-col items-center relative z-10">
+                      <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
                     </div>
-                    <div className="text-gray-600 text-sm">3:05 PM</div>
+                    <div className="flex-1 pt-0">
+                      <div className="font-medium">
+                        Kochi, Bus station ernakulam
+                      </div>
+                      <div className="text-gray-600 text-sm">3:05 PM</div>
+                    </div>
+                  </div>
+
+                  {/* Final destination */}
+                  <div className="flex items-start gap-3 relative">
+                    <div className="flex flex-col items-center relative z-10">
+                      <div className="w-4 h-4 bg-orange-500 rounded-full border-2 border-white shadow-sm"></div>
+                    </div>
+                    <div className="flex-1 pt-0.5">
+                      <div className="font-medium">
+                        Kochi, Bus station ernakulam
+                      </div>
+                      <div className="text-gray-600 text-sm">3:05 PM</div>
+                    </div>
                   </div>
                 </div>
               </div>
