@@ -16,6 +16,7 @@ import ResetPassword from "./pages/ResetPassword";
 import LuggageCheckIn from "./pages/LuggageCheckIn";
 import Feedback from "./pages/Feedback";
 import ReportProblem from "./pages/ReportProblem";
+import HelpCenter from "./pages/HelpCenter";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/luggage-check-in" element={<LuggageCheckIn />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/report-problem" element={<ReportProblem />} />
+          <Route path="/help-center" element={<HelpCenter />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

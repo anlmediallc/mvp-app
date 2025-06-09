@@ -126,6 +126,9 @@ const Index = () => {
           <Button asChild size="lg" variant="secondary">
             <Link to="/report-problem">⚠️ Report Problem</Link>
           </Button>
+          <Button asChild size="lg" variant="secondary">
+            <Link to="/help-center">❓ Help Center</Link>
+          </Button>
           <Button asChild>
             <Link to="/login">📝 Login Form</Link>
           </Button>
