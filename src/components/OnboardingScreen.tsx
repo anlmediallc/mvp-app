@@ -70,7 +70,7 @@ const OnboardingScreen = React.forwardRef<
 
         {/* Content Area */}
         <div
-          className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 text-center"
+          className="relative z-10 flex flex-1 flex-col items-center justify-center px-4 text-center"
           style={{
             ...(window.innerWidth <= 640 && {
               backgroundImage:
@@ -84,7 +84,7 @@ const OnboardingScreen = React.forwardRef<
         >
           {/* Title */}
           <h1
-            className="mb-6 text-3xl font-semibold leading-tight text-white"
+            className="mb-3 text-xl font-semibold leading-tight text-white"
             style={{
               ...(window.innerWidth <= 640 && {
                 marginTop: "-166px",
@@ -95,17 +95,16 @@ const OnboardingScreen = React.forwardRef<
           </h1>
 
           {/* Subtitle */}
-          <p className="mb-8 text-lg font-medium leading-relaxed text-white/90 max-w-sm">
+          <p className="mb-4 text-sm font-medium leading-tight text-white/90 max-w-xs">
             {subtitle}
           </p>
         </div>
-
         {/* Continue Button */}
-        <div className="relative z-10 p-6 pb-8">
+        <div className="relative z-10 p-4 pb-6">
           <Button
             onClick={onContinue}
-            className="w-full bg-white text-orange-500 hover:bg-white/95 rounded-full py-6 text-base font-medium transition-all"
-            size="lg"
+            className="w-full bg-white text-orange-500 hover:bg-white/95 rounded-full py-3 text-sm font-medium transition-all"
+            size="sm"
           >
             Continue
           </Button>
