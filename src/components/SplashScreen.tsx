@@ -58,26 +58,86 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
               className="w-15 h-15"
             >
               {/* Orange rounded square background */}
-              <rect width="60" height="60" rx="12" fill="#E97B00" />
-              {/* White location pin shape */}
+              <rect width="60" height="60" rx="14" fill="#E97B00" />
+              {/* White location pin shape - teardrop */}
               <path
-                d="M30 8C22.268 8 16 14.268 16 22C16 29.732 22.268 36 30 36C37.732 36 44 29.732 44 22C44 14.268 37.732 8 30 8Z"
+                d="M30 12C24.477 12 20 16.477 20 22C20 27.523 24.477 32 30 32C35.523 32 40 27.523 40 22C40 16.477 35.523 12 30 12Z"
                 fill="white"
               />
-              {/* Location pin point */}
-              <path d="M30 36L26 42H34L30 36Z" fill="white" />
+              {/* Location pin point/tail */}
+              <path
+                d="M30 32C30 32 26 38 30 44C34 38 30 32 30 32Z"
+                fill="white"
+              />
               {/* Bus icon inside the pin */}
-              <g transform="translate(22, 16)">
-                <rect x="2" y="4" width="12" height="8" rx="1" fill="#E97B00" />
-                <rect x="3" y="2" width="10" height="2" rx="1" fill="#E97B00" />
-                <circle cx="5" cy="10" r="1" fill="white" />
-                <circle cx="11" cy="10" r="1" fill="white" />
-                <rect x="1" y="6" width="1" height="2" fill="#E97B00" />
-                <rect x="14" y="6" width="1" height="2" fill="#E97B00" />
+              <g transform="translate(23, 17)">
+                {/* Bus body */}
+                <rect
+                  x="1"
+                  y="2"
+                  width="12"
+                  height="6"
+                  rx="1.5"
+                  fill="#E97B00"
+                />
+                {/* Bus roof/top */}
+                <rect
+                  x="3"
+                  y="0.5"
+                  width="8"
+                  height="2"
+                  rx="1"
+                  fill="#E97B00"
+                />
+                {/* Front and back windows */}
+                <rect
+                  x="2.5"
+                  y="3"
+                  width="2"
+                  height="1.5"
+                  rx="0.3"
+                  fill="white"
+                />
+                <rect
+                  x="9.5"
+                  y="3"
+                  width="2"
+                  height="1.5"
+                  rx="0.3"
+                  fill="white"
+                />
+                {/* Side windows */}
+                <rect
+                  x="5"
+                  y="3"
+                  width="4"
+                  height="1.5"
+                  rx="0.3"
+                  fill="white"
+                />
+                {/* Wheels */}
+                <circle cx="3.5" cy="8.5" r="1" fill="white" />
+                <circle cx="10.5" cy="8.5" r="1" fill="white" />
+                {/* Side mirrors */}
+                <rect
+                  x="0"
+                  y="4"
+                  width="1"
+                  height="1"
+                  rx="0.5"
+                  fill="#E97B00"
+                />
+                <rect
+                  x="13"
+                  y="4"
+                  width="1"
+                  height="1"
+                  rx="0.5"
+                  fill="#E97B00"
+                />
               </g>
             </svg>
           </div>
-
           {/* Direct Bus Icon from Figma */}
           <div
             className="mb-6"
