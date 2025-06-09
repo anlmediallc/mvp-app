@@ -44,24 +44,24 @@ const Index = () => {
                 fill="white"
               />
               {/* Simple Bus icon inside pin - matching Figma exactly */}
-              <g transform="translate(40, 30)">
-                {/* Bus body - main rectangle */}
+              <g transform="translate(40, 28)">
+                {/* Bus body - compact rectangle */}
                 <rect
-                  x="-14"
-                  y="-6"
-                  width="28"
-                  height="12"
-                  rx="2"
+                  x="-12"
+                  y="-5"
+                  width="24"
+                  height="10"
+                  rx="1.5"
                   fill="#F97316"
                 />
                 {/* Bus wheels */}
-                <circle cx="-8" cy="8" r="2" fill="#F97316" />
-                <circle cx="8" cy="8" r="2" fill="#F97316" />
-                {/* Bus windows - simplified */}
-                <rect x="-11" y="-3" width="4" height="3" fill="white" />
-                <rect x="-5" y="-3" width="4" height="3" fill="white" />
-                <rect x="1" y="-3" width="4" height="3" fill="white" />
-                <rect x="7" y="-3" width="4" height="3" fill="white" />
+                <circle cx="-7" cy="7" r="1.5" fill="#F97316" />
+                <circle cx="7" cy="7" r="1.5" fill="#F97316" />
+                {/* Bus windows - 4 small windows */}
+                <rect x="-10" y="-3" width="3" height="2.5" fill="white" />
+                <rect x="-5" y="-3" width="3" height="2.5" fill="white" />
+                <rect x="0" y="-3" width="3" height="2.5" fill="white" />
+                <rect x="5" y="-3" width="3" height="2.5" fill="white" />
               </g>
             </svg>
           </div>
