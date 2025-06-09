@@ -125,7 +125,7 @@ export default function TripDetails({
         <h1 className="text-lg font-semibold">Trip Details</h1>
       </div>
 
-      <div className="flex-1 bg-white p-4 overflow-y-auto scrollbar-hide">
+      <div className="flex-1 bg-gradient-to-br from-orange-500 to-orange-600 p-2 overflow-y-auto scrollbar-hide">
         {/* MSS Transport Card */}
         <div className="bg-white rounded-2xl p-3 mb-2">
           {/* Transport Header */}
