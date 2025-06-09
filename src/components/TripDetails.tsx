@@ -256,8 +256,10 @@ export default function TripDetails({
                 className="mt-4 w-auto text-blue-600 border-blue-600 hover:bg-blue-50"
                 onClick={onViewStops}
               >
-                View all stops
-                <ArrowLeft className="h-4 w-4 ml-2 rotate-180" />
+                <div className="flex items-center gap-2">
+                  View all stops
+                  <ArrowLeft className="h-4 w-4 rotate-180" />
+                </div>
               </Button>
             </div>
 
@@ -307,19 +309,23 @@ export default function TripDetails({
           <div className="flex gap-3">
             <Button
               variant="outline"
-              className="flex-1 flex items-center justify-center gap-2 py-3"
+              className="flex-1 py-3"
               onClick={onAddPassenger}
             >
-              <Users className="h-5 w-5 text-gray-600" />
-              <span>Add Passenger</span>
+              <div className="flex items-center justify-center gap-2">
+                <Users className="h-5 w-5 text-gray-600" />
+                <span>Add Passenger</span>
+              </div>
             </Button>
             <Button
               variant="outline"
-              className="flex-1 flex items-center justify-center gap-2 py-3 relative"
+              className="flex-1 py-3 relative"
               onClick={onAddLuggage}
             >
-              <Luggage className="h-5 w-5 text-gray-600" />
-              <span>Add Luggage</span>
+              <div className="flex items-center justify-center gap-2">
+                <Luggage className="h-5 w-5 text-gray-600" />
+                <span>Add Luggage</span>
+              </div>
               {/* Orange notification dot */}
               <div className="absolute -top-1 -right-1 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
                 <span className="text-white text-xs font-bold">•••</span>
