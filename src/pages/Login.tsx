@@ -55,7 +55,15 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen bg-white flex items-center justify-center p-2 overflow-hidden">
+    <div
+      className="h-screen bg-white flex items-center justify-center p-2 overflow-hidden"
+      style={{
+        backgroundImage: "url(/login-bg.svg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <LoginForm
         onLogin={handleLogin}
         onForgotPassword={handleForgotPassword}
