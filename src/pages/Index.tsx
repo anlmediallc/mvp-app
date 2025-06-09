@@ -65,6 +65,9 @@ const Index = () => {
           <Button asChild>
             <Link to="/login">📝 Login Form</Link>
           </Button>
+          <Button asChild variant="destructive">
+            <Link to="/login-error">❌ Login Error Screen</Link>
+          </Button>
           <Button asChild>
             <Link to="/onboarding">Single Onboarding Screen</Link>
           </Button>

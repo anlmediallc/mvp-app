@@ -8,6 +8,7 @@ import Splash from "./pages/Splash";
 import Onboarding from "./pages/Onboarding";
 import OnboardingFlow from "./pages/OnboardingFlow";
 import Login from "./pages/Login";
+import LoginError from "./pages/LoginError";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/onboarding-flow" element={<OnboardingFlow />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/login-error" element={<LoginError />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
