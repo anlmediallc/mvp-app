@@ -29,11 +29,56 @@ const Index = () => {
       }}
     >
       <div className="text-center">
-        {/* App Logo/Icon - Simple Circle with Lucide Bus Icon */}
+        {/* App Logo/Icon - Location Pin with Figma Bus Design */}
         <div className="mb-8">
-          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg mx-auto">
-            <Bus className="h-10 w-10 text-orange-500" strokeWidth={2} />
-          </div>
+          <svg
+            className="w-20 h-24 drop-shadow-lg mx-auto"
+            viewBox="0 0 80 96"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            {/* Location pin shape */}
+            <path
+              d="M40 0C18 0 0 18 0 40C0 62 40 96 40 96C40 96 80 62 80 40C80 18 62 0 40 0Z"
+              fill="white"
+            />
+            {/* Perfect Figma bus design match */}
+            <g transform="translate(40, 28)">
+              {/* Bus curved top/roof */}
+              <rect
+                x="-9"
+                y="-8"
+                width="18"
+                height="3"
+                rx="1.5"
+                fill="#F97316"
+              />
+              {/* Bus main rectangular body */}
+              <rect x="-11" y="-5" width="22" height="8" fill="#F97316" />
+              {/* Two white circular headlights/windows */}
+              <circle cx="-4" cy="-1" r="2" fill="white" />
+              <circle cx="4" cy="-1" r="2" fill="white" />
+              {/* Side detail elements (door handles/mirrors) */}
+              <rect
+                x="-13"
+                y="-6"
+                width="1"
+                height="4"
+                rx="0.5"
+                fill="#F97316"
+              />
+              <rect
+                x="12"
+                y="-6"
+                width="1"
+                height="4"
+                rx="0.5"
+                fill="#F97316"
+              />
+              {/* Bottom center protrusion */}
+              <rect x="-2" y="3" width="4" height="2" rx="1" fill="#F97316" />
+            </g>
+          </svg>
         </div>
         {/* App Name */}
         <h1 className="text-4xl font-bold text-white mb-2">Buscomfy+</h1>
