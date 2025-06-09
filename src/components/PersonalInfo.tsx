@@ -154,9 +154,9 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
         {/* Content */}
         <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 pb-24 overflow-y-auto">
           {/* Profile Photo Section */}
-          <div className="flex justify-center mb-4 -mt-6">
+          <div className="flex justify-center mb-6 -mt-12">
             <div className="relative">
-              <Avatar className="w-16 h-16 border-2 border-white shadow-lg">
+              <Avatar className="w-24 h-24 border-4 border-white shadow-lg">
                 <AvatarImage
                   src={
                     avatarFile
@@ -165,21 +165,21 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
                   }
                   alt={name}
                 />
-                <AvatarFallback className="bg-gray-200 text-gray-700 text-sm font-semibold">
+                <AvatarFallback className="bg-gray-200 text-gray-700 text-lg font-semibold">
                   {name
                     .split(" ")
                     .map((n) => n[0])
                     .join("")}
                 </AvatarFallback>
               </Avatar>
-              <button className="absolute bottom-0 right-0 w-6 h-6 bg-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-800 transition-colors">
+              <button className="absolute bottom-0 right-0 w-8 h-8 bg-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-800 transition-colors">
                 <input
                   type="file"
                   accept="image/*"
                   onChange={handleAvatarChange}
                   className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
                 />
-                <Camera className="h-3 w-3 text-white" />
+                <Camera className="h-4 w-4 text-white" />
               </button>
             </div>
           </div>
@@ -325,7 +325,7 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
         </div>
 
         {/* Chat Support Button */}
-        <div className="absolute bottom-20 right-4">
+        <div className="absolute bottom-24 right-4">
           <Button
             size="icon"
             className="w-12 h-12 rounded-full bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white shadow-lg"
