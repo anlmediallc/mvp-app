@@ -65,75 +65,64 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
                 fill="white"
               />
               {/* Location pin point/tail */}
-              <path d="M30 36L25 45L30 47L35 45L30 36Z" fill="white" />
-              {/* Bus icon inside the pin */}
-              <g transform="translate(21, 15)">
-                {/* Top white line */}
+              <path d="M30 36L24 46L30 48L36 46L30 36Z" fill="white" />
+              {/* Bus icon inside the pin - exact match */}
+              <g transform="translate(20.5, 15)">
+                {/* Top white stripe */}
                 <rect
-                  x="6"
-                  y="1"
+                  x="6.5"
+                  y="1.5"
                   width="6"
                   height="1"
                   rx="0.5"
                   fill="#E97B00"
                 />
 
-                {/* Bus roof section (white/light) */}
+                {/* Bus roof section (white) */}
                 <rect
-                  x="4"
-                  y="2"
+                  x="4.5"
+                  y="2.5"
                   width="10"
                   height="3"
                   rx="1.5"
-                  fill="#E97B00"
+                  fill="white"
                 />
 
                 {/* Main bus body (orange) */}
-                <rect x="1" y="5" width="16" height="7" rx="1" fill="#E97B00" />
-
-                {/* Front and back sections */}
                 <rect
-                  x="1"
-                  y="6"
-                  width="2"
-                  height="4"
-                  rx="0.5"
-                  fill="#E97B00"
-                />
-                <rect
-                  x="15"
-                  y="6"
-                  width="2"
-                  height="4"
-                  rx="0.5"
+                  x="1.5"
+                  y="5.5"
+                  width="16"
+                  height="6.5"
+                  rx="1"
                   fill="#E97B00"
                 />
 
-                {/* Two white circular elements (headlights/windows) */}
-                <circle cx="6" cy="9" r="1.5" fill="white" />
-                <circle cx="12" cy="9" r="1.5" fill="white" />
+                {/* Two white circular headlights/windows */}
+                <circle cx="6.5" cy="9" r="1.4" fill="white" />
+                <circle cx="12.5" cy="9" r="1.4" fill="white" />
 
-                {/* Side mirrors */}
+                {/* Side mirrors (orange small rectangles) */}
                 <rect
-                  x="0"
-                  y="7"
+                  x="0.5"
+                  y="7.5"
                   width="1"
                   height="2"
                   rx="0.5"
                   fill="#E97B00"
                 />
                 <rect
-                  x="17"
-                  y="7"
+                  x="17.5"
+                  y="7.5"
                   width="1"
                   height="2"
                   rx="0.5"
                   fill="#E97B00"
                 />
 
-                {/* Bottom wheels */}
-                <circle cx="4" cy="13" r="0.8" fill="#E97B00" />
-                <circle cx="14" cy="13" r="0.8" fill="#E97B00" />
+                {/* Bottom wheels (orange circles) */}
+                <circle cx="4.5" cy="12.5" r="0.8" fill="#E97B00" />
+                <circle cx="14.5" cy="12.5" r="0.8" fill="#E97B00" />
               </g>
             </svg>
           </div>
