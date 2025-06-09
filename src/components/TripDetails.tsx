@@ -233,7 +233,7 @@ export default function TripDetails({
           </div>
 
           {/* Amenities - Inside MSS Transport Card */}
-          <div className="flex justify-between items-center px-1">
+          <div className="flex justify-between items-center px-1 mb-3">
             <div className="flex items-center gap-1">
               <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
                 <Wifi className="h-3 w-3 text-blue-600" />
@@ -251,6 +251,67 @@ export default function TripDetails({
                 <Zap className="h-3 w-3 text-yellow-600" />
               </div>
               <span className="text-xs text-gray-600">Charging</span>
+            </div>
+          </div>
+
+          {/* Bus Seat Selection - Now inside MSS Transport Card */}
+          <div className="border-t border-gray-100 pt-3">
+            <h3 className="text-xs font-semibold mb-2">Bus Seat:</h3>
+
+            {/* Enhanced Seat Grid with Visual Representation */}
+            <div className="space-y-0.5 mb-2">
+              {Object.entries(groupedSeats).map(([row, rowSeats]) => (
+                <div key={row} className="flex items-center gap-0.5">
+                  <span className="text-xs text-gray-500 w-2 text-center font-medium">
+                    {row}
+                  </span>
+                  <div className="flex gap-0.5 ml-0.5">
+                    {rowSeats
+                      .sort((a, b) => a.number - b.number)
+                      .map((seat, seatIndex) => (
+                        <React.Fragment key={seat.id}>
+                          <button
+                            onClick={() => handleSeatClick(seat.id)}
+                            disabled={seat.status === "occupied"}
+                            className={`w-5 h-5 rounded-sm border transition-all duration-200 text-xs font-bold flex items-center justify-center ${getSeatStyle(seat.status)} hover:scale-105 active:scale-95`}
+                          >
+                            {seat.number}
+                          </button>
+                          {/* Add aisle gap after seat 2 */}
+                          {seatIndex === 1 && (
+                            <div className="w-1.5 flex items-center justify-center">
+                              <div className="w-0.5 h-3 bg-gray-200 rounded-full"></div>
+                            </div>
+                          )}
+                        </React.Fragment>
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Enhanced Seat Legend */}
+            <div className="flex items-center justify-between text-xs text-gray-600 px-1 mb-3">
+              <div className="flex items-center gap-0.5">
+                <div className="w-2 h-2 bg-gray-400 rounded border"></div>
+                <span className="font-medium">3</span>
+              </div>
+              <div className="flex items-center gap-0.5">
+                <div className="w-2 h-2 bg-gray-200 rounded border"></div>
+                <span className="font-medium">On</span>
+              </div>
+            </div>
+
+            {/* Seat Selection Info */}
+            <div className="border-t border-gray-100 pt-3">
+              <h3 className="text-sm font-semibold mb-2">Seat selection</h3>
+              {selectedSeats.length > 0 ? (
+                <div className="text-xs text-gray-600">
+                  Selected seats: {selectedSeats.join(", ")}
+                </div>
+              ) : (
+                <div className="text-xs text-gray-500">No seats selected</div>
+              )}
             </div>
           </div>
         </div>
