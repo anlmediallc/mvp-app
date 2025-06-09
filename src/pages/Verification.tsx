@@ -8,8 +8,9 @@ const Verification = () => {
   const [codeError, setCodeError] = useState<string>("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Get email from navigation state or use default
+  // Get email and context from navigation state or use default
   const email = location.state?.email || "johndoe@gmail.com";
+  const isPasswordReset = location.state?.isPasswordReset || false;
 
   const handleVerify = async (code: string) => {
     setCodeError("");
@@ -23,11 +24,23 @@ const Verification = () => {
       // Successful verification
       console.log("Verification successful for code:", code);
       setIsLoading(false);
-      navigate("/login", {
-        state: {
-          message: "Account verified successfully! Please login.",
-        },
-      });
+
+      if (isPasswordReset) {
+        // For password reset, would typically go to reset password form
+        navigate("/login", {
+          state: {
+            message: "Verification successful! You can now reset your password."
+          }
+        });
+      } else {
+        // For account verification
+        navigate("/login", {
+          state: {
+            message: "Account verified successfully! Please login."
+          }
+        });
+      }
+    }
     } else {
       // Invalid code
       setCodeError("Invalid verification code. Please try again.");

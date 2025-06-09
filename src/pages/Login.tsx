@@ -37,9 +37,8 @@ const Login = () => {
   };
 
   const handleForgotPassword = () => {
-    // Navigate to forgot password page (would be implemented later)
-    console.log("Forgot password clicked");
-    // navigate("/forgot-password");
+    // Navigate to forgot password page
+    navigate("/forgot-password");
   };
 
   const handleCreateAccount = () => {

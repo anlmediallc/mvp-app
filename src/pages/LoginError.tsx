@@ -10,8 +10,8 @@ const LoginError = () => {
   };
 
   const handleForgotPassword = () => {
-    console.log("Forgot password clicked");
-    // navigate("/forgot-password");
+    // Navigate to forgot password page
+    navigate("/forgot-password");
   };
 
   const handleCreateAccount = () => {

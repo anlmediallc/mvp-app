@@ -90,6 +90,19 @@ const Index = () => {
                 <li>• Auto countdown timer for resend</li>
               </ul>
             </div>
+            <div>
+              <strong>Forgot Password:</strong>
+              <ul className="ml-2 space-y-1">
+                <li>
+                  •{" "}
+                  <code className="bg-gray-100 px-1 rounded">
+                    notfound@example.com
+                  </code>{" "}
+                  = Email not found error
+                </li>
+                <li>• Any valid email = Sends to verification</li>
+              </ul>
+            </div>
           </div>
         </div>
         <div className="mt-6 flex flex-col gap-3">
@@ -104,6 +117,9 @@ const Index = () => {
           </Button>
           <Button asChild variant="outline">
             <Link to="/verification">🔐 Verification Screen</Link>
+          </Button>
+          <Button asChild variant="ghost">
+            <Link to="/forgot-password">🔑 Forgot Password</Link>
           </Button>
           <Button asChild variant="destructive">
             <Link to="/login-error">❌ Login Error Screen</Link>
