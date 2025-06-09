@@ -47,6 +47,11 @@ const OnboardingScreen = React.forwardRef<
               variant="ghost"
               onClick={onSkip}
               className="flex items-center gap-2 text-white hover:bg-white/10 transition-colors"
+              style={{
+                ...(window.innerWidth <= 640 && {
+                  marginTop: "-65px",
+                }),
+              }}
             >
               <span className="text-lg font-semibold">Skip</span>
               <ChevronRight className="h-4 w-4" />
