@@ -237,7 +237,7 @@ const NotificationCenter = React.forwardRef<
               onClick={() => handleNavClick("profile")}
               className="flex flex-col items-center gap-1 p-2 transition-colors"
             >
-              <User className="h-6 w-6 text-gray-600" />
+              <User className="h-6 w-6 text-gray-400" />
             </button>
           </div>
         </div>

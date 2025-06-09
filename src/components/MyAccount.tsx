@@ -177,7 +177,7 @@ const MyAccount = React.forwardRef<HTMLDivElement, MyAccountProps>(
               onClick={() => handleNavClick("home")}
               className="flex flex-col items-center gap-1 p-2 transition-colors"
             >
-              <Home className="h-6 w-6 text-orange-500" />
+              <Home className="h-6 w-6 text-gray-400" />
             </button>
             <button
               onClick={() => handleNavClick("calendar")}
@@ -195,7 +195,7 @@ const MyAccount = React.forwardRef<HTMLDivElement, MyAccountProps>(
               onClick={() => handleNavClick("profile")}
               className="flex flex-col items-center gap-1 p-2 transition-colors"
             >
-              <User className="h-6 w-6 text-gray-600" />
+              <User className="h-6 w-6 text-orange-500" />
             </button>
           </div>
         </div>
