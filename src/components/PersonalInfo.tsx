@@ -121,26 +121,20 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
         )}
         {...props}
       >
-        {/* Status Bar */}
-        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-2 flex justify-between items-center text-sm font-medium">
-          <span>9:41</span>
-          <div className="flex items-center gap-1">
-            <div className="flex gap-0.5">
-              <div className="w-1 h-3 bg-white rounded-full"></div>
-              <div className="w-1 h-3 bg-white rounded-full"></div>
-              <div className="w-1 h-3 bg-white rounded-full"></div>
-              <div className="w-1 h-3 bg-white/70 rounded-full"></div>
-            </div>
-            <svg className="w-4 h-4 ml-1" fill="white" viewBox="0 0 24 24">
-              <path d="M2 17h20v2H2v-2zm1.15-4.05L4 11.47l.85 1.48H6l-.85-1.48zM9 12.5h6v1H9v-1zm8.85 1.48L18.7 12l.85 1.48H18l.85-1.48z" />
-            </svg>
-            <div className="w-6 h-3 bg-white rounded-sm ml-1"></div>
-          </div>
-        </div>
-
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 pb-6">
-          <div className="flex items-center">
+        <div
+          className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 pb-8"
+          style={{
+            ...(window.innerWidth <= 640 && {
+              backgroundImage:
+                "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F6ee3345d560641f1bc37df16062b7293)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+            }),
+          }}
+        >
+          <div className="flex items-center mb-6">
             <button
               onClick={onBack}
               className="mr-4 p-1 hover:bg-white/10 rounded transition-colors"
@@ -154,7 +148,15 @@ const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
         {/* Content */}
         <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 pb-24 overflow-y-auto">
           {/* Profile Photo Section */}
-          <div className="flex justify-center mb-6 -mt-12">
+          <div
+            className="flex justify-center mb-6 -mt-12"
+            style={{
+              ...(window.innerWidth <= 640 && {
+                margin: "-4px 0 -2px",
+                padding: "8px 0 10px",
+              }),
+            }}
+          >
             <div className="relative">
               <Avatar className="w-24 h-24 border-4 border-white shadow-lg">
                 <AvatarImage
