@@ -28,20 +28,32 @@ const Index = () => {
       }}
     >
       <div className="text-center">
-        {/* App Logo/Icon */}
+        {/* App Logo/Icon - Location Pin Style */}
         <div className="mb-8">
-          <div className="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg">
+          <div className="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg relative">
+            {/* Simple Bus Icon */}
             <svg
-              className="w-12 h-12 text-orange-500"
+              className="w-10 h-10 text-orange-500"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
-              {/* Bus icon */}
-              <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
-              <rect x="7" y="7" width="2" height="2" fill="currentColor" />
-              <rect x="11" y="7" width="2" height="2" fill="currentColor" />
-              <rect x="15" y="7" width="2" height="2" fill="currentColor" />
+              {/* Clean bus design */}
+              <rect
+                x="3"
+                y="6"
+                width="18"
+                height="10"
+                rx="2"
+                fill="currentColor"
+              />
+              <circle cx="7" cy="19" r="2" fill="currentColor" />
+              <circle cx="17" cy="19" r="2" fill="currentColor" />
+              <rect x="5" y="8" width="3" height="2" fill="white" />
+              <rect x="10" y="8" width="3" height="2" fill="white" />
+              <rect x="15" y="8" width="3" height="2" fill="white" />
             </svg>
+            {/* Small location pin point */}
+            <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-3 h-3 bg-white rounded-full border-2 border-orange-500"></div>
           </div>
         </div>
 
