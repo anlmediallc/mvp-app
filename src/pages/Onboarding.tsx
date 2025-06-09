@@ -23,11 +23,14 @@ const Onboarding = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        ...(window.innerWidth <= 640 && {
+          minHeight: "600px",
+        }),
       }}
     >
       <OnboardingScreen
         title="Your Journey, Smarter & Smoother!"
-        subtitle="Experience seamless travel with real-time tracking, digital tickets, and in-trip comfort��all in one app."
+        subtitle="Experience seamless travel with real-time tracking, digital tickets, and in-trip comfort—all in one app."
         onSkip={handleSkip}
         onContinue={handleContinue}
         showSkip={true}
