@@ -135,7 +135,7 @@ export default function TripDetails({
       </div>
 
       {/* Content */}
-      <div className="flex-1 bg-gradient-to-br from-orange-500 to-orange-600 p-4 overflow-y-auto">
+      <div className="flex-1 bg-gradient-to-br from-orange-500 to-orange-600 p-4 overflow-y-auto scrollbar-hide">
         {/* Trip Card */}
         <div className="bg-white rounded-2xl p-6 mb-4">
           {/* Transport Header */}
