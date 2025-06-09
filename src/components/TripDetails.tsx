@@ -278,6 +278,7 @@ export default function TripDetails({
               />
             </div>
           </div>
+
           {/* Amenities */}
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center gap-2">
@@ -360,22 +361,25 @@ export default function TripDetails({
               <div className="space-y-0.5">
                 {Object.entries(groupedSeats).map(([row, rowSeats]) => (
                   <div key={row} className="flex items-center gap-1">
-                    <span className="text-xs text-gray-500 w-2 text-right">{row}</span>
+                    <span className="text-xs text-gray-500 w-2 text-right">
+                      {row}
+                    </span>
                     <div className="flex gap-0.5 ml-1">
-                      {rowSeats.sort((a, b) => a.number - b.number).map((seat) => (
-                        <button
-                          key={seat.id}
-                          onClick={() => handleSeatClick(seat.id)}
-                          disabled={seat.status === 'occupied'}
-                          className={`w-5 h-5 rounded text-xs font-medium transition-colors ${getSeatStyle(seat.status)}`}
-                        >
-                          {seat.number}
-                        </button>
-                      ))}
-                      {/* Add aisle gap after seat 2 */}
-                      {row !== 'C' && row !== 'D' && (
-                        <div className="w-2"></div>
-                      )}
+                      {rowSeats
+                        .sort((a, b) => a.number - b.number)
+                        .map((seat, seatIndex) => (
+                          <React.Fragment key={seat.id}>
+                            <button
+                              onClick={() => handleSeatClick(seat.id)}
+                              disabled={seat.status === "occupied"}
+                              className={`w-5 h-5 rounded text-xs font-medium transition-colors ${getSeatStyle(seat.status)}`}
+                            >
+                              {seat.number}
+                            </button>
+                            {/* Add aisle gap after seat 2 */}
+                            {seatIndex === 1 && <div className="w-1"></div>}
+                          </React.Fragment>
+                        ))}
                     </div>
                   </div>
                 ))}
@@ -393,6 +397,7 @@ export default function TripDetails({
                 </div>
               </div>
             </div>
+          </div>
         </div>
 
         {/* Seat Selection */}
