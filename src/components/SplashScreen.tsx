@@ -47,10 +47,10 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
 
         {/* Logo Container */}
         <div className="relative z-10 flex flex-col items-center justify-center">
-          {/* Simple Circle Logo with Tabler Bus Icon */}
+          {/* Simple Circle Logo with Lucide Bus Icon */}
           <div className="mb-6">
             <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg">
-              <i className="ti ti-bus text-4xl text-orange-500"></i>
+              <Bus className="h-10 w-10 text-orange-500" strokeWidth={2} />
             </div>
           </div>
           {/* App Name */}
