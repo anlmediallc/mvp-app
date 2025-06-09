@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600">
       <div className="text-center">
         {/* TODO: replace everything here with the actual app! */}
         <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
