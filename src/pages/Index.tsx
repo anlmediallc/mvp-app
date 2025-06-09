@@ -43,27 +43,25 @@ const Index = () => {
                 d="M40 0C18 0 0 18 0 40C0 62 40 96 40 96C40 96 80 62 80 40C80 18 62 0 40 0Z"
                 fill="white"
               />
-              {/* Bus icon inside pin - centered and properly sized */}
-              <g transform="translate(40, 40)">
-                {/* Bus body */}
+              {/* Simple Bus icon inside pin - matching Figma exactly */}
+              <g transform="translate(40, 30)">
+                {/* Bus body - main rectangle */}
                 <rect
-                  x="-12"
-                  y="-8"
-                  width="24"
+                  x="-14"
+                  y="-6"
+                  width="28"
                   height="12"
-                  rx="1.5"
+                  rx="2"
                   fill="#F97316"
                 />
                 {/* Bus wheels */}
-                <circle cx="-7" cy="6" r="2.5" fill="#F97316" />
-                <circle cx="7" cy="6" r="2.5" fill="#F97316" />
-                {/* Bus windows/details */}
-                <rect x="-10" y="-6" width="3" height="2.5" fill="white" />
-                <rect x="-5" y="-6" width="3" height="2.5" fill="white" />
-                <rect x="0" y="-6" width="3" height="2.5" fill="white" />
-                <rect x="5" y="-6" width="3" height="2.5" fill="white" />
-                {/* Bus door/front section */}
-                <rect x="-10" y="-2" width="20" height="4" fill="#F97316" />
+                <circle cx="-8" cy="8" r="2" fill="#F97316" />
+                <circle cx="8" cy="8" r="2" fill="#F97316" />
+                {/* Bus windows - simplified */}
+                <rect x="-11" y="-3" width="4" height="3" fill="white" />
+                <rect x="-5" y="-3" width="4" height="3" fill="white" />
+                <rect x="1" y="-3" width="4" height="3" fill="white" />
+                <rect x="7" y="-3" width="4" height="3" fill="white" />
               </g>
             </svg>
           </div>
