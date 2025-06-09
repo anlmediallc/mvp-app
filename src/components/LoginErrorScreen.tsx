@@ -108,8 +108,8 @@ const LoginErrorScreen = React.forwardRef<
           <div className="text-right mt-6 max-sm:mt-1">
             <button
               type="button"
-              onClick={onForgotPassword}
-              className="text-orange-500 text-sm font-medium underline hover:text-orange-600 focus:outline-none max-sm:-mt-1"
+              onClick={() => (window.location.href = "/forgot-password")}
+              className="text-orange-500 text-sm underline hover:text-orange-600 focus:outline-none"
             >
               Forgot Password?
             </button>
@@ -187,7 +187,7 @@ const LoginErrorScreen = React.forwardRef<
           <span className="text-gray-600 text-sm">Don't have an account? </span>
           <button
             type="button"
-            onClick={onCreateAccount}
+            onClick={() => (window.location.href = "/register")}
             className="text-orange-500 text-sm font-medium underline hover:text-orange-600 focus:outline-none"
           >
             Create Account
