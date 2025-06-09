@@ -98,17 +98,17 @@ const NotificationCenter = React.forwardRef<
     }) => (
       <button
         onClick={() => handleNotificationClick(notification)}
-        className="w-full flex items-start gap-3 p-4 text-left hover:bg-gray-50 rounded-lg transition-colors"
+        className="w-full flex items-start gap-2 p-2 text-left hover:bg-gray-50 rounded-lg transition-colors"
       >
-        <div className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-          <Clock className="h-5 w-5 text-gray-600" />
+        <div className="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+          <Clock className="h-4 w-4 text-gray-600" />
         </div>
         <div className="flex-1 min-w-0">
-          <h3 className="font-semibold text-gray-900 text-base leading-snug">
+          <h3 className="font-semibold text-gray-900 text-sm leading-tight">
             {notification.title}
           </h3>
           {notification.message && (
-            <p className="text-gray-600 text-sm mt-1 leading-relaxed">
+            <p className="text-gray-600 text-xs mt-0.5 leading-tight">
               {notification.message}
             </p>
           )}
@@ -156,14 +156,14 @@ const NotificationCenter = React.forwardRef<
         </div>
 
         {/* Content */}
-        <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 pb-24 overflow-y-auto">
+        <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-4 pb-24 overflow-y-auto">
           {/* Today Section */}
           {notifications.today.length > 0 && (
-            <div className="mb-8">
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">
+            <div className="mb-4">
+              <h2 className="text-base font-semibold text-gray-900 mb-2">
                 Today
               </h2>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {notifications.today.map((notification) => (
                   <NotificationItem
                     key={notification.id}
@@ -177,10 +177,10 @@ const NotificationCenter = React.forwardRef<
           {/* Recent Section */}
           {notifications.recent.length > 0 && (
             <div>
-              <h2 className="text-lg font-semibold text-gray-900 mb-4">
+              <h2 className="text-base font-semibold text-gray-900 mb-2">
                 Recent
               </h2>
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {notifications.recent.map((notification) => (
                   <NotificationItem
                     key={notification.id}
@@ -194,14 +194,14 @@ const NotificationCenter = React.forwardRef<
           {/* Empty State */}
           {notifications.today.length === 0 &&
             notifications.recent.length === 0 && (
-              <div className="text-center py-12">
-                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="h-8 w-8 text-gray-400" />
+              <div className="text-center py-8">
+                <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                  <Clock className="h-6 w-6 text-gray-400" />
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-base font-semibold text-gray-900 mb-1">
                   No notifications
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 text-sm">
                   You're all caught up! Check back later for updates.
                 </p>
               </div>
