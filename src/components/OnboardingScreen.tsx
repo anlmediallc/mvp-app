@@ -46,6 +46,7 @@ const OnboardingScreen = React.forwardRef<
             className="relative z-10 flex justify-end p-6 pt-16"
             style={{
               ...(window.innerWidth <= 640 && {
+                backgroundColor: "#ef940e",
                 margin: "-13px 0 -3px",
               }),
             }}
@@ -87,7 +88,7 @@ const OnboardingScreen = React.forwardRef<
             className="mb-3 text-xl font-semibold leading-tight text-white"
             style={{
               ...(window.innerWidth <= 640 && {
-                marginTop: "-166px",
+                marginTop: "-364px",
               }),
             }}
           >
