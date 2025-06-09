@@ -87,6 +87,11 @@ const LuggageCheckIn = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        ...(window.innerWidth <= 640 && {
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F6ee3345d560641f1bc37df16062b7293)",
+          minHeight: "577px",
+        }),
       }}
     >
       <LuggageCheckInForm

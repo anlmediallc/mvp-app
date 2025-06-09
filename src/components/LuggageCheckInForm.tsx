@@ -111,7 +111,16 @@ const LuggageCheckInForm = React.forwardRef<
             >
               <ArrowLeft className="h-6 w-6" />
             </button>
-            <h1 className="text-xl font-semibold">Luggage Check-In</h1>
+            <h1
+              className="text-xl font-semibold"
+              style={{
+                ...(window.innerWidth <= 640 && {
+                  marginLeft: "37px",
+                }),
+              }}
+            >
+              Luggage Check-In
+            </h1>
           </div>
         </div>
 
