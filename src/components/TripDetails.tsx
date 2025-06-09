@@ -360,12 +360,10 @@ export default function TripDetails({
         {/* Seat Selection Info */}
         <div className="bg-white rounded-xl p-3 mb-3">
           <h3 className="text-sm font-semibold mb-2">Seat selection</h3>
-          {selectedSeats.length > 0 ? (
+          {selectedSeats.length > 0 && (
             <div className="text-xs text-gray-600">
               Selected seats: {selectedSeats.join(", ")}
             </div>
-          ) : (
-            <div className="text-xs text-gray-500">No seats selected</div>
           )}
 
           {/* Action Buttons */}
