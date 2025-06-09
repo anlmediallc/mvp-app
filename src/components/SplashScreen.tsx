@@ -60,49 +60,41 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
                 d="M40 0C18 0 0 18 0 40C0 62 40 96 40 96C40 96 80 62 80 40C80 18 62 0 40 0Z"
                 fill="white"
               />
-              {/* Exact Figma bus design */}
+              {/* Perfect Figma bus design match */}
               <g transform="translate(40, 28)">
-                {/* Bus top rounded section */}
+                {/* Bus curved top/roof */}
                 <rect
-                  x="-10"
+                  x="-9"
                   y="-8"
-                  width="20"
+                  width="18"
+                  height="3"
+                  rx="1.5"
+                  fill="#F97316"
+                />
+                {/* Bus main rectangular body */}
+                <rect x="-11" y="-5" width="22" height="8" fill="#F97316" />
+                {/* Two white circular headlights/windows */}
+                <circle cx="-4" cy="-1" r="2" fill="white" />
+                <circle cx="4" cy="-1" r="2" fill="white" />
+                {/* Side detail elements (door handles/mirrors) */}
+                <rect
+                  x="-13"
+                  y="-6"
+                  width="1"
                   height="4"
-                  rx="2"
+                  rx="0.5"
                   fill="#F97316"
                 />
-                {/* Bus main body */}
                 <rect
-                  x="-12"
-                  y="-4"
-                  width="24"
-                  height="10"
-                  rx="1"
-                  fill="#F97316"
-                />
-                {/* Two white circular windows */}
-                <circle cx="-5" cy="0" r="2.5" fill="white" />
-                <circle cx="5" cy="0" r="2.5" fill="white" />
-                {/* Side detail elements */}
-                <rect
-                  x="-14"
+                  x="12"
                   y="-6"
-                  width="1.5"
-                  height="6"
-                  rx="0.75"
+                  width="1"
+                  height="4"
+                  rx="0.5"
                   fill="#F97316"
                 />
-                <rect
-                  x="12.5"
-                  y="-6"
-                  width="1.5"
-                  height="6"
-                  rx="0.75"
-                  fill="#F97316"
-                />
-                {/* Bottom bumper/wheel area */}
-                <rect x="-8" y="6" width="4" height="2" rx="1" fill="#F97316" />
-                <rect x="4" y="6" width="4" height="2" rx="1" fill="#F97316" />
+                {/* Bottom center protrusion */}
+                <rect x="-2" y="3" width="4" height="2" rx="1" fill="#F97316" />
               </g>
             </svg>
           </div>
