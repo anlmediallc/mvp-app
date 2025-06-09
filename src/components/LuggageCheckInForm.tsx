@@ -117,19 +117,7 @@ const LuggageCheckInForm = React.forwardRef<
         </div>
 
         {/* White Form Container */}
-        <div
-          className="flex-1 p-4"
-          style={{
-            backgroundImage: "url(/luggage-bg.svg)",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            ...(window.innerWidth <= 640 && {
-              backgroundImage:
-                "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F3e3b118899d545fe8107825676bfdf48)",
-            }),
-          }}
-        >
+        <div className="flex-1 p-4">
           <div className="bg-white rounded-2xl p-4 h-full overflow-hidden shadow-lg">
             <form
               onSubmit={handleSubmit}
