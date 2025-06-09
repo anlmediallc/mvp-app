@@ -49,6 +49,11 @@ const ForgotPassword = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        // Mobile responsive background
+        ...(window.innerWidth <= 640 && {
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F3e3b118899d545fe8107825676bfdf48)",
+        }),
       }}
     >
       <ForgotPasswordForm
