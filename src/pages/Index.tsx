@@ -31,40 +31,39 @@ const Index = () => {
         {/* App Logo/Icon - Location Pin with Bus */}
         <div className="mb-8">
           <div className="relative w-20 h-24 mx-auto">
-            {/* Location Pin Shape */}
+            {/* Location Pin Shape matching Figma exactly */}
             <svg
               className="w-20 h-24 drop-shadow-lg"
               viewBox="0 0 80 96"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Pin shape - teardrop */}
+              {/* Pin shape - perfect teardrop */}
               <path
-                d="M40 0C18 0 0 18 0 40C0 70 40 96 40 96C40 96 80 70 80 40C80 18 62 0 40 0Z"
+                d="M40 0C18 0 0 18 0 40C0 62 40 96 40 96C40 96 80 62 80 40C80 18 62 0 40 0Z"
                 fill="white"
               />
-              {/* Bus icon inside pin */}
-              <g transform="translate(20, 16)">
+              {/* Bus icon inside pin - centered and properly sized */}
+              <g transform="translate(40, 40)">
                 {/* Bus body */}
                 <rect
-                  x="4"
-                  y="8"
-                  width="32"
-                  height="16"
-                  rx="2"
+                  x="-12"
+                  y="-8"
+                  width="24"
+                  height="12"
+                  rx="1.5"
                   fill="#F97316"
                 />
                 {/* Bus wheels */}
-                <circle cx="12" cy="28" r="3" fill="#F97316" />
-                <circle cx="28" cy="28" r="3" fill="#F97316" />
-                {/* Bus windows */}
-                <rect x="6" y="10" width="4" height="3" fill="white" />
-                <rect x="12" y="10" width="4" height="3" fill="white" />
-                <rect x="18" y="10" width="4" height="3" fill="white" />
-                <rect x="24" y="10" width="4" height="3" fill="white" />
-                <rect x="30" y="10" width="4" height="3" fill="white" />
-                {/* Bus front */}
-                <rect x="6" y="15" width="28" height="6" fill="#F97316" />
+                <circle cx="-7" cy="6" r="2.5" fill="#F97316" />
+                <circle cx="7" cy="6" r="2.5" fill="#F97316" />
+                {/* Bus windows/details */}
+                <rect x="-10" y="-6" width="3" height="2.5" fill="white" />
+                <rect x="-5" y="-6" width="3" height="2.5" fill="white" />
+                <rect x="0" y="-6" width="3" height="2.5" fill="white" />
+                <rect x="5" y="-6" width="3" height="2.5" fill="white" />
+                {/* Bus door/front section */}
+                <rect x="-10" y="-2" width="20" height="4" fill="#F97316" />
               </g>
             </svg>
           </div>
