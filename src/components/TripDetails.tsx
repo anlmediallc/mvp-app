@@ -127,9 +127,9 @@ export default function TripDetails({
 
       <div className="flex-1 bg-gradient-to-br from-orange-500 to-orange-600 p-2 overflow-y-auto scrollbar-hide">
         {/* MSS Transport Card */}
-        <div className="bg-white rounded-2xl p-4 mb-3">
+        <div className="bg-white rounded-2xl p-3 mb-2">
           {/* Transport Header */}
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-2">
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-sm">MSS</span>
@@ -142,7 +142,7 @@ export default function TripDetails({
           </div>
 
           {/* Trip Time Info */}
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-2">
             <div className="text-center">
               <div className="text-2xl font-bold">3:05</div>
               <div className="text-gray-600 text-sm">Chennai</div>
@@ -160,7 +160,7 @@ export default function TripDetails({
           </div>
 
           {/* Route Map */}
-          <div className="bg-gray-50 rounded-xl h-32 mb-4 relative overflow-hidden border border-gray-200">
+          <div className="bg-gray-50 rounded-xl h-32 mb-2 relative overflow-hidden border border-gray-200">
             {/* Map background with route visualization */}
             <div className="absolute inset-0">
               {/* Grid pattern */}
@@ -233,22 +233,22 @@ export default function TripDetails({
           </div>
 
           {/* Amenities - Inside MSS Transport Card */}
-          <div className="flex gap-1 justify-center">
-            <div className="text-center">
-              <div className="w-3 h-3 bg-blue-100 rounded-full flex items-center justify-center">
-                <Wifi className="h-2 w-2 text-blue-600" />
+          <div className="flex justify-between items-center px-1">
+            <div className="flex items-center gap-1">
+              <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center">
+                <Wifi className="h-6 w-6 text-blue-600" />
               </div>
               <span className="text-xs text-gray-600">Wi-Fi</span>
             </div>
-            <div className="text-center">
-              <div className="w-3 h-3 bg-green-100 rounded-full flex items-center justify-center">
-                <Bed className="h-2 w-2 text-green-600" />
+            <div className="flex items-center gap-1">
+              <div className="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center">
+                <Bed className="h-6 w-6 text-green-600" />
               </div>
               <span className="text-xs text-gray-600">Sleeping berth</span>
             </div>
-            <div className="text-center">
-              <div className="w-3 h-3 bg-yellow-100 rounded-full flex items-center justify-center">
-                <Zap className="h-2 w-2 text-yellow-600" />
+            <div className="flex items-center gap-1">
+              <div className="w-9 h-9 bg-yellow-100 rounded-full flex items-center justify-center">
+                <Zap className="h-6 w-6 text-yellow-600" />
               </div>
               <span className="text-xs text-gray-600">Charging</span>
             </div>
