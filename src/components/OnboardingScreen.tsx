@@ -42,14 +42,23 @@ const OnboardingScreen = React.forwardRef<
 
         {/* Skip Button */}
         {showSkip && (
-          <div className="relative z-10 flex justify-end p-6 pt-16">
+          <div
+            className="relative z-10 flex justify-end p-6 pt-16"
+            style={{
+              ...(window.innerWidth <= 640 && {
+                margin: "-13px 0 -3px",
+              }),
+            }}
+          >
             <Button
               variant="ghost"
               onClick={onSkip}
               className="flex items-center gap-2 text-white hover:bg-white/10 transition-colors"
               style={{
                 ...(window.innerWidth <= 640 && {
-                  marginTop: "-65px",
+                  marginTop: "-55px",
+                  justifyContent: "center",
+                  alignItems: "center",
                 }),
               }}
             >
@@ -60,9 +69,28 @@ const OnboardingScreen = React.forwardRef<
         )}
 
         {/* Content Area */}
-        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 text-center">
+        <div
+          className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 text-center"
+          style={{
+            ...(window.innerWidth <= 640 && {
+              backgroundImage:
+                "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2Fdf199ffe446d4284879a84f8216f4d2e)",
+              backgroundRepeat: "no-repeat",
+              backgroundPosition: "center",
+              backgroundSize: "cover",
+              margin: "-5px 0",
+            }),
+          }}
+        >
           {/* Title */}
-          <h1 className="mb-6 text-3xl font-semibold leading-tight text-white">
+          <h1
+            className="mb-6 text-3xl font-semibold leading-tight text-white"
+            style={{
+              ...(window.innerWidth <= 640 && {
+                marginTop: "-166px",
+              }),
+            }}
+          >
             {title}
           </h1>
 
