@@ -50,7 +50,7 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
       <div
         ref={ref}
         className={cn(
-          "w-full max-w-md mx-auto bg-white rounded-3xl p-8 shadow-lg font-inter",
+          "w-full max-w-md mx-auto bg-white rounded-3xl p-6 shadow-lg font-inter",
           className,
         )}
         style={{
