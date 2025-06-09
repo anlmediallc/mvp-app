@@ -17,6 +17,7 @@ import LuggageCheckIn from "./pages/LuggageCheckIn";
 import Feedback from "./pages/Feedback";
 import ReportProblem from "./pages/ReportProblem";
 import HelpCenter from "./pages/HelpCenter";
+import MyAccount from "./pages/MyAccount";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/report-problem" element={<ReportProblem />} />
           <Route path="/help-center" element={<HelpCenter />} />
+          <Route path="/my-account" element={<MyAccount />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
