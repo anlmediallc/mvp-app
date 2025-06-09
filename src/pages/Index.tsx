@@ -28,19 +28,10 @@ const Index = () => {
       }}
     >
       <div className="text-center">
-        {/* App Logo/Icon - Simple Circle with Bus */}
+        {/* App Logo/Icon - Simple Circle with Tabler Bus Icon */}
         <div className="mb-8">
           <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg mx-auto">
-            <svg
-              className="w-10 h-10 text-orange-500"
-              fill="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M4 6h16v10H4zm2 2v6h12V8H6zm1 1h2v2H7V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zM7 12h2v2H7v-2zm3 0h2v2h-2v-2zm3 0h2v2h-2v-2zm3 0h2v2h-2v-2z" />
-              <circle cx="7" cy="18" r="2" />
-              <circle cx="17" cy="18" r="2" />
-            </svg>
+            <i className="ti ti-bus text-4xl text-orange-500"></i>
           </div>
         </div>
         {/* App Name */}
