@@ -355,43 +355,44 @@ export default function TripDetails({
             </div>
 
             {/* Bus Seat Layout */}
-            <div className="ml-6">
-              <h4 className="font-semibold mb-3">Bus Seat:</h4>
-              <div className="space-y-1">
+            <div className="ml-4">
+              <h4 className="font-semibold mb-2 text-sm">Bus Seat:</h4>
+              <div className="space-y-0.5">
                 {Object.entries(groupedSeats).map(([row, rowSeats]) => (
                   <div key={row} className="flex items-center gap-1">
-                    <span className="text-xs text-gray-500 w-3">{row}</span>
-                    <div className="flex gap-1">
-                      {rowSeats
-                        .sort((a, b) => a.number - b.number)
-                        .map((seat) => (
-                          <button
-                            key={seat.id}
-                            onClick={() => handleSeatClick(seat.id)}
-                            disabled={seat.status === "occupied"}
-                            className={`w-6 h-6 rounded text-xs font-medium transition-colors ${getSeatStyle(seat.status)}`}
-                          >
-                            {seat.number}
-                          </button>
-                        ))}
+                    <span className="text-xs text-gray-500 w-2 text-right">{row}</span>
+                    <div className="flex gap-0.5 ml-1">
+                      {rowSeats.sort((a, b) => a.number - b.number).map((seat) => (
+                        <button
+                          key={seat.id}
+                          onClick={() => handleSeatClick(seat.id)}
+                          disabled={seat.status === 'occupied'}
+                          className={`w-5 h-5 rounded text-xs font-medium transition-colors ${getSeatStyle(seat.status)}`}
+                        >
+                          {seat.number}
+                        </button>
+                      ))}
+                      {/* Add aisle gap after seat 2 */}
+                      {row !== 'C' && row !== 'D' && (
+                        <div className="w-2"></div>
+                      )}
                     </div>
                   </div>
                 ))}
               </div>
 
               {/* Seat Legend */}
-              <div className="flex items-center gap-4 mt-3 text-xs text-gray-600">
+              <div className="flex items-center gap-3 mt-2 text-xs text-gray-600">
                 <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 bg-gray-400 rounded"></div>
+                  <div className="w-2.5 h-2.5 bg-gray-400 rounded"></div>
                   <span>3</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  <div className="w-3 h-3 bg-gray-200 rounded"></div>
+                  <div className="w-2.5 h-2.5 bg-gray-200 rounded"></div>
                   <span>On</span>
                 </div>
               </div>
             </div>
-          </div>
         </div>
 
         {/* Seat Selection */}
