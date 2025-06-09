@@ -136,10 +136,18 @@ const Index = () => {
             <Link to="/personal-info">✏️ Edit Profile</Link>
           </Button>
           <Button asChild size="lg" variant="secondary">
-            <Link to="/notifications">🔔 Notifications</Link>
-          </Button>
-          <Button asChild>
-            <Link to="/login">📝 Login Form</Link>
+            <Link
+              to="/notifications"
+              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            >
+              📢 Notifications
+            </Link>
+            <Link
+              to="/trip-details"
+              className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
+            >
+              🚌 Trip Details
+            </Link>
           </Button>
           <Button asChild variant="secondary">
             <Link to="/register">✍️ Register Form</Link>
