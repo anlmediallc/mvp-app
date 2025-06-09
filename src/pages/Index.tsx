@@ -42,6 +42,9 @@ const Index = () => {
             <Link to="/splash">🚌 Buscomfy+ Splash</Link>
           </Button>
           <Button asChild>
+            <Link to="/login">📝 Login Form</Link>
+          </Button>
+          <Button asChild>
             <Link to="/onboarding">Single Onboarding Screen</Link>
           </Button>
           <Button asChild variant="outline">
