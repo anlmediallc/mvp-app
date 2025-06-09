@@ -84,10 +84,10 @@ const PersonalInfo = () => {
         navigate("/");
         break;
       case "calendar":
-        console.log("Navigate to calendar/bookings");
+        navigate("/trip-details");
         break;
       case "bookings":
-        console.log("Navigate to bookings");
+        navigate("/trip-stops");
         break;
       case "profile":
         navigate("/my-account");

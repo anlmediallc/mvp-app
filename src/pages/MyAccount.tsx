@@ -8,7 +8,7 @@ const MyAccount = () => {
     navigate(-1);
   };
 
-  const handleMenuItemClick = (item: string) => {
+  const handleMenuClick = (item: string) => {
     switch (item) {
       case "personal-info":
         navigate("/personal-info");
@@ -17,12 +17,10 @@ const MyAccount = () => {
         navigate("/reset-password");
         break;
       case "notification-preferences":
-        console.log("Navigate to notification preferences");
-        // Could navigate to notification settings
+        navigate("/notifications");
         break;
       case "privacy-settings":
-        console.log("Navigate to privacy settings");
-        // Could navigate to privacy settings
+        navigate("/help-center");
         break;
       default:
         console.log(`Navigate to ${item}`);
@@ -35,13 +33,13 @@ const MyAccount = () => {
         navigate("/");
         break;
       case "calendar":
-        console.log("Navigate to calendar/bookings");
+        navigate("/trip-details");
         break;
       case "bookings":
-        console.log("Navigate to bookings");
+        navigate("/trip-stops");
         break;
       case "profile":
-        // Already on profile page
+        // Already on account page
         break;
       default:
         console.log(`Navigate to ${item}`);

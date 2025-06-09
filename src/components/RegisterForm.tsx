@@ -287,6 +287,7 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
           </span>
           <button
             type="button"
+            onClick={() => (window.location.href = "/login")}
             className="text-orange-500 text-xs font-medium underline hover:text-orange-600 focus:outline-none"
           >
             Sign In

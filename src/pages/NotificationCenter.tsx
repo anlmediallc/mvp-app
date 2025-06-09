@@ -17,27 +17,22 @@ const NotificationCenter = () => {
     // Handle different notification types
     switch (notification.type) {
       case "delay":
-        // Could show delay details or tracking
-        console.log("Show delay information");
+        navigate("/trip-details");
         break;
       case "reminder":
-        // Could navigate to trip details
-        console.log("Show trip details");
+        navigate("/trip-details");
         break;
       case "booking":
-        // Could navigate to booking completion
-        console.log("Continue booking process");
+        navigate("/luggage-check-in");
         break;
       case "service":
-        // Could show service information
-        console.log("Show service details");
+        navigate("/help-center");
         break;
       case "feature":
-        // Could show app features or changelog
-        console.log("Show new features");
+        navigate("/help-center");
         break;
       default:
-        console.log("Handle notification:", notification.id);
+        navigate("/trip-details");
     }
   };
 
@@ -47,10 +42,10 @@ const NotificationCenter = () => {
         navigate("/");
         break;
       case "calendar":
-        console.log("Navigate to calendar/bookings");
+        navigate("/trip-details");
         break;
       case "bookings":
-        console.log("Navigate to bookings");
+        navigate("/trip-stops");
         break;
       case "profile":
         navigate("/my-account");
