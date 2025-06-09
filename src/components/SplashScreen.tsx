@@ -61,80 +61,67 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
               <rect width="60" height="60" rx="14" fill="#E97B00" />
               {/* White location pin shape - teardrop */}
               <path
-                d="M30 12C24.477 12 20 16.477 20 22C20 27.523 24.477 32 30 32C35.523 32 40 27.523 40 22C40 16.477 35.523 12 30 12Z"
+                d="M30 10C23.373 10 18 15.373 18 22C18 28.627 23.373 34 30 34C36.627 34 42 28.627 42 22C42 15.373 36.627 10 30 10Z"
                 fill="white"
               />
               {/* Location pin point/tail */}
-              <path
-                d="M30 32C30 32 26 38 30 44C34 38 30 32 30 32Z"
-                fill="white"
-              />
+              <path d="M30 34L26 45C28 47 32 47 34 45L30 34Z" fill="white" />
               {/* Bus icon inside the pin */}
-              <g transform="translate(23, 17)">
-                {/* Bus body */}
+              <g transform="translate(21.5, 16)">
+                {/* Bus roof section */}
                 <rect
-                  x="1"
-                  y="2"
-                  width="12"
-                  height="6"
-                  rx="1.5"
+                  x="4"
+                  y="1"
+                  width="9"
+                  height="2.5"
+                  rx="1.2"
                   fill="#E97B00"
                 />
-                {/* Bus roof/top */}
+                {/* Top line on roof */}
                 <rect
-                  x="3"
-                  y="0.5"
-                  width="8"
-                  height="2"
+                  x="6"
+                  y="0.2"
+                  width="5"
+                  height="0.8"
+                  rx="0.4"
+                  fill="#E97B00"
+                />
+                {/* Main bus body */}
+                <rect
+                  x="1"
+                  y="3.5"
+                  width="15"
+                  height="7"
                   rx="1"
                   fill="#E97B00"
                 />
-                {/* Front and back windows */}
-                <rect
-                  x="2.5"
-                  y="3"
-                  width="2"
-                  height="1.5"
-                  rx="0.3"
-                  fill="white"
-                />
-                <rect
-                  x="9.5"
-                  y="3"
-                  width="2"
-                  height="1.5"
-                  rx="0.3"
-                  fill="white"
-                />
-                {/* Side windows */}
-                <rect
-                  x="5"
-                  y="3"
-                  width="4"
-                  height="1.5"
-                  rx="0.3"
-                  fill="white"
-                />
-                {/* Wheels */}
-                <circle cx="3.5" cy="8.5" r="1" fill="white" />
-                <circle cx="10.5" cy="8.5" r="1" fill="white" />
+                {/* Front section */}
+                <rect x="1" y="5" width="2" height="4" fill="#E97B00" />
+                {/* Back section */}
+                <rect x="14" y="5" width="2" height="4" fill="#E97B00" />
+                {/* Headlights */}
+                <circle cx="3.5" cy="8.5" r="1.2" fill="white" />
+                <circle cx="13.5" cy="8.5" r="1.2" fill="white" />
                 {/* Side mirrors */}
                 <rect
                   x="0"
-                  y="4"
+                  y="6.5"
                   width="1"
-                  height="1"
+                  height="1.5"
                   rx="0.5"
                   fill="#E97B00"
                 />
                 <rect
-                  x="13"
-                  y="4"
+                  x="16"
+                  y="6.5"
                   width="1"
-                  height="1"
+                  height="1.5"
                   rx="0.5"
                   fill="#E97B00"
                 />
+                {/* Small wheels indication */}
+                <circle cx="4" cy="11" r="0.8" fill="#E97B00" />
+                <circle cx="13" cy="11" r="0.8" fill="#E97B00" />
               </g>
             </svg>
           </div>
