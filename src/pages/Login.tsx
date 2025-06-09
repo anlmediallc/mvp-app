@@ -1,14 +1,38 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LoginForm } from "@/components/LoginForm";
 
 const Login = () => {
   const navigate = useNavigate();
+  const [emailError, setEmailError] = useState<string>("");
+  const [passwordError, setPasswordError] = useState<string>("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (email: string, password: string) => {
-    // In a real app, this would handle authentication
-    console.log("Login attempted with:", { email, password });
+  const handleLogin = async (email: string, password: string) => {
+    // Clear previous errors
+    setEmailError("");
+    setPasswordError("");
+    setIsLoading(true);
 
-    // For demo purposes, navigate to home after "login"
+    // Simulate API call delay
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Demo validation - you can test different scenarios
+    if (email === "test@test.com" && password === "wrongpassword") {
+      setPasswordError("Incorrect password. Please check your password.");
+      setIsLoading(false);
+      return;
+    }
+
+    if (email === "invalid@email.com") {
+      setEmailError("User not found. Please check your email address.");
+      setIsLoading(false);
+      return;
+    }
+
+    // Successful login simulation
+    console.log("Login successful:", { email, password });
+    setIsLoading(false);
     navigate("/");
   };
 
@@ -39,6 +63,9 @@ const Login = () => {
         onForgotPassword={handleForgotPassword}
         onCreateAccount={handleCreateAccount}
         onSocialLogin={handleSocialLogin}
+        emailError={emailError}
+        passwordError={passwordError}
+        isLoading={isLoading}
       />
     </div>
   );
