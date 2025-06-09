@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowLeft, ExternalLink, MoreHorizontal } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 
 interface TripStopsProps {
   onBack?: () => void;
