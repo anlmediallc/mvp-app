@@ -169,24 +169,115 @@ export default function TripDetails({
             </div>
           </div>
 
-          {/* Map Placeholder */}
-          <div className="bg-gray-100 rounded-xl h-32 mb-6 flex items-center justify-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-100 to-blue-50"></div>
-            <div className="relative text-gray-500 text-sm">Route Map</div>
-            <svg
-              className="absolute bottom-2 left-4 w-16 h-12 text-blue-400"
-              fill="currentColor"
-              viewBox="0 0 64 48"
-            >
-              <path
-                d="M8 32c8-8 16-8 24 0s16 8 24 0M8 24c8-8 16-8 24 0s16 8 24 0"
-                stroke="currentColor"
-                strokeWidth="2"
-                fill="none"
-              />
-            </svg>
-          </div>
+          {/* Route Map */}
+          <div className="bg-gray-50 rounded-xl h-32 mb-6 relative overflow-hidden border border-gray-200">
+            {/* Map background pattern */}
+            <div className="absolute inset-0">
+              {/* Grid pattern to simulate map */}
+              <div className="absolute inset-0 opacity-10">
+                {Array.from({ length: 12 }).map((_, i) => (
+                  <div
+                    key={`v-${i}`}
+                    className="absolute bg-gray-300"
+                    style={{
+                      left: `${i * 8.33}%`,
+                      top: 0,
+                      width: "1px",
+                      height: "100%",
+                    }}
+                  />
+                ))}
+                {Array.from({ length: 8 }).map((_, i) => (
+                  <div
+                    key={`h-${i}`}
+                    className="absolute bg-gray-300"
+                    style={{
+                      top: `${i * 12.5}%`,
+                      left: 0,
+                      height: "1px",
+                      width: "100%",
+                    }}
+                  />
+                ))}
+              </div>
 
+              {/* Green areas (parks/landmarks) */}
+              <div
+                className="absolute bg-green-200 rounded opacity-60"
+                style={{
+                  top: "10%",
+                  left: "5%",
+                  width: "15%",
+                  height: "25%",
+                }}
+              />
+              <div
+                className="absolute bg-green-200 rounded opacity-60"
+                style={{
+                  top: "60%",
+                  right: "10%",
+                  width: "20%",
+                  height: "30%",
+                }}
+              />
+              <div
+                className="absolute bg-green-200 rounded opacity-60"
+                style={{
+                  top: "40%",
+                  left: "25%",
+                  width: "12%",
+                  height: "20%",
+                }}
+              />
+
+              {/* Water/river (blue area) */}
+              <div
+                className="absolute bg-blue-100 opacity-70"
+                style={{
+                  top: "20%",
+                  left: "40%",
+                  width: "45%",
+                  height: "8%",
+                  clipPath: "polygon(0% 0%, 100% 30%, 95% 100%, 5% 70%)",
+                }}
+              />
+
+              {/* Main route line */}
+              <svg
+                className="absolute inset-0 w-full h-full"
+                viewBox="0 0 100 100"
+                preserveAspectRatio="none"
+              >
+                <path
+                  d="M15 75 Q30 60, 45 50 Q60 40, 75 35 Q85 32, 95 25"
+                  stroke="#6366f1"
+                  strokeWidth="3"
+                  fill="none"
+                  className="opacity-80"
+                />
+              </svg>
+
+              {/* Start point */}
+              <div
+                className="absolute w-3 h-3 bg-orange-500 rounded-full border-2 border-white"
+                style={{
+                  bottom: "20%",
+                  left: "12%",
+                  transform: "translate(-50%, 50%)",
+                }}
+              />
+
+              {/* End point */}
+              <div
+                className="absolute w-3 h-3 bg-orange-500 rounded-full border-2 border-white"
+                style={{
+                  top: "20%",
+                  right: "2%",
+                  transform: "translate(50%, -50%)",
+                }}
+              />
+            </div>
+          </div>
           {/* Amenities */}
           <div className="flex justify-between items-center mb-6">
             <div className="flex items-center gap-2">
