@@ -44,16 +44,6 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
       >
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00]" />
-
-        {/* Background Illustration */}
-        <div
-          className="absolute inset-0 opacity-20"
-          style={{
-            backgroundImage: "url('/bus-illustration.svg')",
-            backgroundRepeat: "no-repeat",
-            backgroundPosition: "center bottom",
-            backgroundSize: "contain",
-          }}
         />
 
         {/* Logo Container */}

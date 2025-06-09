@@ -57,14 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center p-4"
-      style={{
-        backgroundImage: "url('/login-background.svg')",
-        backgroundRepeat: "no-repeat",
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-      }}
+    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
     >
       <LoginForm
         onLogin={handleLogin}
