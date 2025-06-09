@@ -86,11 +86,11 @@ export default function TripDetails({
   const getSeatStyle = (status: string) => {
     switch (status) {
       case "occupied":
-        return "bg-gray-400 text-white cursor-not-allowed";
+        return "bg-gray-400 text-white cursor-not-allowed border-gray-500 shadow-inner";
       case "selected":
-        return "bg-orange-500 text-white";
+        return "bg-orange-500 text-white border-orange-600 shadow-md ring-2 ring-orange-300";
       default:
-        return "bg-gray-200 text-gray-700 hover:bg-gray-300";
+        return "bg-gray-200 text-gray-700 hover:bg-gray-300 border-gray-300 hover:border-gray-400 shadow-sm";
     }
   };
 
@@ -235,20 +235,20 @@ export default function TripDetails({
           {/* Amenities - Inside MSS Transport Card */}
           <div className="flex justify-between items-center px-1">
             <div className="flex items-center gap-1">
-              <div className="w-9 h-9 bg-blue-100 rounded-full flex items-center justify-center">
-                <Wifi className="h-6 w-6 text-blue-600" />
+              <div className="w-5 h-5 bg-blue-100 rounded-full flex items-center justify-center">
+                <Wifi className="h-3 w-3 text-blue-600" />
               </div>
               <span className="text-xs text-gray-600">Wi-Fi</span>
             </div>
             <div className="flex items-center gap-1">
-              <div className="w-9 h-9 bg-green-100 rounded-full flex items-center justify-center">
-                <Bed className="h-6 w-6 text-green-600" />
+              <div className="w-5 h-5 bg-green-100 rounded-full flex items-center justify-center">
+                <Bed className="h-3 w-3 text-green-600" />
               </div>
               <span className="text-xs text-gray-600">Sleeping berth</span>
             </div>
             <div className="flex items-center gap-1">
-              <div className="w-9 h-9 bg-yellow-100 rounded-full flex items-center justify-center">
-                <Zap className="h-6 w-6 text-yellow-600" />
+              <div className="w-5 h-5 bg-yellow-100 rounded-full flex items-center justify-center">
+                <Zap className="h-3 w-3 text-yellow-600" />
               </div>
               <span className="text-xs text-gray-600">Charging</span>
             </div>
@@ -309,11 +309,11 @@ export default function TripDetails({
           <div className="bg-white rounded-xl p-3">
             <h3 className="text-sm font-semibold mb-3">Bus Seat:</h3>
 
-            {/* Seat Grid */}
+            {/* Enhanced Seat Grid with Visual Representation */}
             <div className="space-y-1 mb-3">
               {Object.entries(groupedSeats).map(([row, rowSeats]) => (
                 <div key={row} className="flex items-center gap-1">
-                  <span className="text-xs text-gray-500 w-2 text-center">
+                  <span className="text-xs text-gray-500 w-2 text-center font-medium">
                     {row}
                   </span>
                   <div className="flex gap-0.5 ml-1">
@@ -324,12 +324,16 @@ export default function TripDetails({
                           <button
                             onClick={() => handleSeatClick(seat.id)}
                             disabled={seat.status === "occupied"}
-                            className={`w-4 h-4 rounded text-xs font-medium transition-colors ${getSeatStyle(seat.status)}`}
+                            className={`w-6 h-6 rounded-sm border transition-all duration-200 text-xs font-bold flex items-center justify-center ${getSeatStyle(seat.status)} hover:scale-105 active:scale-95`}
                           >
                             {seat.number}
                           </button>
                           {/* Add aisle gap after seat 2 */}
-                          {seatIndex === 1 && <div className="w-1"></div>}
+                          {seatIndex === 1 && (
+                            <div className="w-2 flex items-center justify-center">
+                              <div className="w-0.5 h-4 bg-gray-200 rounded-full"></div>
+                            </div>
+                          )}
                         </React.Fragment>
                       ))}
                   </div>
@@ -337,15 +341,27 @@ export default function TripDetails({
               ))}
             </div>
 
-            {/* Seat Legend */}
-            <div className="flex items-center justify-between text-xs text-gray-600">
+            {/* Enhanced Seat Legend */}
+            <div className="flex items-center justify-between text-xs text-gray-600 px-2">
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 bg-gray-400 rounded"></div>
-                <span>3</span>
+                <div className="w-3 h-3 bg-gray-400 rounded border"></div>
+                <span className="font-medium">Occupied</span>
               </div>
               <div className="flex items-center gap-1">
-                <div className="w-2 h-2 bg-gray-200 rounded"></div>
-                <span>On</span>
+                <div className="w-3 h-3 bg-gray-200 rounded border"></div>
+                <span className="font-medium">Available</span>
+              </div>
+              <div className="flex items-center gap-1">
+                <div className="w-3 h-3 bg-orange-500 rounded border"></div>
+                <span className="font-medium">Selected</span>
+              </div>
+            </div>
+
+            {/* Driver Position Indicator */}
+            <div className="mt-3 flex justify-end">
+              <div className="flex items-center gap-1 text-xs text-gray-500">
+                <div className="w-4 h-3 bg-gray-300 rounded-sm"></div>
+                <span>Driver</span>
               </div>
             </div>
           </div>
