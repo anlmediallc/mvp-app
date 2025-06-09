@@ -44,30 +44,42 @@ const Index = () => {
             <div>
               <strong>Login:</strong>
               <ul className="ml-2 space-y-1">
-                <li>• <code className="bg-gray-100 px-1 rounded">test@test.com</code> + <code className="bg-gray-100 px-1 rounded">wrongpassword</code> = Password error</li>
-                <li>• <code className="bg-gray-100 px-1 rounded">invalid@email.com</code> + any password = Email error</li>
+                <li>
+                  •{" "}
+                  <code className="bg-gray-100 px-1 rounded">
+                    test@test.com
+                  </code>{" "}
+                  +{" "}
+                  <code className="bg-gray-100 px-1 rounded">
+                    wrongpassword
+                  </code>{" "}
+                  = Password error
+                </li>
+                <li>
+                  •{" "}
+                  <code className="bg-gray-100 px-1 rounded">
+                    invalid@email.com
+                  </code>{" "}
+                  + any password = Email error
+                </li>
                 <li>• Any other email + password = Success</li>
               </ul>
             </div>
             <div>
               <strong>Register:</strong>
               <ul className="ml-2 space-y-1">
-                <li>• <code className="bg-gray-100 px-1 rounded">existing@example.com</code> = Email exists error</li>
+                <li>
+                  •{" "}
+                  <code className="bg-gray-100 px-1 rounded">
+                    existing@example.com
+                  </code>{" "}
+                  = Email exists error
+                </li>
                 <li>• Short names or passwords = Validation errors</li>
                 <li>• Mismatched passwords = Confirm error</li>
               </ul>
             </div>
           </div>
-        </div>
-            <li>
-              •{" "}
-              <code className="bg-gray-100 px-1 rounded">
-                invalid@email.com
-              </code>{" "}
-              + any password = Email error
-            </li>
-            <li>• Any other email + password = Success</li>
-          </ul>
         </div>
         <div className="mt-6 flex flex-col gap-3">
           <Button asChild size="lg">
