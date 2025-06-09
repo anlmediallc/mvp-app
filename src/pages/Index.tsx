@@ -135,26 +135,24 @@ const Index = () => {
           <Button asChild size="lg" variant="secondary">
             <Link to="/personal-info">✏️ Edit Profile</Link>
           </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link
-              to="/notifications"
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-            >
-              📢 Notifications
-            </Link>
-            <Link
-              to="/trip-details"
-              className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors"
-            >
-              🚌 Trip Details
-            </Link>
-            <Link
-              to="/trip-stops"
-              className="bg-green-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-800 transition-colors"
-            >
-              🗺️ View All Stops
-            </Link>
-          </Button>
+          <Link
+            to="/notifications"
+            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors text-center"
+          >
+            📢 Notifications
+          </Link>
+          <Link
+            to="/trip-details"
+            className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors text-center"
+          >
+            🚌 Trip Details
+          </Link>
+          <Link
+            to="/trip-stops"
+            className="bg-green-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-800 transition-colors text-center"
+          >
+            🗺️ View All Stops
+          </Link>
           <Button asChild variant="secondary">
             <Link to="/register">✍️ Register Form</Link>
           </Button>
