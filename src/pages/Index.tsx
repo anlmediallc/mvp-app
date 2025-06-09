@@ -3,7 +3,15 @@ import { Button } from "@/components/ui/button";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600">
+    <div
+      className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600"
+      style={{
+        backgroundImage: "url(/orange-bg.svg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <div className="text-center">
         {/* TODO: replace everything here with the actual app! */}
         <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
@@ -94,7 +102,7 @@ const Index = () => {
               <strong>Forgot Password:</strong>
               <ul className="ml-2 space-y-1">
                 <li>
-                  •{" "}
+                  ���{" "}
                   <code className="bg-gray-100 px-1 rounded">
                     notfound@example.com
                   </code>{" "}
