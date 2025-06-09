@@ -85,14 +85,30 @@ const ReportProblemForm = React.forwardRef<
             }),
           }}
         >
-          <div className="flex items-center mb-6">
+          <div
+            className="flex items-center mb-6"
+            style={{
+              ...(window.innerWidth <= 640 && {
+                marginTop: "-1px",
+              }),
+            }}
+          >
             <button
               onClick={onBack}
               className="mr-4 p-1 hover:bg-white/10 rounded transition-colors"
             >
               <ArrowLeft className="h-6 w-6" />
             </button>
-            <h1 className="text-xl font-semibold">Report a problem</h1>
+            <h1
+              className="text-xl font-semibold"
+              style={{
+                ...(window.innerWidth <= 640 && {
+                  marginLeft: "41px",
+                }),
+              }}
+            >
+              Report a problem
+            </h1>
           </div>
         </div>
 
