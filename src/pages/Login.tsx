@@ -55,7 +55,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white flex items-center justify-center p-4 overflow-hidden">
+    <div className="h-screen bg-white flex items-center justify-center p-2 overflow-hidden">
       <LoginForm
         onLogin={handleLogin}
         onForgotPassword={handleForgotPassword}
