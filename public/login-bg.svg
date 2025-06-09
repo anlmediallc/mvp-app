@@ -1,10 +1,10 @@
 <svg width="375" height="812" viewBox="0 0 375 812" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="375" height="812" rx="20" fill="#FBFBFB"/>
-<rect width="375" height="812" rx="20" fill="url(#paint0_perfect_match)" fill-opacity="0.02"/>
+<rect width="375" height="812" rx="20" fill="#FCFCFC"/>
+<rect width="375" height="812" rx="20" fill="url(#paint0_final)" fill-opacity="0.01"/>
 <defs>
-<radialGradient id="paint0_perfect_match" cx="0.5" cy="0.5" r="0.9" gradientUnits="objectBoundingBox">
+<linearGradient id="paint0_final" x1="187.5" y1="0" x2="187.5" y2="812" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FFFFFF"/>
-<stop offset="1" stop-color="#F7F7F7"/>
-</radialGradient>
+<stop offset="1" stop-color="#F9F9F9"/>
+</linearGradient>
 </defs>
 </svg>
