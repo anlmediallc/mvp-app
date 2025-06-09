@@ -62,7 +62,17 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
               viewBox="0 0 119 118"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="w-16 h-16"
+              className="w-32 h-32"
+              style={{
+                "@media (max-width: 991px)": {
+                  display: "flex",
+                },
+                "@media (max-width: 640px)": {
+                  textShadow: "1px 1px 3px rgba(0, 0, 0, 1)",
+                  display: "flex",
+                  backgroundColor: "rgba(255, 255, 255, 1)",
+                },
+              }}
             >
               <path
                 fillRule="evenodd"
