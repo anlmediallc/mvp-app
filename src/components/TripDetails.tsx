@@ -5,11 +5,9 @@ import {
   Wifi,
   Bed,
   Zap,
-  MapPin,
-  Users,
-  Luggage,
+  UserPlus,
+  Package,
 } from "lucide-react";
-import { Button } from "./ui/button";
 
 interface TripDetailsProps {
   onBack?: () => void;
@@ -31,12 +29,12 @@ export default function TripDetails({
   onAddPassenger,
   onAddLuggage,
 }: TripDetailsProps) {
-  // Initialize seat data - 8 rows (A-H), 4 seats per row
+  // Initialize seat data - 6 rows (C-H), 4 seats per row
   const initializeSeats = (): SeatData[] => {
     const seats: SeatData[] = [];
     const rows = ["C", "D", "E", "F", "G", "H"];
 
-    rows.forEach((row, rowIndex) => {
+    rows.forEach((row) => {
       for (let seat = 1; seat <= 4; seat++) {
         const seatId = `${row}${seat}`;
         let status: "available" | "occupied" | "selected" = "available";
@@ -66,21 +64,21 @@ export default function TripDetails({
   const [selectedSeats, setSelectedSeats] = useState<string[]>([]);
 
   const handleSeatClick = (seatId: string) => {
-    const seat = seats.find((s) => s.id === seatId);
-    if (!seat || seat.status === "occupied") return;
-
     setSeats((prevSeats) =>
-      prevSeats.map((s) => {
-        if (s.id === seatId) {
-          const newStatus = s.status === "selected" ? "available" : "selected";
+      prevSeats.map((seat) => {
+        if (seat.id === seatId && seat.status !== "occupied") {
+          const newStatus =
+            seat.status === "selected" ? "available" : "selected";
+
           if (newStatus === "selected") {
             setSelectedSeats((prev) => [...prev, seatId]);
           } else {
             setSelectedSeats((prev) => prev.filter((id) => id !== seatId));
           }
-          return { ...s, status: newStatus };
+
+          return { ...seat, status: newStatus };
         }
-        return s;
+        return seat;
       }),
     );
   };
@@ -88,57 +86,47 @@ export default function TripDetails({
   const getSeatStyle = (status: string) => {
     switch (status) {
       case "occupied":
-        return "bg-gray-400 cursor-not-allowed";
+        return "bg-gray-400 text-white cursor-not-allowed";
       case "selected":
-        return "bg-blue-500 text-white cursor-pointer";
+        return "bg-orange-500 text-white";
       default:
-        return "bg-gray-200 hover:bg-gray-300 cursor-pointer";
+        return "bg-gray-200 text-gray-700 hover:bg-gray-300";
     }
   };
 
+  // Group seats by row for display
   const groupedSeats = seats.reduce(
     (acc, seat) => {
-      if (!acc[seat.row]) acc[seat.row] = [];
+      if (!acc[seat.row]) {
+        acc[seat.row] = [];
+      }
       acc[seat.row].push(seat);
       return acc;
     },
-    {} as Record<string, SeatData[]>,
+    {} as { [key: string]: SeatData[] },
   );
 
+  const handleViewAllStops = () => {
+    if (onViewStops) {
+      onViewStops();
+    }
+  };
+
   return (
-    <div className="relative flex h-screen w-full max-w-md mx-auto flex-col overflow-hidden bg-white font-inter">
-      {/* Mobile Status Bar */}
-      <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-2 flex justify-between items-center text-sm font-medium">
-        <span>9:41</span>
-        <div className="flex items-center gap-1">
-          <div className="flex gap-1">
-            <div className="w-1 h-3 bg-white rounded-full"></div>
-            <div className="w-1 h-3 bg-white rounded-full"></div>
-            <div className="w-1 h-3 bg-white rounded-full"></div>
-            <div className="w-1 h-3 bg-white/70 rounded-full"></div>
-          </div>
-          <svg className="w-4 h-4 ml-1" fill="white" viewBox="0 0 24 24">
-            <path d="M2 17h20v2H2zm1.15-4.05L4 11.47l.85 1.48L5.3 12H6c0-.55.45-1 1-1s1 .45 1 1h.7l.85 1.48L11 11.47l.85 1.48L12.7 12H13c0-.55.45-1 1-1s1 .45 1 1h.7l.85 1.48L17 11.47l.85 1.48L18.7 12H19c0-.55.45-1 1-1s1 .45 1 1h.7l.85 1.48L23 11.47V13H1v-1.53l.85 1.48L3 11.47l.85 1.48L4.7 12H5c0-.55.45-1 1-1s1 .45 1 1h.7z" />
-          </svg>
-          <div className="w-6 h-3 border border-white rounded-sm">
-            <div className="w-4 h-full bg-white rounded-sm"></div>
-          </div>
-        </div>
-      </div>
-
+    <div className="w-full max-w-md mx-auto h-screen bg-white font-inter overflow-hidden relative">
       {/* Header */}
-      <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 flex items-center">
-        <button onClick={onBack} className="mr-4 p-1">
-          <ArrowLeft className="h-6 w-6" />
+      <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-2 flex items-center">
+        <button
+          onClick={onBack}
+          className="mr-3 p-1 hover:bg-white/10 rounded transition-colors"
+        >
+          <ArrowLeft className="h-5 w-5" />
         </button>
-        <h1 className="text-xl font-semibold" style={{ marginLeft: "105px" }}>
-          Trip Details
-        </h1>
+        <h1 className="text-lg font-semibold">Trip Details</h1>
       </div>
 
-      {/* Content */}
-      <div className="flex-1 bg-gradient-to-br from-orange-500 to-orange-600 p-4 overflow-y-auto scrollbar-hide">
-        {/* Trip Card */}
+      <div className="flex-1 bg-gradient-to-br from-orange-500 to-orange-600 p-2 overflow-y-auto scrollbar-hide">
+        {/* Trip Card - Upper Part */}
         <div className="bg-white rounded-2xl p-2 mb-2">
           {/* Transport Header */}
           <div className="flex items-center justify-between mb-2">
@@ -148,8 +136,8 @@ export default function TripDetails({
               </div>
               <span className="font-semibold text-sm">MSS transport</span>
             </div>
-            <button className="p-2 bg-gray-800 rounded-full">
-              <ExternalLink className="h-4 w-4 text-white" />
+            <button className="p-1 bg-gray-800 rounded-full">
+              <ExternalLink className="h-3 w-3 text-white" />
             </button>
           </div>
 
@@ -189,12 +177,12 @@ export default function TripDetails({
                     }}
                   />
                 ))}
-                {Array.from({ length: 8 }).map((_, i) => (
+                {Array.from({ length: 4 }).map((_, i) => (
                   <div
                     key={`h-${i}`}
                     className="absolute bg-gray-300"
                     style={{
-                      top: `${i * 12.5}%`,
+                      top: `${i * 25}%`,
                       left: 0,
                       height: "1px",
                       width: "100%",
@@ -203,83 +191,63 @@ export default function TripDetails({
                 ))}
               </div>
 
-              {/* Green areas (parks/landmarks) */}
+              {/* Blue water areas */}
               <div
-                className="absolute bg-green-200 rounded opacity-60"
+                className="absolute bg-blue-200 opacity-30 rounded"
                 style={{
+                  left: "15%",
                   top: "10%",
-                  left: "5%",
-                  width: "15%",
-                  height: "25%",
-                }}
-              />
-              <div
-                className="absolute bg-green-200 rounded opacity-60"
-                style={{
-                  top: "60%",
-                  right: "10%",
                   width: "20%",
                   height: "30%",
                 }}
-              />
+              ></div>
               <div
-                className="absolute bg-green-200 rounded opacity-60"
+                className="absolute bg-blue-200 opacity-30 rounded"
                 style={{
+                  left: "60%",
                   top: "40%",
-                  left: "25%",
-                  width: "12%",
+                  width: "25%",
+                  height: "35%",
+                }}
+              ></div>
+
+              {/* Green landmark areas */}
+              <div
+                className="absolute bg-green-200 opacity-40 rounded"
+                style={{
+                  left: "40%",
+                  top: "20%",
+                  width: "15%",
                   height: "20%",
                 }}
-              />
-
-              {/* Water/river (blue area) */}
+              ></div>
               <div
-                className="absolute bg-blue-100 opacity-70"
+                className="absolute bg-green-200 opacity-40 rounded"
                 style={{
-                  top: "20%",
-                  left: "40%",
-                  width: "45%",
-                  height: "8%",
-                  clipPath: "polygon(0% 0%, 100% 30%, 95% 100%, 5% 70%)",
+                  left: "10%",
+                  top: "60%",
+                  width: "20%",
+                  height: "25%",
                 }}
-              />
+              ></div>
 
-              {/* Main route line */}
+              {/* Purple route line */}
               <svg
                 className="absolute inset-0 w-full h-full"
                 viewBox="0 0 100 100"
                 preserveAspectRatio="none"
               >
                 <path
-                  d="M15 75 Q30 60, 45 50 Q60 40, 75 35 Q85 32, 95 25"
-                  stroke="#6366f1"
-                  strokeWidth="3"
+                  d="M10,30 Q30,20 50,35 T85,45"
+                  stroke="#8B5CF6"
+                  strokeWidth="2"
                   fill="none"
-                  className="opacity-80"
+                  opacity="0.8"
                 />
               </svg>
-
-              {/* Start point */}
-              <div
-                className="absolute w-3 h-3 bg-orange-500 rounded-full border-2 border-white"
-                style={{
-                  bottom: "20%",
-                  left: "12%",
-                  transform: "translate(-50%, 50%)",
-                }}
-              />
-
-              {/* End point */}
-              <div
-                className="absolute w-3 h-3 bg-orange-500 rounded-full border-2 border-white"
-                style={{
-                  top: "20%",
-                  right: "2%",
-                  transform: "translate(50%, -50%)",
-                }}
-              />
             </div>
           </div>
+        </div>
 
         {/* Amenities */}
         <div className="bg-white rounded-xl p-3 mb-2">
@@ -308,14 +276,6 @@ export default function TripDetails({
           </div>
         </div>
 
-        {/* Boarding & Drop-off */}
-        <div className="bg-white rounded-2xl p-6 mb-4">
-          <div className="flex justify-between items-start mb-6">
-            <div className="flex-1">
-              <h3 className="font-semibold text-lg mb-4">
-                Boarding & Drop-off
-              </h3>
-
         {/* Boarding Timeline */}
         <div className="bg-white rounded-xl p-3 mb-2">
           <div className="flex items-center justify-between mb-2">
@@ -328,106 +288,25 @@ export default function TripDetails({
             </button>
           </div>
 
-                <div className="space-y-6">
-                  {/* Starting point with bus icon */}
-                  <div className="flex items-start gap-3 relative">
-                    <div className="flex flex-col items-center relative z-10">
-                      <div className="w-6 h-6 bg-orange-500 rounded-lg flex items-center justify-center">
-                        <svg
-                          className="w-4 h-4 text-white"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M4 16c0 .88.39 1.67 1 2.22V20a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h8v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
-                        </svg>
-                      </div>
+          {/* Timeline with continuous line */}
+          <div className="relative">
+            <div className="absolute left-2 top-2 bottom-2 w-px bg-orange-300"></div>
+            <div className="space-y-2">
+              {[
+                { time: "3:05 PM", location: "Chennai Central", type: "start" },
+                { time: "4:30 PM", location: "Vellore", type: "stop" },
+                { time: "7:30 PM", location: "Kochi", type: "end" },
+              ].map((stop, index) => (
+                <div key={index} className="relative flex items-center gap-3">
+                  <div className="w-4 h-4 bg-orange-500 rounded-full border-2 border-white z-10 flex-shrink-0"></div>
+                  <div className="flex-1">
+                    <div className="text-xs font-medium text-gray-900">
+                      {stop.time}
                     </div>
-                    <div className="flex-1 pt-1">
-                      <div className="font-medium">Chennai, Nungambakkam</div>
-                      <div className="text-gray-600 text-sm">3:05 PM</div>
-                    </div>
-                  </div>
-
-                  {/* Intermediate stop */}
-                  <div className="flex items-start gap-3 relative">
-                    <div className="flex flex-col items-center relative z-10">
-                      <div className="w-3 h-3 bg-orange-400 rounded-full"></div>
-                    </div>
-                    <div className="flex-1 pt-0">
-                      <div className="font-medium">
-                        Kochi, Bus station ernakulam
-                      </div>
-                      <div className="text-gray-600 text-sm">3:05 PM</div>
-                    </div>
-                  </div>
-
-                  {/* Final destination */}
-                  <div className="flex items-start gap-3 relative">
-                    <div className="flex flex-col items-center relative z-10">
-                      <div className="w-4 h-4 bg-orange-500 rounded-full border-2 border-white shadow-sm"></div>
-                    </div>
-                    <div className="flex-1 pt-0.5">
-                      <div className="font-medium">
-                        Kochi, Bus station ernakulam
-                      </div>
-                      <div className="text-gray-600 text-sm">3:05 PM</div>
-                    </div>
+                    <div className="text-xs text-gray-600">{stop.location}</div>
                   </div>
                 </div>
-              </div>
-              <Button
-                variant="outline"
-                className="mt-4 w-auto text-blue-600 border-blue-600 hover:bg-blue-50"
-                onClick={onViewStops}
-              >
-                <div className="flex items-center gap-2">
-                  View all stops
-                  <ArrowLeft className="h-4 w-4 rotate-180" />
-                </div>
-              </Button>
-            </div>
-
-            {/* Bus Seat Layout */}
-            <div className="ml-4">
-              <h4 className="font-semibold mb-2 text-sm">Bus Seat:</h4>
-              <div className="space-y-0.5">
-                {Object.entries(groupedSeats).map(([row, rowSeats]) => (
-                  <div key={row} className="flex items-center gap-1">
-                    <span className="text-xs text-gray-500 w-2 text-right">
-                      {row}
-                    </span>
-                    <div className="flex gap-0.5 ml-1">
-                      {rowSeats
-                        .sort((a, b) => a.number - b.number)
-                        .map((seat, seatIndex) => (
-                          <React.Fragment key={seat.id}>
-                            <button
-                              onClick={() => handleSeatClick(seat.id)}
-                              disabled={seat.status === "occupied"}
-                              className={`w-5 h-5 rounded text-xs font-medium transition-colors ${getSeatStyle(seat.status)}`}
-                            >
-                              {seat.number}
-                            </button>
-                            {/* Add aisle gap after seat 2 */}
-                            {seatIndex === 1 && <div className="w-1"></div>}
-                          </React.Fragment>
-                        ))}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              {/* Seat Legend */}
-              <div className="flex items-center gap-3 mt-2 text-xs text-gray-600">
-                <div className="flex items-center gap-1">
-                  <div className="w-2.5 h-2.5 bg-gray-400 rounded"></div>
-                  <span>3</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <div className="w-2.5 h-2.5 bg-gray-200 rounded"></div>
-                  <span>On</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -437,33 +316,80 @@ export default function TripDetails({
           <div className="flex items-center justify-between mb-2">
             <h3 className="text-sm font-semibold">Choose your seat</h3>
           </div>
-                <Users className="h-5 w-5 text-gray-600" />
-                <span>Add Passenger</span>
+
+          {/* Bus Seat Layout */}
+          <div className="space-y-0.5">
+            {Object.entries(groupedSeats).map(([row, rowSeats]) => (
+              <div key={row} className="flex items-center gap-1">
+                <span className="text-xs text-gray-500 w-2 text-right">
+                  {row}
+                </span>
+                <div className="flex gap-0.5 ml-1">
+                  {rowSeats
+                    .sort((a, b) => a.number - b.number)
+                    .map((seat, seatIndex) => (
+                      <React.Fragment key={seat.id}>
+                        <button
+                          onClick={() => handleSeatClick(seat.id)}
+                          disabled={seat.status === "occupied"}
+                          className={`w-4 h-4 rounded text-xs font-medium transition-colors ${getSeatStyle(seat.status)}`}
+                        >
+                          {seat.number}
+                        </button>
+                        {/* Add aisle gap after seat 2 */}
+                        {seatIndex === 1 && <div className="w-1"></div>}
+                      </React.Fragment>
+                    ))}
+                </div>
               </div>
-            </Button>
-            <Button
-              variant="outline"
-              className="flex-1 py-3 relative"
-              onClick={onAddLuggage}
-            >
-              <div className="flex items-center justify-center gap-2">
-                <Luggage className="h-5 w-5 text-gray-600" />
-                <span>Add Luggage</span>
-              </div>
-              {/* Orange notification dot */}
-              <div className="absolute -top-1 -right-1 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
-                <span className="text-white text-xs font-bold">•••</span>
-              </div>
-            </Button>
+            ))}
+          </div>
+
+          {/* Seat Legend */}
+          <div className="flex items-center gap-3 mt-2 text-xs text-gray-600">
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-gray-400 rounded"></div>
+              <span>Occupied</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-gray-200 rounded"></div>
+              <span>Available</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <div className="w-2 h-2 bg-orange-500 rounded"></div>
+              <span>Selected</span>
+            </div>
           </div>
 
           {selectedSeats.length > 0 && (
-            <div className="mt-4 p-3 bg-blue-50 rounded-lg">
-              <span className="text-sm font-medium text-blue-800">
-                Selected seats: {selectedSeats.join(", ")}
+            <div className="mt-2 p-2 bg-blue-50 rounded-lg">
+              <span className="text-xs font-medium text-blue-800">
+                Selected: {selectedSeats.join(", ")}
               </span>
             </div>
           )}
+        </div>
+
+        {/* Action Buttons */}
+        <div className="bg-white rounded-xl p-3">
+          <div className="flex gap-2">
+            <button
+              onClick={onAddPassenger}
+              className="flex-1 flex items-center justify-center gap-1 py-2 px-2 bg-orange-100 text-orange-600 rounded-lg font-medium relative text-xs"
+            >
+              <div className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+              <UserPlus className="h-3 w-3" />
+              <span>Add Passenger</span>
+            </button>
+            <button
+              onClick={onAddLuggage}
+              className="flex-1 flex items-center justify-center gap-1 py-2 px-2 bg-orange-100 text-orange-600 rounded-lg font-medium relative text-xs"
+            >
+              <div className="absolute -top-0.5 -right-0.5 w-2 h-2 bg-orange-500 rounded-full"></div>
+              <Package className="h-3 w-3" />
+              <span>Add Luggage</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
