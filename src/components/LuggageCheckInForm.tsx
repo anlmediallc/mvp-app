@@ -117,15 +117,18 @@ const LuggageCheckInForm = React.forwardRef<
 
         {/* White Form Container */}
         <div className="flex-1 p-4">
-          <div className="bg-white rounded-2xl p-6 h-full overflow-y-auto shadow-lg">
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <div className="bg-white rounded-2xl p-4 h-full overflow-hidden shadow-lg">
+            <form
+              onSubmit={handleSubmit}
+              className="space-y-3 h-full flex flex-col"
+            >
               {/* Luggage Type */}
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <label className="text-sm font-medium text-gray-700">
                   Luggage Type
                 </label>
                 <Select value={luggageType} onValueChange={setLuggageType}>
-                  <SelectTrigger className="h-12 rounded-xl border-gray-300">
+                  <SelectTrigger className="h-10 rounded-xl border-gray-300">
                     <SelectValue placeholder="Suitcase" />
                   </SelectTrigger>
                   <SelectContent>
@@ -145,7 +148,7 @@ const LuggageCheckInForm = React.forwardRef<
               </div>
 
               {/* Luggage Weight */}
-              <div className="space-y-2">
+              <div className="space-y-1">
                 <label className="text-sm font-medium text-gray-700">
                   Luggage Weight
                 </label>
@@ -155,7 +158,7 @@ const LuggageCheckInForm = React.forwardRef<
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
                   className={cn(
-                    "h-12 rounded-xl border-gray-300",
+                    "h-10 rounded-xl border-gray-300",
                     weightError && "border-red-500 focus:border-red-500",
                   )}
                 />
@@ -168,7 +171,7 @@ const LuggageCheckInForm = React.forwardRef<
               </div>
 
               {/* Special Instructions */}
-              <div className="space-y-2">
+              <div className="space-y-1 flex-1">
                 <label className="text-sm font-medium text-gray-700">
                   Luggage Type
                 </label>
@@ -176,13 +179,13 @@ const LuggageCheckInForm = React.forwardRef<
                   placeholder="Special instructions (fragile, oversized, etc.)"
                   value={specialInstructions}
                   onChange={(e) => setSpecialInstructions(e.target.value)}
-                  className="min-h-[120px] rounded-xl border-gray-300 resize-none"
+                  className="min-h-[80px] rounded-xl border-gray-300 resize-none"
                 />
               </div>
 
               {/* Image Upload Area */}
-              <div className="space-y-2">
-                <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center bg-gray-50">
+              <div className="space-y-1">
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-4 text-center bg-gray-50">
                   <input
                     type="file"
                     accept="image/*"
@@ -194,19 +197,19 @@ const LuggageCheckInForm = React.forwardRef<
                     htmlFor="luggage-upload"
                     className="cursor-pointer flex flex-col items-center"
                   >
-                    <Upload className="h-8 w-8 text-orange-500 mb-2" />
-                    <div className="text-orange-500 font-medium">
+                    <Upload className="h-6 w-6 text-orange-500 mb-1" />
+                    <div className="text-orange-500 font-medium text-sm">
                       Click to Upload
                     </div>
-                    <div className="text-gray-600 text-sm">
+                    <div className="text-gray-600 text-xs">
                       Upload Image of Luggage
                     </div>
-                    <div className="text-gray-500 text-xs mt-1">
+                    <div className="text-gray-500 text-xs">
                       (Max file size 25 MB)
                     </div>
                   </label>
                   {imageFile && (
-                    <div className="mt-2 text-sm text-gray-600">
+                    <div className="mt-1 text-xs text-gray-600">
                       Selected: {imageFile.name}
                     </div>
                   )}
@@ -220,32 +223,32 @@ const LuggageCheckInForm = React.forwardRef<
               </div>
 
               {/* Guidelines Checkbox */}
-              <div className="flex items-start gap-3">
+              <div className="flex items-start gap-2">
                 <input
                   type="checkbox"
                   id="guidelines"
                   checked={agreedToGuidelines}
                   onChange={(e) => setAgreedToGuidelines(e.target.checked)}
-                  className="mt-1 h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
+                  className="mt-0.5 h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
                 />
-                <label htmlFor="guidelines" className="text-sm text-gray-600">
+                <label htmlFor="guidelines" className="text-xs text-gray-600">
                   I Confirm My Luggage Meets Size And Weight Guidelines.
                 </label>
               </div>
 
               {/* Action Buttons */}
-              <div className="flex gap-3 pt-4">
+              <div className="flex gap-2 pt-2">
                 <Button
                   type="button"
                   variant="outline"
-                  className="flex-1 h-12 rounded-xl border-orange-500 text-orange-500 hover:bg-orange-50"
+                  className="flex-1 h-10 rounded-xl border-orange-500 text-orange-500 hover:bg-orange-50 text-sm"
                 >
                   Add Luggage
                 </Button>
                 <Button
                   type="submit"
                   disabled={isLoading || !agreedToGuidelines}
-                  className="flex-1 h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
+                  className="flex-1 h-10 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50 text-sm"
                 >
                   {isLoading ? "Adding..." : "Add Luggage"}
                 </Button>
