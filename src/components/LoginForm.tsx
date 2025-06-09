@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
@@ -10,6 +10,9 @@ export interface LoginFormProps {
   onForgotPassword?: () => void;
   onCreateAccount?: () => void;
   onSocialLogin?: (provider: "facebook" | "google") => void;
+  emailError?: string;
+  passwordError?: string;
+  isLoading?: boolean;
   className?: string;
 }
 
@@ -70,11 +73,21 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="h-12 text-base rounded-xl border-gray-200 focus:border-orange-500 focus:ring-orange-500"
+              className={cn(
+                "h-12 text-base rounded-xl focus:ring-orange-500",
+                emailError
+                  ? "border-red-500 focus:border-red-500"
+                  : "border-gray-200 focus:border-orange-500",
+              )}
               required
             />
+            {emailError && (
+              <div className="flex items-center gap-2 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4" />
+                <span>{emailError}</span>
+              </div>
+            )}
           </div>
-
           {/* Password Field */}
           <div className="space-y-2">
             <label
@@ -90,7 +103,12 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="h-12 text-base rounded-xl border-gray-200 focus:border-orange-500 focus:ring-orange-500 pr-12"
+                className={cn(
+                  "h-12 text-base rounded-xl focus:ring-orange-500 pr-12",
+                  passwordError
+                    ? "border-red-500 focus:border-red-500"
+                    : "border-gray-200 focus:border-orange-500",
+                )}
                 required
               />
               <button
@@ -105,8 +123,13 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
                 )}
               </button>
             </div>
+            {passwordError && (
+              <div className="flex items-center gap-2 text-red-500 text-sm">
+                <AlertCircle className="h-4 w-4" />
+                <span>{passwordError}</span>
+              </div>
+            )}
           </div>
-
           {/* Forgot Password Link */}
           <div className="text-right">
             <button
@@ -121,9 +144,10 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
           {/* Login Button */}
           <Button
             type="submit"
-            className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white font-medium rounded-xl text-base"
+            disabled={isLoading}
+            className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white font-medium rounded-xl text-base disabled:opacity-50"
           >
-            Login
+            {isLoading ? "Logging in..." : "Login"}
           </Button>
         </form>
 
