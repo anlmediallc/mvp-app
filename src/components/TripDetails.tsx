@@ -285,10 +285,10 @@ export default function TripDetails({
                 <div key={index} className="flex items-start gap-1.5">
                   <div className="w-2.5 h-2.5 bg-orange-500 rounded-full mt-0.5 flex-shrink-0"></div>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs font-medium text-gray-900 truncate leading-tight">
+                    <div className="text-[10px] font-medium text-gray-900 truncate leading-tight">
                       {stop.location}
                     </div>
-                    <div className="text-xs text-gray-500 leading-tight">
+                    <div className="text-[9px] text-gray-500 leading-tight">
                       {stop.time}
                     </div>
                   </div>
