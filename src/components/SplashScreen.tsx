@@ -37,7 +37,7 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
         ref={ref}
         onClick={onTap}
         className={cn(
-          "relative flex h-screen w-full max-w-md mx-auto flex-col items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 font-inter cursor-pointer",
+          "relative flex h-[550px] w-full max-w-md mx-auto flex-col items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 font-inter cursor-pointer",
           className,
         )}
         {...props}
