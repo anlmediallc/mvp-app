@@ -108,9 +108,7 @@ const LuggageCheckInForm = React.forwardRef<
             <h1
               className="text-xl font-semibold"
               style={{
-                ...(window.innerWidth <= 640 && {
-                  marginLeft: "37px",
-                }),
+                marginLeft: "37px",
               }}
             >
               Luggage Check-In
@@ -126,6 +124,10 @@ const LuggageCheckInForm = React.forwardRef<
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
+            ...(window.innerWidth <= 640 && {
+              backgroundImage:
+                "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F3e3b118899d545fe8107825676bfdf48)",
+            }),
           }}
         >
           <div className="bg-white rounded-2xl p-4 h-full overflow-hidden shadow-lg">
