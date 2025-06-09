@@ -39,7 +39,6 @@ const OnboardingScreen = React.forwardRef<
       >
         {/* Background Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00]" />
-        />
 
         {/* Skip Button */}
         {showSkip && (

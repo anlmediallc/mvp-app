@@ -44,7 +44,6 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
       >
         {/* Background Gradient */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00]" />
-        />
 
         {/* Logo Container */}
         <div className="relative z-10 flex flex-col items-center justify-center">
