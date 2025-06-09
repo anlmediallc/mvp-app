@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Auto-redirect to splash screen after 3 seconds
+    const timer = setTimeout(() => {
+      navigate("/splash");
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [navigate]);
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600"
@@ -10,178 +21,74 @@ const Index = () => {
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
+        ...(window.innerWidth <= 640 && {
+          backgroundImage:
+            "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F3e3b118899d545fe8107825676bfdf48)",
+        }),
       }}
     >
       <div className="text-center">
-        {/* TODO: replace everything here with the actual app! */}
-        <h1 className="text-2xl font-semibold text-slate-800 flex items-center justify-center gap-3">
-          <svg
-            className="animate-spin h-8 w-8 text-slate-400"
-            viewBox="0 0 50 50"
-          >
+        {/* App Logo/Icon */}
+        <div className="mb-8">
+          <div className="w-24 h-24 mx-auto bg-white rounded-full flex items-center justify-center shadow-lg">
+            <svg
+              className="w-12 h-12 text-orange-500"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              {/* Bus icon */}
+              <path d="M4 16c0 .88.39 1.67 1 2.22V20c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1h8v1c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-1.78c.61-.55 1-1.34 1-2.22V6c0-3.5-3.58-4-8-4s-8 .5-8 4v10zm3.5 1c-.83 0-1.5-.67-1.5-1.5S6.67 14 7.5 14s1.5.67 1.5 1.5S8.33 17 7.5 17zm9 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm1.5-6H6V6h12v5z" />
+              <rect x="7" y="7" width="2" height="2" fill="currentColor" />
+              <rect x="11" y="7" width="2" height="2" fill="currentColor" />
+              <rect x="15" y="7" width="2" height="2" fill="currentColor" />
+            </svg>
+          </div>
+        </div>
+
+        {/* App Name */}
+        <h1 className="text-4xl font-bold text-white mb-2">Buscomfy+</h1>
+        <p className="text-white/90 text-lg mb-8">Your Travel Companion</p>
+
+        {/* Loading Animation */}
+        <div className="flex justify-center mb-6">
+          <svg className="animate-spin h-8 w-8 text-white" viewBox="0 0 50 50">
             <circle
-              className="opacity-30"
+              className="opacity-25"
               cx="25"
               cy="25"
               r="20"
               stroke="currentColor"
-              strokeWidth="5"
+              strokeWidth="3"
               fill="none"
             />
             <circle
-              className="text-slate-600"
+              className="opacity-75"
               cx="25"
               cy="25"
               r="20"
               stroke="currentColor"
-              strokeWidth="5"
+              strokeWidth="3"
               fill="none"
               strokeDasharray="100"
               strokeDashoffset="75"
             />
           </svg>
-          App Ready!
-        </h1>
-        <p className="mt-4 text-slate-600 max-w-md">
-          Your Buscomfy+ app authentication system is complete! Test all forms
-          with error states.
-        </p>
-        <div className="mt-4 p-4 bg-white rounded-lg shadow-sm text-left max-w-md">
-          <h3 className="font-semibold text-slate-700 mb-2">🧪 Test Forms:</h3>
-          <div className="text-sm text-slate-600 space-y-2">
-            <div>
-              <strong>Login:</strong>
-              <ul className="ml-2 space-y-1">
-                <li>
-                  •{" "}
-                  <code className="bg-gray-100 px-1 rounded">
-                    test@test.com
-                  </code>{" "}
-                  +{" "}
-                  <code className="bg-gray-100 px-1 rounded">
-                    wrongpassword
-                  </code>{" "}
-                  = Password error
-                </li>
-                <li>
-                  •{" "}
-                  <code className="bg-gray-100 px-1 rounded">
-                    invalid@email.com
-                  </code>{" "}
-                  + any password = Email error
-                </li>
-                <li>• Any other email + password = Success</li>
-              </ul>
-            </div>
-            <div>
-              <strong>Register:</strong>
-              <ul className="ml-2 space-y-1">
-                <li>
-                  •{" "}
-                  <code className="bg-gray-100 px-1 rounded">
-                    existing@example.com
-                  </code>{" "}
-                  = Email exists error
-                </li>
-                <li>• Short names or passwords = Validation errors</li>
-                <li>• Mismatched passwords = Confirm error</li>
-              </ul>
-            </div>
-            <div>
-              <strong>Verification:</strong>
-              <ul className="ml-2 space-y-1">
-                <li>
-                  • <code className="bg-gray-100 px-1 rounded">1234</code> =
-                  Correct code
-                </li>
-                <li>• Any other 4-digit code = Invalid error</li>
-                <li>• Auto countdown timer for resend</li>
-              </ul>
-            </div>
-            <div>
-              <strong>Forgot Password:</strong>
-              <ul className="ml-2 space-y-1">
-                <li>
-                  ���{" "}
-                  <code className="bg-gray-100 px-1 rounded">
-                    notfound@example.com
-                  </code>{" "}
-                  = Email not found error
-                </li>
-                <li>• Any valid email = Sends to verification</li>
-              </ul>
-            </div>
-            <div>
-              <strong>Reset Password:</strong>
-              <ul className="ml-2 space-y-1">
-                <li>• Password must be 8+ characters</li>
-                <li>• Passwords must match</li>
-                <li>• Success redirects to login</li>
-              </ul>
-            </div>
-          </div>
         </div>
-        <div className="mt-6 flex flex-col gap-3">
-          <Button asChild size="lg">
-            <Link to="/splash">🚌 Buscomfy+ Splash</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link to="/luggage-check-in">🧳 Luggage Check-In</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link to="/feedback">⭐ Trip Feedback</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link to="/report-problem">⚠️ Report Problem</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link to="/help-center">❓ Help Center</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link to="/my-account">👤 My Account</Link>
-          </Button>
-          <Button asChild size="lg" variant="secondary">
-            <Link to="/personal-info">✏️ Edit Profile</Link>
-          </Button>
-          <Link
-            to="/notifications"
-            className="bg-blue-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors text-center"
-          >
-            📢 Notifications
-          </Link>
-          <Link
-            to="/trip-details"
-            className="bg-green-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-700 transition-colors text-center"
-          >
-            🚌 Trip Details
-          </Link>
-          <Link
-            to="/trip-stops"
-            className="bg-green-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-800 transition-colors text-center"
-          >
-            🗺️ View All Stops
-          </Link>
-          <Button asChild variant="secondary">
-            <Link to="/register">✍️ Register Form</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link to="/verification">🔐 Verification Screen</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link to="/forgot-password">🔑 Forgot Password</Link>
-          </Button>
-          <Button asChild variant="ghost">
-            <Link to="/reset-password">🔐 Reset Password</Link>
-          </Button>
-          <Button asChild variant="destructive">
-            <Link to="/login-error">❌ Login Error Screen</Link>
-          </Button>
-          <Button asChild>
-            <Link to="/onboarding">Single Onboarding Screen</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link to="/onboarding-flow">Multi-Screen Flow</Link>
-          </Button>
+
+        {/* Loading Text */}
+        <p className="text-white/80 text-sm">Loading your journey...</p>
+
+        {/* Loading Progress Dots */}
+        <div className="flex justify-center mt-4 space-x-2">
+          <div className="w-2 h-2 bg-white/60 rounded-full animate-pulse"></div>
+          <div
+            className="w-2 h-2 bg-white/60 rounded-full animate-pulse"
+            style={{ animationDelay: "0.2s" }}
+          ></div>
+          <div
+            className="w-2 h-2 bg-white/60 rounded-full animate-pulse"
+            style={{ animationDelay: "0.4s" }}
+          ></div>
         </div>
       </div>
     </div>
