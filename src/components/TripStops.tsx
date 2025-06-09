@@ -63,66 +63,68 @@ export default function TripStops({ onBack, onOptionsMenu }: TripStopsProps) {
       </div>
 
       {/* Content */}
-      <div className="flex-1 bg-white overflow-y-auto pb-20">
+      <div className="flex-1 bg-white overflow-hidden pb-20">
         {/* Trip Info Card - Simplified */}
-        <div className="bg-white p-6 border-b border-gray-100">
+        <div className="bg-white p-4 border-b border-gray-100">
           {/* Transport Header */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">MSS</span>
+              <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xs">MSS</span>
               </div>
-              <span className="font-semibold text-lg">MSS transport</span>
+              <span className="font-semibold text-base">MSS transport</span>
             </div>
-            <button className="p-2 bg-gray-800 rounded-full">
-              <ExternalLink className="h-4 w-4 text-white" />
+            <button className="p-1.5 bg-gray-800 rounded-full">
+              <ExternalLink className="h-3 w-3 text-white" />
             </button>
           </div>
 
           {/* Trip Time Info */}
           <div className="flex items-center justify-between">
             <div className="text-center">
-              <div className="text-3xl font-bold">3:05</div>
-              <div className="text-gray-600">Chennai</div>
+              <div className="text-2xl font-bold">3:05</div>
+              <div className="text-gray-600 text-sm">Chennai</div>
             </div>
             <div className="flex-1 flex flex-col items-center mx-4">
-              <div className="bg-gray-200 text-gray-600 px-4 py-1 rounded-full text-sm font-medium">
+              <div className="bg-gray-200 text-gray-600 px-3 py-0.5 rounded-full text-xs font-medium">
                 7h 20m
               </div>
-              <div className="w-full h-px bg-gray-300 mt-2"></div>
+              <div className="w-full h-px bg-gray-300 mt-1"></div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">7:30</div>
-              <div className="text-gray-600">Kochi</div>
+              <div className="text-2xl font-bold">7:30</div>
+              <div className="text-gray-600 text-sm">Kochi</div>
             </div>
           </div>
         </div>
 
         {/* All Stops Timeline */}
-        <div className="px-6 py-4">
-          <div className="space-y-6">
+        <div className="px-4 py-2">
+          <div className="space-y-3">
             {stops.map((stop, index) => (
-              <div key={stop.id} className="flex items-start gap-4 relative">
+              <div key={stop.id} className="flex items-start gap-3 relative">
                 {/* Timeline Line */}
                 {!stop.isLast && (
-                  <div className="absolute left-[11px] top-6 w-px h-12 bg-orange-300"></div>
+                  <div className="absolute left-[9px] top-4 w-px h-6 bg-orange-300"></div>
                 )}
 
                 {/* Stop Pin */}
                 <div className="flex flex-col items-center flex-shrink-0">
                   <div
-                    className={`w-6 h-6 rounded-full flex items-center justify-center ${
+                    className={`w-5 h-5 rounded-full flex items-center justify-center ${
                       stop.isFirst ? "bg-orange-600" : "bg-orange-500"
                     }`}
                   >
-                    <div className="w-2 h-2 bg-white rounded-full"></div>
+                    <div className="w-1.5 h-1.5 bg-white rounded-full"></div>
                   </div>
                 </div>
 
                 {/* Stop Info */}
-                <div className="flex-1 pb-2">
-                  <div className="font-semibold text-gray-900">{stop.name}</div>
-                  <div className="text-gray-600 text-sm">{stop.time}</div>
+                <div className="flex-1 pb-1">
+                  <div className="font-semibold text-gray-900 text-sm">
+                    {stop.name}
+                  </div>
+                  <div className="text-gray-600 text-xs">{stop.time}</div>
                 </div>
               </div>
             ))}
