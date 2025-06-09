@@ -264,7 +264,7 @@ export default function TripDetails({
             </div>
 
             {/* Timeline */}
-            <div className="space-y-2">
+            <div className="relative">
               {[
                 {
                   time: "3:05 PM",
@@ -282,8 +282,62 @@ export default function TripDetails({
                   type: "end",
                 },
               ].map((stop, index) => (
-                <div key={index} className="flex items-start gap-1.5">
-                  <div className="w-2.5 h-2.5 bg-orange-500 rounded-full mt-0.5 flex-shrink-0"></div>
+                <div
+                  key={index}
+                  className="relative flex items-start gap-1.5 pb-2 last:pb-0"
+                >
+                  {/* Connecting line */}
+                  {index < 2 && (
+                    <div className="absolute left-[5px] top-[10px] w-[1px] h-[16px] bg-orange-300"></div>
+                  )}
+
+                  {/* Dot or Bus Icon */}
+                  <div className="relative flex items-center justify-center w-2.5 h-2.5 mt-0.5 flex-shrink-0">
+                    {index === 0 ? (
+                      // Bus icon for first city
+                      <svg
+                        width="10"
+                        height="10"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="text-orange-500"
+                      >
+                        <path
+                          d="M3 7V17C3 18.1046 3.89543 19 5 19H6C6 20.1046 6.89543 21 8 21C9.10457 21 10 20.1046 10 19H14C14 20.1046 14.8954 21 16 21C17.1046 21 18 20.1046 18 19H19C20.1046 19 21 18.1046 21 17V7C21 5.89543 20.1046 5 19 5H5C3.89543 5 3 5.89543 3 7Z"
+                          fill="currentColor"
+                        />
+                        <circle cx="8" cy="19" r="1" fill="white" />
+                        <circle cx="16" cy="19" r="1" fill="white" />
+                        <rect x="5" y="7" width="14" height="6" fill="white" />
+                        <rect
+                          x="6"
+                          y="8"
+                          width="2"
+                          height="2"
+                          fill="currentColor"
+                        />
+                        <rect
+                          x="10"
+                          y="8"
+                          width="2"
+                          height="2"
+                          fill="currentColor"
+                        />
+                        <rect
+                          x="14"
+                          y="8"
+                          width="2"
+                          height="2"
+                          fill="currentColor"
+                        />
+                      </svg>
+                    ) : (
+                      // Regular dot for other cities
+                      <div className="w-2.5 h-2.5 bg-orange-500 rounded-full"></div>
+                    )}
+                  </div>
+
                   <div className="flex-1 min-w-0">
                     <div className="text-[10px] font-medium text-gray-900 truncate leading-tight">
                       {stop.location}
