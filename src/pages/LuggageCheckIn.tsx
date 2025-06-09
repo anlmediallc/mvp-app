@@ -81,16 +81,12 @@ const LuggageCheckIn = () => {
 
   return (
     <div
-      className="min-h-screen flex items-center justify-center p-0"
+      className="min-h-screen flex items-center justify-center"
       style={{
-        backgroundImage: "url(/luggage-bg.svg)",
+        backgroundImage: "url(/orange-bg.svg)",
         backgroundSize: "cover",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
-        ...(window.innerWidth <= 640 && {
-          backgroundImage:
-            "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F3e3b118899d545fe8107825676bfdf48)",
-        }),
       }}
     >
       <LuggageCheckInForm
