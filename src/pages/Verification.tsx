@@ -29,18 +29,18 @@ const Verification = () => {
         // For password reset, would typically go to reset password form
         navigate("/login", {
           state: {
-            message: "Verification successful! You can now reset your password."
-          }
+            message:
+              "Verification successful! You can now reset your password.",
+          },
         });
       } else {
         // For account verification
         navigate("/login", {
           state: {
-            message: "Account verified successfully! Please login."
-          }
+            message: "Account verified successfully! Please login.",
+          },
         });
       }
-    }
     } else {
       // Invalid code
       setCodeError("Invalid verification code. Please try again.");
