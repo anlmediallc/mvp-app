@@ -114,13 +114,13 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
       <div
         ref={ref}
         className={cn(
-          "w-full max-w-md mx-auto h-screen bg-white font-inter overflow-hidden",
+          "w-full max-w-md mx-auto h-screen bg-white font-inter flex flex-col",
           className,
         )}
         {...props}
       >
         {/* Status Bar */}
-        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-2 flex justify-between items-center text-sm font-medium">
+        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-2 flex justify-between items-center text-sm font-medium flex-shrink-0">
           <span>9:41</span>
           <div className="flex items-center gap-1">
             <div className="flex gap-0.5">
@@ -137,7 +137,7 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4">
+        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 flex-shrink-0">
           <div className="flex items-center">
             <button
               onClick={onBack}
@@ -149,106 +149,110 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
           </div>
         </div>
 
-        {/* Content Area */}
-        <div className="flex-1 bg-white p-6 overflow-y-auto">
-          {/* Happy Emoji with Stars */}
-          <div className="text-center mb-6">
-            <div className="relative inline-block">
-              <div className="text-6xl mb-4">😊</div>
-              <div className="absolute -top-2 -left-2 text-orange-400">
-                <Star className="h-4 w-4 fill-current" />
-              </div>
-              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-orange-400">
-                <Star className="h-5 w-5 fill-current" />
-              </div>
-              <div className="absolute -top-2 -right-2 text-orange-400">
-                <Star className="h-4 w-4 fill-current" />
+        {/* Scrollable Content Area */}
+        <div className="flex-1 bg-white overflow-y-auto">
+          <div className="p-4">
+            {/* Happy Emoji with Stars */}
+            <div className="text-center mb-4">
+              <div className="relative inline-block">
+                <div className="text-5xl mb-3">😊</div>
+                <div className="absolute -top-1 -left-1 text-orange-400">
+                  <Star className="h-3 w-3 fill-current" />
+                </div>
+                <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 text-orange-400">
+                  <Star className="h-4 w-4 fill-current" />
+                </div>
+                <div className="absolute -top-1 -right-1 text-orange-400">
+                  <Star className="h-3 w-3 fill-current" />
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Question */}
-          <div className="text-center mb-6">
-            <h2 className="text-gray-600 text-lg mb-6">
-              How was your travel experience?
-            </h2>
-            <div className="flex justify-center gap-3 mb-8">
-              {emojiRatings.map((item) => (
-                <button
-                  key={item.value}
-                  type="button"
-                  onClick={() => setOverallRating(item.value)}
-                  className={cn(
-                    "w-12 h-12 rounded-full flex items-center justify-center text-2xl transition-all",
-                    overallRating === item.value
-                      ? `${item.bg} ring-2 ring-orange-400 scale-110`
-                      : "bg-orange-50 hover:bg-orange-100",
-                  )}
+            {/* Question */}
+            <div className="text-center mb-4">
+              <h2 className="text-gray-600 text-base mb-4">
+                How was your travel experience?
+              </h2>
+              <div className="flex justify-center gap-2 mb-6">
+                {emojiRatings.map((item) => (
+                  <button
+                    key={item.value}
+                    type="button"
+                    onClick={() => setOverallRating(item.value)}
+                    className={cn(
+                      "w-10 h-10 rounded-full flex items-center justify-center text-xl transition-all",
+                      overallRating === item.value
+                        ? `${item.bg} ring-2 ring-orange-400 scale-110`
+                        : "bg-orange-50 hover:bg-orange-100",
+                    )}
+                  >
+                    {item.emoji}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Trip Details Card */}
+            <div className="bg-gray-50 rounded-xl p-3 mb-4">
+              <div className="flex items-center gap-3 mb-2">
+                <div className="w-6 h-6 bg-black rounded-lg flex items-center justify-center">
+                  <span className="text-white font-bold text-xs">MSS</span>
+                </div>
+                <span className="font-medium text-sm">
+                  {tripDetails.transportCompany}
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-xs">
+                <div className="text-center">
+                  <div className="font-bold text-base">
+                    {tripDetails.departureTime}
+                  </div>
+                  <div className="text-gray-600">{tripDetails.from}</div>
+                </div>
+                <div className="text-center">
+                  <div className="bg-gray-200 text-gray-600 px-2 py-1 rounded-full text-xs">
+                    {tripDetails.duration}
+                  </div>
+                </div>
+                <div className="text-center">
+                  <div className="font-bold text-base">
+                    {tripDetails.arrivalTime}
+                  </div>
+                  <div className="text-gray-600">{tripDetails.to}</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Rating Categories */}
+            <div className="space-y-3 mb-6">
+              {categories.map((category) => (
+                <div
+                  key={category.key}
+                  className="flex justify-between items-center"
                 >
-                  {item.emoji}
-                </button>
+                  <span className="text-gray-700 font-medium text-sm">
+                    {category.label}
+                  </span>
+                  {renderStars(
+                    ratings[category.key as keyof typeof ratings],
+                    (rating) => handleRatingChange(category.key, rating),
+                  )}
+                </div>
               ))}
             </div>
-          </div>
 
-          {/* Trip Details Card */}
-          <div className="bg-gray-50 rounded-xl p-4 mb-6">
-            <div className="flex items-center gap-3 mb-3">
-              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-xs">MSS</span>
-              </div>
-              <span className="font-medium">
-                {tripDetails.transportCompany}
-              </span>
-            </div>
-            <div className="flex items-center justify-between text-sm">
-              <div className="text-center">
-                <div className="font-bold text-lg">
-                  {tripDetails.departureTime}
-                </div>
-                <div className="text-gray-600">{tripDetails.from}</div>
-              </div>
-              <div className="text-center">
-                <div className="bg-gray-200 text-gray-600 px-3 py-1 rounded-full text-xs">
-                  {tripDetails.duration}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="font-bold text-lg">
-                  {tripDetails.arrivalTime}
-                </div>
-                <div className="text-gray-600">{tripDetails.to}</div>
-              </div>
-            </div>
-          </div>
-
-          {/* Rating Categories */}
-          <div className="space-y-4 mb-6">
-            {categories.map((category) => (
-              <div
-                key={category.key}
-                className="flex justify-between items-center"
+            {/* Submit Button */}
+            <div className="pb-4">
+              <Button
+                type="submit"
+                onClick={handleSubmit}
+                disabled={isLoading || overallRating === 0}
+                className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
               >
-                <span className="text-gray-700 font-medium text-sm">
-                  {category.label}
-                </span>
-                {renderStars(
-                  ratings[category.key as keyof typeof ratings],
-                  (rating) => handleRatingChange(category.key, rating),
-                )}
-              </div>
-            ))}
+                {isLoading ? "Submitting..." : "Submit"}
+              </Button>
+            </div>
           </div>
-
-          {/* Submit Button */}
-          <Button
-            type="submit"
-            onClick={handleSubmit}
-            disabled={isLoading || overallRating === 0}
-            className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
-          >
-            {isLoading ? "Submitting..." : "Submit"}
-          </Button>
         </div>
       </div>
     );
