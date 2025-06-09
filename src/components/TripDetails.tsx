@@ -139,14 +139,14 @@ export default function TripDetails({
       {/* Content */}
       <div className="flex-1 bg-gradient-to-br from-orange-500 to-orange-600 p-4 overflow-y-auto scrollbar-hide">
         {/* Trip Card */}
-        <div className="bg-white rounded-2xl p-4 mb-4">
+        <div className="bg-white rounded-2xl p-2 mb-2">
           {/* Transport Header */}
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-3">
-              <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-sm">MSS</span>
+          <div className="flex items-center justify-between mb-2">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xs">MSS</span>
               </div>
-              <span className="font-semibold text-lg">MSS transport</span>
+              <span className="font-semibold text-sm">MSS transport</span>
             </div>
             <button className="p-2 bg-gray-800 rounded-full">
               <ExternalLink className="h-4 w-4 text-white" />
@@ -154,25 +154,25 @@ export default function TripDetails({
           </div>
 
           {/* Trip Time Info */}
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center justify-between mb-2">
             <div className="text-center">
-              <div className="text-3xl font-bold">3:05</div>
-              <div className="text-gray-600">Chennai</div>
+              <div className="text-xl font-bold">3:05</div>
+              <div className="text-gray-600 text-xs">Chennai</div>
             </div>
-            <div className="flex-1 flex flex-col items-center mx-4">
-              <div className="bg-gray-200 text-gray-600 px-4 py-1 rounded-full text-sm font-medium">
+            <div className="flex-1 flex flex-col items-center mx-2">
+              <div className="bg-gray-200 text-gray-600 px-2 py-0.5 rounded-full text-xs font-medium">
                 7h 20m
               </div>
-              <div className="w-full h-px bg-gray-300 mt-2"></div>
+              <div className="w-full h-px bg-gray-300 mt-1"></div>
             </div>
             <div className="text-center">
-              <div className="text-3xl font-bold">7:30</div>
-              <div className="text-gray-600">Kochi</div>
+              <div className="text-xl font-bold">7:30</div>
+              <div className="text-gray-600 text-xs">Kochi</div>
             </div>
           </div>
 
           {/* Route Map */}
-          <div className="bg-gray-50 rounded-xl h-24 mb-3 relative overflow-hidden border border-gray-200">
+          <div className="bg-gray-50 rounded-lg h-16 mb-2 relative overflow-hidden border border-gray-200">
             {/* Map background pattern */}
             <div className="absolute inset-0">
               {/* Grid pattern to simulate map */}
@@ -281,19 +281,29 @@ export default function TripDetails({
             </div>
           </div>
 
-          {/* Amenities */}
-          <div className="flex justify-between items-center mb-6">
-            <div className="flex items-center gap-2">
-              <Wifi className="h-5 w-5 text-gray-600" />
-              <span className="text-sm text-gray-600">Wi-Fi</span>
+        {/* Amenities */}
+        <div className="bg-white rounded-xl p-3 mb-2">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-sm font-semibold">Amenities</h3>
+          </div>
+          <div className="flex gap-4 justify-center">
+            <div className="text-center">
+              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mb-1">
+                <Wifi className="h-4 w-4 text-blue-600" />
+              </div>
+              <span className="text-xs text-gray-600">Wi-Fi</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Bed className="h-5 w-5 text-gray-600" />
-              <span className="text-sm text-gray-600">Sleeping berth</span>
+            <div className="text-center">
+              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mb-1">
+                <Bed className="h-4 w-4 text-green-600" />
+              </div>
+              <span className="text-xs text-gray-600">Sleep</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Zap className="h-5 w-5 text-gray-600" />
-              <span className="text-sm text-gray-600">Charging</span>
+            <div className="text-center">
+              <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mb-1">
+                <Zap className="h-4 w-4 text-yellow-600" />
+              </div>
+              <span className="text-xs text-gray-600">Charge</span>
             </div>
           </div>
         </div>
@@ -306,10 +316,17 @@ export default function TripDetails({
                 Boarding & Drop-off
               </h3>
 
-              {/* Boarding Timeline */}
-              <div className="relative">
-                {/* Continuous timeline line */}
-                <div className="absolute left-3 top-6 bottom-6 w-px bg-orange-300"></div>
+        {/* Boarding Timeline */}
+        <div className="bg-white rounded-xl p-3 mb-2">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-sm font-semibold">Boarding</h3>
+            <button
+              onClick={handleViewAllStops}
+              className="text-orange-500 text-xs font-medium"
+            >
+              View all stops
+            </button>
+          </div>
 
                 <div className="space-y-6">
                   {/* Starting point with bus icon */}
@@ -416,15 +433,10 @@ export default function TripDetails({
         </div>
 
         {/* Seat Selection */}
-        <div className="bg-white rounded-2xl p-6 mb-20">
-          <h3 className="font-semibold text-lg mb-4">Seat selection</h3>
-          <div className="flex gap-3">
-            <Button
-              variant="outline"
-              className="flex-1 py-3"
-              onClick={onAddPassenger}
-            >
-              <div className="flex items-center justify-center gap-2">
+        <div className="bg-white rounded-xl p-3 mb-2">
+          <div className="flex items-center justify-between mb-2">
+            <h3 className="text-sm font-semibold">Choose your seat</h3>
+          </div>
                 <Users className="h-5 w-5 text-gray-600" />
                 <span>Add Passenger</span>
               </div>
