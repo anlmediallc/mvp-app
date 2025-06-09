@@ -64,9 +64,9 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
 
     const categories = [
       { key: "cleanliness", label: "Cleanliness" },
-      { key: "seatComfort", label: "Seat Comfort" },
-      { key: "staffBehaviour", label: "Staff Behaviour" },
-      { key: "onboardingExperience", label: "Onboarding Experience" },
+      { key: "seatComfort", label: "Seat comfort" },
+      { key: "staffBehaviour", label: "Staff behaviour" },
+      { key: "onboardingExperience", label: "Onboarding experience" },
     ];
 
     const handleRatingChange = (category: string, rating: number) => {
@@ -94,11 +94,11 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
               key={star}
               type="button"
               onClick={() => onRate(star)}
-              className="p-1"
+              className="p-0"
             >
               <Star
                 className={cn(
-                  "h-5 w-5 transition-colors",
+                  "h-4 w-4 transition-colors",
                   star <= rating
                     ? "fill-orange-400 text-orange-400"
                     : "text-gray-300",
@@ -137,7 +137,7 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 pb-6">
+        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4">
           <div className="flex items-center">
             <button
               onClick={onBack}
@@ -149,76 +149,106 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
           </div>
         </div>
 
-        {/* Form Content */}
-        <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 overflow-y-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Happy Icon with Stars */}
-            <div className="text-center mb-6">
-              <div className="relative inline-block">
-                <div className="text-6xl mb-2">😊</div>
-                <div className="absolute -top-2 -left-2 text-orange-400">
-                  <Star className="h-4 w-4 fill-current" />
-                </div>
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-orange-400">
-                  <Star className="h-5 w-5 fill-current" />
-                </div>
-                <div className="absolute -top-2 -right-2 text-orange-400">
-                  <Star className="h-4 w-4 fill-current" />
-                </div>
+        {/* Content Area */}
+        <div className="flex-1 bg-white p-6 overflow-y-auto">
+          {/* Happy Emoji with Stars */}
+          <div className="text-center mb-6">
+            <div className="relative inline-block">
+              <div className="text-6xl mb-4">😊</div>
+              <div className="absolute -top-2 -left-2 text-orange-400">
+                <Star className="h-4 w-4 fill-current" />
+              </div>
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-orange-400">
+                <Star className="h-5 w-5 fill-current" />
+              </div>
+              <div className="absolute -top-2 -right-2 text-orange-400">
+                <Star className="h-4 w-4 fill-current" />
               </div>
             </div>
+          </div>
 
-            {/* Overall Rating Question */}
-            <div className="text-center mb-8">
-              <h2 className="text-gray-600 text-lg mb-6">
-                How was your travel experience?
-              </h2>
-              <div className="flex justify-center gap-4">
-                {emojiRatings.map((item) => (
-                  <button
-                    key={item.value}
-                    type="button"
-                    onClick={() => setOverallRating(item.value)}
-                    className={cn(
-                      "w-12 h-12 rounded-full flex items-center justify-center text-2xl transition-all",
-                      overallRating === item.value
-                        ? `${item.bg} ring-2 ring-orange-400 scale-110`
-                        : "bg-orange-50 hover:bg-orange-100",
-                    )}
-                  >
-                    {item.emoji}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            {/* Rating Categories */}
-            <div className="space-y-6 mb-8">
-              {categories.map((category) => (
-                <div
-                  key={category.key}
-                  className="flex justify-between items-center"
-                >
-                  <span className="text-gray-700 font-medium">
-                    {category.label}
-                  </span>
-                  {renderStars(
-                    ratings[category.key as keyof typeof ratings],
-                    (rating) => handleRatingChange(category.key, rating),
+          {/* Question */}
+          <div className="text-center mb-6">
+            <h2 className="text-gray-600 text-lg mb-6">
+              How was your travel experience?
+            </h2>
+            <div className="flex justify-center gap-3 mb-8">
+              {emojiRatings.map((item) => (
+                <button
+                  key={item.value}
+                  type="button"
+                  onClick={() => setOverallRating(item.value)}
+                  className={cn(
+                    "w-12 h-12 rounded-full flex items-center justify-center text-2xl transition-all",
+                    overallRating === item.value
+                      ? `${item.bg} ring-2 ring-orange-400 scale-110`
+                      : "bg-orange-50 hover:bg-orange-100",
                   )}
-                </div>
+                >
+                  {item.emoji}
+                </button>
               ))}
             </div>
+          </div>
 
-            {/* Submit Button */}
-            <Button
-              type="submit"
-              disabled={isLoading || overallRating === 0}
-              className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
-            >
-              {isLoading ? "Submitting..." : "Submit Feedback"}
-            </Button>
-          </form>
+          {/* Trip Details Card */}
+          <div className="bg-gray-50 rounded-xl p-4 mb-6">
+            <div className="flex items-center gap-3 mb-3">
+              <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xs">MSS</span>
+              </div>
+              <span className="font-medium">
+                {tripDetails.transportCompany}
+              </span>
+            </div>
+            <div className="flex items-center justify-between text-sm">
+              <div className="text-center">
+                <div className="font-bold text-lg">
+                  {tripDetails.departureTime}
+                </div>
+                <div className="text-gray-600">{tripDetails.from}</div>
+              </div>
+              <div className="text-center">
+                <div className="bg-gray-200 text-gray-600 px-3 py-1 rounded-full text-xs">
+                  {tripDetails.duration}
+                </div>
+              </div>
+              <div className="text-center">
+                <div className="font-bold text-lg">
+                  {tripDetails.arrivalTime}
+                </div>
+                <div className="text-gray-600">{tripDetails.to}</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Rating Categories */}
+          <div className="space-y-4 mb-6">
+            {categories.map((category) => (
+              <div
+                key={category.key}
+                className="flex justify-between items-center"
+              >
+                <span className="text-gray-700 font-medium text-sm">
+                  {category.label}
+                </span>
+                {renderStars(
+                  ratings[category.key as keyof typeof ratings],
+                  (rating) => handleRatingChange(category.key, rating),
+                )}
+              </div>
+            ))}
+          </div>
+
+          {/* Submit Button */}
+          <Button
+            type="submit"
+            onClick={handleSubmit}
+            disabled={isLoading || overallRating === 0}
+            className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
+          >
+            {isLoading ? "Submitting..." : "Submit"}
+          </Button>
         </div>
       </div>
     );
