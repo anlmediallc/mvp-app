@@ -21,6 +21,7 @@ import MyAccount from "./pages/MyAccount";
 import PersonalInfo from "./pages/PersonalInfo";
 import NotificationCenter from "./pages/NotificationCenter";
 import TripDetails from "./pages/TripDetails";
+import TripStops from "./pages/TripStops";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/personal-info" element={<PersonalInfo />} />
           <Route path="/notifications" element={<NotificationCenter />} />
           <Route path="/trip-details" element={<TripDetails />} />
+          <Route path="/trip-stops" element={<TripStops />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

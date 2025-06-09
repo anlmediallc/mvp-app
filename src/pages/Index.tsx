@@ -148,6 +148,12 @@ const Index = () => {
             >
               🚌 Trip Details
             </Link>
+            <Link
+              to="/trip-stops"
+              className="bg-green-700 text-white px-6 py-3 rounded-lg font-medium hover:bg-green-800 transition-colors"
+            >
+              🗺️ View All Stops
+            </Link>
           </Button>
           <Button asChild variant="secondary">
             <Link to="/register">✍️ Register Form</Link>

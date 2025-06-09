@@ -10,8 +10,8 @@ export default function TripDetailsPage() {
   };
 
   const handleViewStops = () => {
-    // In a real app, this would navigate to a detailed stops page
-    console.log("View all stops clicked");
+    // Navigate to detailed stops page
+    navigate("/trip-stops");
   };
 
   const handleAddPassenger = () => {
