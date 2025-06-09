@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState } from "react";
-import { ArrowLeft, Star } from "lucide-react";
+import { Star, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -54,26 +54,6 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
       onboardingExperience: 0,
     });
 
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      if (onSubmit) {
-        onSubmit({
-          overallRating,
-          ratings,
-        });
-      }
-    };
-
-    const handleRatingChange = (
-      category: keyof typeof ratings,
-      rating: number,
-    ) => {
-      setRatings((prev) => ({
-        ...prev,
-        [category]: rating,
-      }));
-    };
-
     const emojiRatings = [
       { value: 1, emoji: "😞", bg: "bg-red-100" },
       { value: 2, emoji: "😐", bg: "bg-orange-100" },
@@ -82,44 +62,59 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
       { value: 5, emoji: "😆", bg: "bg-green-100" },
     ];
 
-    const StarRating = ({
-      rating,
-      onRatingChange,
-      label,
-    }: {
-      rating: number;
-      onRatingChange: (rating: number) => void;
-      label: string;
-    }) => (
-      <div className="flex items-center justify-between py-3">
-        <span className="text-gray-700 font-medium">{label}</span>
+    const categories = [
+      { key: "cleanliness", label: "Cleanliness" },
+      { key: "seatComfort", label: "Seat Comfort" },
+      { key: "staffBehaviour", label: "Staff Behaviour" },
+      { key: "onboardingExperience", label: "Onboarding Experience" },
+    ];
+
+    const handleRatingChange = (category: string, rating: number) => {
+      setRatings((prev) => ({
+        ...prev,
+        [category]: rating,
+      }));
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (onSubmit && overallRating > 0) {
+        onSubmit({
+          overallRating,
+          ratings,
+        });
+      }
+    };
+
+    const renderStars = (rating: number, onRate: (rating: number) => void) => {
+      return (
         <div className="flex gap-1">
           {[1, 2, 3, 4, 5].map((star) => (
             <button
               key={star}
               type="button"
-              onClick={() => onRatingChange(star)}
-              className="p-1 transition-colors"
+              onClick={() => onRate(star)}
+              className="p-0.5"
             >
               <Star
                 className={cn(
-                  "h-5 w-5 transition-colors",
+                  "h-4 w-4 transition-colors",
                   star <= rating
                     ? "fill-orange-400 text-orange-400"
-                    : "text-gray-300 hover:text-orange-200",
+                    : "text-gray-300",
                 )}
               />
             </button>
           ))}
         </div>
-      </div>
-    );
+      );
+    };
 
     return (
       <div
         ref={ref}
         className={cn(
-          "w-full max-w-md mx-auto h-screen bg-white font-inter overflow-hidden",
+          "w-full max-w-md mx-auto h-screen bg-white font-inter overflow-hidden flex flex-col",
           className,
         )}
         {...props}
@@ -142,7 +137,7 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 pb-6">
+        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-3">
           <div className="flex items-center">
             <button
               onClick={onBack}
@@ -155,37 +150,26 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
         </div>
 
         {/* Form Content */}
-        <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 overflow-y-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Happy Icon with Stars */}
-            <div className="text-center mb-6">
-              <div className="relative inline-block">
-                <div className="text-6xl mb-2">😊</div>
-                <div className="absolute -top-2 -left-2 text-orange-400">
-                  <Star className="h-4 w-4 fill-current" />
-                </div>
-                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-orange-400">
-                  <Star className="h-5 w-5 fill-current" />
-                </div>
-                <div className="absolute -top-2 -right-2 text-orange-400">
-                  <Star className="h-4 w-4 fill-current" />
-                </div>
-              </div>
+        <div className="flex-1 bg-white rounded-t-3xl -mt-2 relative z-10 p-4 overflow-hidden">
+          <form onSubmit={handleSubmit} className="h-full flex flex-col">
+            {/* Happy Icon */}
+            <div className="text-center mb-4">
+              <div className="text-4xl mb-2">😊</div>
             </div>
 
             {/* Overall Rating Question */}
-            <div className="text-center mb-8">
-              <h2 className="text-gray-600 text-lg mb-6">
+            <div className="text-center mb-4">
+              <h2 className="text-gray-600 text-base mb-3">
                 How was your travel experience?
               </h2>
-              <div className="flex justify-center gap-4">
+              <div className="flex justify-center gap-2">
                 {emojiRatings.map((item) => (
                   <button
                     key={item.value}
                     type="button"
                     onClick={() => setOverallRating(item.value)}
                     className={cn(
-                      "w-12 h-12 rounded-full flex items-center justify-center text-2xl transition-all",
+                      "w-10 h-10 rounded-full flex items-center justify-center text-xl transition-all",
                       overallRating === item.value
                         ? `${item.bg} ring-2 ring-orange-400 scale-110`
                         : "bg-orange-50 hover:bg-orange-100",
@@ -197,84 +181,32 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
               </div>
             </div>
 
-            {/* Trip Details */}
-            <div className="bg-gray-50 rounded-xl p-4 mb-6">
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 bg-black rounded-lg flex items-center justify-center">
-                  <span className="text-white text-xs font-bold">MSS</span>
-                </div>
-                <span className="font-semibold text-gray-800">
-                  {tripDetails.transportCompany}
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-800">
-                    {tripDetails.departureTime}
-                  </div>
-                  <div className="text-gray-600">{tripDetails.from}</div>
-                </div>
-
-                <div className="flex-1 mx-4 relative">
-                  <div className="border-t-2 border-gray-300"></div>
-                  <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-gray-100 px-2 text-sm text-gray-600">
-                    {tripDetails.duration}
-                  </div>
-                </div>
-
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-gray-800">
-                    {tripDetails.arrivalTime}
-                  </div>
-                  <div className="text-gray-600">{tripDetails.to}</div>
-                </div>
-              </div>
-            </div>
-
             {/* Rating Categories */}
-            <div className="space-y-2">
-              <StarRating
-                label="Cleanliness"
-                rating={ratings.cleanliness}
-                onRatingChange={(rating) =>
-                  handleRatingChange("cleanliness", rating)
-                }
-              />
-
-              <StarRating
-                label="Seat comfort"
-                rating={ratings.seatComfort}
-                onRatingChange={(rating) =>
-                  handleRatingChange("seatComfort", rating)
-                }
-              />
-
-              <StarRating
-                label="Staff behaviour"
-                rating={ratings.staffBehaviour}
-                onRatingChange={(rating) =>
-                  handleRatingChange("staffBehaviour", rating)
-                }
-              />
-
-              <StarRating
-                label="Onboarding experience"
-                rating={ratings.onboardingExperience}
-                onRatingChange={(rating) =>
-                  handleRatingChange("onboardingExperience", rating)
-                }
-              />
+            <div className="space-y-3 mb-4 flex-1">
+              {categories.map((category) => (
+                <div
+                  key={category.key}
+                  className="flex justify-between items-center"
+                >
+                  <span className="text-gray-700 text-sm font-medium">
+                    {category.label}
+                  </span>
+                  {renderStars(
+                    ratings[category.key as keyof typeof ratings],
+                    (rating) => handleRatingChange(category.key, rating),
+                  )}
+                </div>
+              ))}
             </div>
 
             {/* Submit Button */}
-            <div className="pt-6">
+            <div className="pt-2">
               <Button
                 type="submit"
                 disabled={isLoading || overallRating === 0}
                 className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
               >
-                {isLoading ? "Submitting..." : "Submit"}
+                {isLoading ? "Submitting..." : "Submit Feedback"}
               </Button>
             </div>
           </form>
