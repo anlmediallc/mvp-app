@@ -171,7 +171,7 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
             </div>
           </div>
 
-          <div className="mt-6 grid grid-cols-2 gap-3">
+          <div className="mt-6 space-y-3">
             <button
               type="button"
               onClick={() => onSocialLogin?.("facebook")}
