@@ -23,6 +23,9 @@ const LoginForm = React.forwardRef<HTMLDivElement, LoginFormProps>(
       onForgotPassword,
       onCreateAccount,
       onSocialLogin,
+      emailError,
+      passwordError,
+      isLoading = false,
       className,
       ...props
     },
