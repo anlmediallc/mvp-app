@@ -131,7 +131,9 @@ export default function TripDetails({
         <button onClick={onBack} className="mr-4 p-1">
           <ArrowLeft className="h-6 w-6" />
         </button>
-        <h1 className="text-xl font-semibold">Trip Details</h1>
+        <h1 className="text-xl font-semibold" style={{ marginLeft: "105px" }}>
+          Trip Details
+        </h1>
       </div>
 
       {/* Content */}
