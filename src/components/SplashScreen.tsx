@@ -61,67 +61,48 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
               <rect width="60" height="60" rx="14" fill="#E97B00" />
               {/* White location pin shape - teardrop */}
               <path
-                d="M30 10C23.373 10 18 15.373 18 22C18 28.627 23.373 34 30 34C36.627 34 42 28.627 42 22C42 15.373 36.627 10 30 10Z"
+                d="M30 8C22.268 8 16 14.268 16 22C16 29.732 22.268 36 30 36C37.732 36 44 29.732 44 22C44 14.268 37.732 8 30 8Z"
                 fill="white"
               />
               {/* Location pin point/tail */}
-              <path d="M30 34L26 45C28 47 32 47 34 45L30 34Z" fill="white" />
+              <path d="M30 36L24 48L30 50L36 48L30 36Z" fill="white" />
               {/* Bus icon inside the pin */}
-              <g transform="translate(21.5, 16)">
-                {/* Bus roof section */}
-                <rect
-                  x="4"
-                  y="1"
-                  width="9"
-                  height="2.5"
-                  rx="1.2"
-                  fill="#E97B00"
-                />
-                {/* Top line on roof */}
-                <rect
-                  x="6"
-                  y="0.2"
-                  width="5"
-                  height="0.8"
-                  rx="0.4"
-                  fill="#E97B00"
-                />
+              <g transform="translate(20, 15)">
+                {/* Bus roof/top section */}
+                <rect x="5" y="2" width="10" height="3" rx="1.5" fill="white" />
+                {/* Top stripe on roof */}
+                <rect x="7" y="1" width="6" height="1" rx="0.5" fill="white" />
                 {/* Main bus body */}
-                <rect
-                  x="1"
-                  y="3.5"
-                  width="15"
-                  height="7"
-                  rx="1"
-                  fill="#E97B00"
-                />
-                {/* Front section */}
-                <rect x="1" y="5" width="2" height="4" fill="#E97B00" />
-                {/* Back section */}
-                <rect x="14" y="5" width="2" height="4" fill="#E97B00" />
-                {/* Headlights */}
-                <circle cx="3.5" cy="8.5" r="1.2" fill="white" />
-                <circle cx="13.5" cy="8.5" r="1.2" fill="white" />
+                <rect x="2" y="5" width="16" height="8" rx="1" fill="#E97B00" />
+                {/* Front windshield area */}
+                <rect x="2" y="6" width="3" height="4" fill="white" />
+                {/* Back windshield area */}
+                <rect x="15" y="6" width="3" height="4" fill="white" />
+                {/* Side windows */}
+                <rect x="6" y="6" width="8" height="4" fill="white" />
+                {/* Headlights/front lights */}
+                <circle cx="6" cy="11" r="1.5" fill="white" />
+                <circle cx="14" cy="11" r="1.5" fill="white" />
                 {/* Side mirrors */}
                 <rect
-                  x="0"
-                  y="6.5"
-                  width="1"
-                  height="1.5"
+                  x="0.5"
+                  y="7"
+                  width="1.5"
+                  height="2"
                   rx="0.5"
                   fill="#E97B00"
                 />
                 <rect
-                  x="16"
-                  y="6.5"
-                  width="1"
-                  height="1.5"
+                  x="18"
+                  y="7"
+                  width="1.5"
+                  height="2"
                   rx="0.5"
                   fill="#E97B00"
                 />
-                {/* Small wheels indication */}
-                <circle cx="4" cy="11" r="0.8" fill="#E97B00" />
-                <circle cx="13" cy="11" r="0.8" fill="#E97B00" />
+                {/* Bottom wheels */}
+                <circle cx="5" cy="14" r="1" fill="#E97B00" />
+                <circle cx="15" cy="14" r="1" fill="#E97B00" />
               </g>
             </svg>
           </div>
