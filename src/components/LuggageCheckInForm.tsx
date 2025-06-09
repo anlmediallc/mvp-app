@@ -89,22 +89,47 @@ const LuggageCheckInForm = React.forwardRef<
               backgroundRepeat: "no-repeat",
               backgroundPosition: "center",
               backgroundSize: "cover",
+              marginBottom: "-4px",
+              paddingBottom: "11px",
             }),
           }}
         >
-          <div className="flex items-center mb-6">
+          <div
+            className="flex items-center mb-6"
+            style={{
+              ...(window.innerWidth <= 640 && {
+                marginTop: "8px",
+              }),
+            }}
+          >
             <button
               onClick={onBack}
               className="mr-4 p-1 hover:bg-white/10 rounded transition-colors"
             >
               <ArrowLeft className="h-6 w-6" />
             </button>
-            <h1 className="text-xl font-semibold">Luggage Check-In</h1>
+            <h1
+              className="text-xl font-semibold"
+              style={{
+                ...(window.innerWidth <= 640 && {
+                  margin: "2px 0 0 33px",
+                }),
+              }}
+            >
+              Luggage Check-In
+            </h1>
           </div>
         </div>
 
         {/* White Form Container */}
-        <div className="flex-1 bg-white rounded-t-3xl -mt-4 relative z-10 p-6">
+        <div
+          className="flex-1 bg-white rounded-t-3xl -mt-4 relative z-10 p-6"
+          style={{
+            ...(window.innerWidth <= 640 && {
+              marginBottom: "-4px",
+            }),
+          }}
+        >
           <div className="h-full overflow-hidden">
             <button
               onClick={onBack}
@@ -129,6 +154,11 @@ const LuggageCheckInForm = React.forwardRef<
             <form
               onSubmit={handleSubmit}
               className="space-y-3 h-full flex flex-col"
+              style={{
+                ...(window.innerWidth <= 640 && {
+                  marginTop: "-2px",
+                }),
+              }}
             >
               {/* Luggage Type */}
               <div className="space-y-1">
