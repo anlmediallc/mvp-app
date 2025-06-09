@@ -22,8 +22,7 @@ const Splash = () => {
       <SplashScreen
         appName="Buscomfy+"
         onTap={handleContinue}
-        autoAdvance={true}
-        delay={2500}
+        autoAdvance={false}
       />
     </div>
   );
