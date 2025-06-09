@@ -35,7 +35,7 @@ const Index = () => {
           App Ready!
         </h1>
         <p className="mt-4 text-slate-600 max-w-md">
-          Your Buscomfy+ app screens are ready! Test the login form with error
+          Your Buscomfy+ app screens are ready! Test all forms with error
           states.
         </p>
         <div className="mt-4 p-4 bg-white rounded-lg shadow-sm text-left max-w-md">
@@ -68,7 +68,13 @@ const Index = () => {
             <div>
               <strong>Register:</strong>
               <ul className="ml-2 space-y-1">
-                <li>• <code className="bg-gray-100 px-1 rounded">existing@example.com</code> = Email exists error</li>
+                <li>
+                  •{" "}
+                  <code className="bg-gray-100 px-1 rounded">
+                    existing@example.com
+                  </code>{" "}
+                  = Email exists error
+                </li>
                 <li>• Short names or passwords = Validation errors</li>
                 <li>• Mismatched passwords = Confirm error</li>
               </ul>
@@ -76,13 +82,12 @@ const Index = () => {
             <div>
               <strong>Verification:</strong>
               <ul className="ml-2 space-y-1">
-                <li>• <code className="bg-gray-100 px-1 rounded">1234</code> = Correct code</li>
+                <li>
+                  • <code className="bg-gray-100 px-1 rounded">1234</code> =
+                  Correct code
+                </li>
                 <li>• Any other 4-digit code = Invalid error</li>
                 <li>• Auto countdown timer for resend</li>
-              </ul>
-            </div>
-                <li>• Short names or passwords = Validation errors</li>
-                <li>• Mismatched passwords = Confirm error</li>
               </ul>
             </div>
           </div>
