@@ -35,8 +35,8 @@ const Index = () => {
           App Ready!
         </h1>
         <p className="mt-4 text-slate-600 max-w-md">
-          Your Buscomfy+ app screens are ready! Test all forms with error
-          states.
+          Your Buscomfy+ app authentication system is complete! Test all forms
+          with error states.
         </p>
         <div className="mt-4 p-4 bg-white rounded-lg shadow-sm text-left max-w-md">
           <h3 className="font-semibold text-slate-700 mb-2">🧪 Test Forms:</h3>
@@ -80,20 +80,15 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <strong>Forgot Password:</strong>
+              <strong>Verification:</strong>
               <ul className="ml-2 space-y-1">
-                <li>• <code className="bg-gray-100 px-1 rounded">notfound@example.com</code> = Email not found error</li>
-                <li>• Any valid email = Sends to verification</li>
+                <li>
+                  • <code className="bg-gray-100 px-1 rounded">1234</code> =
+                  Correct code
+                </li>
+                <li>• Any other 4-digit code = Invalid error</li>
+                <li>• Auto countdown timer for resend</li>
               </ul>
-            </div>
-            <div>
-              <strong>Reset Password:</strong>
-              <ul className="ml-2 space-y-1">
-                <li>• Password must be 8+ characters</li>
-                <li>• Passwords must match</li>
-                <li>• Success redirects to login</li>
-              </ul>
-            </div>
             </div>
             <div>
               <strong>Forgot Password:</strong>
@@ -106,6 +101,14 @@ const Index = () => {
                   = Email not found error
                 </li>
                 <li>• Any valid email = Sends to verification</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Reset Password:</strong>
+              <ul className="ml-2 space-y-1">
+                <li>• Password must be 8+ characters</li>
+                <li>• Passwords must match</li>
+                <li>• Success redirects to login</li>
               </ul>
             </div>
           </div>
