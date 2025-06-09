@@ -233,22 +233,22 @@ export default function TripDetails({
           </div>
 
           {/* Amenities - Inside MSS Transport Card */}
-          <div className="flex gap-4 justify-center">
+          <div className="flex gap-1 justify-center">
             <div className="text-center">
-              <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center mb-1">
-                <Wifi className="h-4 w-4 text-blue-600" />
+              <div className="w-3 h-3 bg-blue-100 rounded-full flex items-center justify-center">
+                <Wifi className="h-2 w-2 text-blue-600" />
               </div>
               <span className="text-xs text-gray-600">Wi-Fi</span>
             </div>
             <div className="text-center">
-              <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center mb-1">
-                <Bed className="h-4 w-4 text-green-600" />
+              <div className="w-3 h-3 bg-green-100 rounded-full flex items-center justify-center">
+                <Bed className="h-2 w-2 text-green-600" />
               </div>
               <span className="text-xs text-gray-600">Sleeping berth</span>
             </div>
             <div className="text-center">
-              <div className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center mb-1">
-                <Zap className="h-4 w-4 text-yellow-600" />
+              <div className="w-3 h-3 bg-yellow-100 rounded-full flex items-center justify-center">
+                <Zap className="h-2 w-2 text-yellow-600" />
               </div>
               <span className="text-xs text-gray-600">Charging</span>
             </div>
