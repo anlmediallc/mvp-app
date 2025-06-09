@@ -11,8 +11,7 @@ const MyAccount = () => {
   const handleMenuItemClick = (item: string) => {
     switch (item) {
       case "personal-info":
-        console.log("Navigate to personal info");
-        // Could navigate to a personal info edit form
+        navigate("/personal-info");
         break;
       case "change-password":
         navigate("/reset-password");

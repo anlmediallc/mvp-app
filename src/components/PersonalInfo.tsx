@@ -1,0 +1,373 @@
+import * as React from "react";
+import { useState } from "react";
+import {
+  ArrowLeft,
+  Camera,
+  Eye,
+  EyeOff,
+  AlertCircle,
+  Home,
+  Calendar,
+  Users,
+  User,
+} from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { cn } from "@/lib/utils";
+
+export interface PersonalInfoProps {
+  onBack?: () => void;
+  onSave?: (data: {
+    name: string;
+    email: string;
+    password: string;
+    phone: string;
+    countryCode: string;
+    avatar?: File;
+  }) => void;
+  onNavItemClick?: (item: string) => void;
+  userInfo?: {
+    name: string;
+    email: string;
+    phone: string;
+    countryCode: string;
+    avatar?: string;
+  };
+  nameError?: string;
+  emailError?: string;
+  passwordError?: string;
+  phoneError?: string;
+  isLoading?: boolean;
+  className?: string;
+}
+
+const PersonalInfo = React.forwardRef<HTMLDivElement, PersonalInfoProps>(
+  (
+    {
+      onBack,
+      onSave,
+      onNavItemClick,
+      userInfo = {
+        name: "James Rodriguez",
+        email: "Jamesrodriguez@gmail.com",
+        phone: "7598113186",
+        countryCode: "+91",
+        avatar:
+          "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face",
+      },
+      nameError,
+      emailError,
+      passwordError,
+      phoneError,
+      isLoading = false,
+      className,
+      ...props
+    },
+    ref,
+  ) => {
+    const [name, setName] = useState(userInfo.name);
+    const [email, setEmail] = useState(userInfo.email);
+    const [password, setPassword] = useState("**********");
+    const [phone, setPhone] = useState(userInfo.phone);
+    const [countryCode, setCountryCode] = useState(userInfo.countryCode);
+    const [showPassword, setShowPassword] = useState(false);
+    const [avatarFile, setAvatarFile] = useState<File | null>(null);
+
+    const handleSubmit = (e: React.FormEvent) => {
+      e.preventDefault();
+      if (onSave) {
+        onSave({
+          name,
+          email,
+          password,
+          phone,
+          countryCode,
+          avatar: avatarFile || undefined,
+        });
+      }
+    };
+
+    const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const file = e.target.files?.[0];
+      if (file) {
+        setAvatarFile(file);
+      }
+    };
+
+    const togglePasswordVisibility = () => {
+      setShowPassword(!showPassword);
+    };
+
+    const handleNavClick = (item: string) => {
+      if (onNavItemClick) {
+        onNavItemClick(item);
+      }
+    };
+
+    return (
+      <div
+        ref={ref}
+        className={cn(
+          "w-full max-w-md mx-auto h-screen bg-white font-inter overflow-hidden relative",
+          className,
+        )}
+        {...props}
+      >
+        {/* Status Bar */}
+        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-2 flex justify-between items-center text-sm font-medium">
+          <span>9:41</span>
+          <div className="flex items-center gap-1">
+            <div className="flex gap-0.5">
+              <div className="w-1 h-3 bg-white rounded-full"></div>
+              <div className="w-1 h-3 bg-white rounded-full"></div>
+              <div className="w-1 h-3 bg-white rounded-full"></div>
+              <div className="w-1 h-3 bg-white/70 rounded-full"></div>
+            </div>
+            <svg className="w-4 h-4 ml-1" fill="white" viewBox="0 0 24 24">
+              <path d="M2 17h20v2H2v-2zm1.15-4.05L4 11.47l.85 1.48H6l-.85-1.48zM9 12.5h6v1H9v-1zm8.85 1.48L18.7 12l.85 1.48H18l.85-1.48z" />
+            </svg>
+            <div className="w-6 h-3 bg-white rounded-sm ml-1"></div>
+          </div>
+        </div>
+
+        {/* Header */}
+        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 pb-6">
+          <div className="flex items-center">
+            <button
+              onClick={onBack}
+              className="mr-4 p-1 hover:bg-white/10 rounded transition-colors"
+            >
+              <ArrowLeft className="h-6 w-6" />
+            </button>
+            <h1 className="text-xl font-semibold">My Account</h1>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 pb-24 overflow-y-auto">
+          {/* Profile Photo Section */}
+          <div className="flex justify-center mb-8 -mt-12">
+            <div className="relative">
+              <Avatar className="w-24 h-24 border-4 border-white shadow-lg">
+                <AvatarImage
+                  src={
+                    avatarFile
+                      ? URL.createObjectURL(avatarFile)
+                      : userInfo.avatar
+                  }
+                  alt={name}
+                />
+                <AvatarFallback className="bg-gray-200 text-gray-700 text-xl font-semibold">
+                  {name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")}
+                </AvatarFallback>
+              </Avatar>
+              <button className="absolute bottom-0 right-0 w-8 h-8 bg-black rounded-full flex items-center justify-center shadow-lg hover:bg-gray-800 transition-colors">
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleAvatarChange}
+                  className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                />
+                <Camera className="h-4 w-4 text-white" />
+              </button>
+            </div>
+          </div>
+
+          {/* Form */}
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name Field */}
+            <div className="space-y-2">
+              <label
+                htmlFor="name"
+                className="text-sm font-medium text-gray-700"
+              >
+                Name
+              </label>
+              <Input
+                id="name"
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className={cn(
+                  "h-12 rounded-xl border-gray-200",
+                  nameError ? "border-red-500" : "",
+                )}
+                required
+              />
+              {nameError && (
+                <div className="flex items-center gap-2 text-red-500 text-sm">
+                  <AlertCircle className="h-4 w-4" />
+                  <span>{nameError}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Email Field */}
+            <div className="space-y-2">
+              <label
+                htmlFor="email"
+                className="text-sm font-medium text-gray-700"
+              >
+                E mail address
+              </label>
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className={cn(
+                  "h-12 rounded-xl border-gray-200",
+                  emailError ? "border-red-500" : "",
+                )}
+                required
+              />
+              {emailError && (
+                <div className="flex items-center gap-2 text-red-500 text-sm">
+                  <AlertCircle className="h-4 w-4" />
+                  <span>{emailError}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Password Field */}
+            <div className="space-y-2">
+              <label
+                htmlFor="password"
+                className="text-sm font-medium text-gray-700"
+              >
+                Password
+              </label>
+              <div className="relative">
+                <Input
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className={cn(
+                    "h-12 rounded-xl border-gray-200 pr-12",
+                    passwordError ? "border-red-500" : "",
+                  )}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={togglePasswordVisibility}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                >
+                  {showPassword ? (
+                    <EyeOff className="h-5 w-5" />
+                  ) : (
+                    <Eye className="h-5 w-5" />
+                  )}
+                </button>
+              </div>
+              {passwordError && (
+                <div className="flex items-center gap-2 text-red-500 text-sm">
+                  <AlertCircle className="h-4 w-4" />
+                  <span>{passwordError}</span>
+                </div>
+              )}
+            </div>
+
+            {/* Phone Number Field */}
+            <div className="space-y-2">
+              <label
+                htmlFor="phone"
+                className="text-sm font-medium text-gray-700"
+              >
+                Phone number
+              </label>
+              <div className="flex gap-2">
+                <Select value={countryCode} onValueChange={setCountryCode}>
+                  <SelectTrigger className="w-20 h-12 rounded-xl border-gray-200">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="+91">🇮🇳 +91</SelectItem>
+                    <SelectItem value="+1">🇺🇸 +1</SelectItem>
+                    <SelectItem value="+44">🇬🇧 +44</SelectItem>
+                    <SelectItem value="+86">🇨🇳 +86</SelectItem>
+                    <SelectItem value="+49">🇩🇪 +49</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Input
+                  id="phone"
+                  type="tel"
+                  value={phone}
+                  onChange={(e) => setPhone(e.target.value)}
+                  className={cn(
+                    "flex-1 h-12 rounded-xl border-gray-200",
+                    phoneError ? "border-red-500" : "",
+                  )}
+                  placeholder="Phone number"
+                  required
+                />
+              </div>
+              {phoneError && (
+                <div className="flex items-center gap-2 text-red-500 text-sm">
+                  <AlertCircle className="h-4 w-4" />
+                  <span>{phoneError}</span>
+                </div>
+              )}
+            </div>
+          </form>
+        </div>
+
+        {/* Chat Support Button */}
+        <div className="absolute bottom-20 right-4">
+          <Button
+            size="icon"
+            className="w-12 h-12 rounded-full bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white shadow-lg"
+          >
+            <span className="text-lg">💬</span>
+          </Button>
+        </div>
+
+        {/* Bottom Navigation */}
+        <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-4 py-2">
+          <div className="flex justify-around items-center">
+            <button
+              onClick={() => handleNavClick("home")}
+              className="flex flex-col items-center gap-1 p-2 transition-colors"
+            >
+              <Home className="h-6 w-6 text-orange-500" />
+            </button>
+            <button
+              onClick={() => handleNavClick("calendar")}
+              className="flex flex-col items-center gap-1 p-2 transition-colors"
+            >
+              <Calendar className="h-6 w-6 text-gray-400" />
+            </button>
+            <button
+              onClick={() => handleNavClick("bookings")}
+              className="flex flex-col items-center gap-1 p-2 transition-colors"
+            >
+              <Calendar className="h-6 w-6 text-gray-400" />
+            </button>
+            <button
+              onClick={() => handleNavClick("profile")}
+              className="flex flex-col items-center gap-1 p-2 transition-colors"
+            >
+              <User className="h-6 w-6 text-gray-600" />
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  },
+);
+
+PersonalInfo.displayName = "PersonalInfo";
+
+export { PersonalInfo };

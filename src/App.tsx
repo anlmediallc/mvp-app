@@ -18,6 +18,7 @@ import Feedback from "./pages/Feedback";
 import ReportProblem from "./pages/ReportProblem";
 import HelpCenter from "./pages/HelpCenter";
 import MyAccount from "./pages/MyAccount";
+import PersonalInfo from "./pages/PersonalInfo";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -44,6 +45,7 @@ const App = () => (
           <Route path="/report-problem" element={<ReportProblem />} />
           <Route path="/help-center" element={<HelpCenter />} />
           <Route path="/my-account" element={<MyAccount />} />
+          <Route path="/personal-info" element={<PersonalInfo />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

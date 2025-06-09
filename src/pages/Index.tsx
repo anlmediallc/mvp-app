@@ -132,6 +132,9 @@ const Index = () => {
           <Button asChild size="lg" variant="secondary">
             <Link to="/my-account">👤 My Account</Link>
           </Button>
+          <Button asChild size="lg" variant="secondary">
+            <Link to="/personal-info">✏️ Edit Profile</Link>
+          </Button>
           <Button asChild>
             <Link to="/login">📝 Login Form</Link>
           </Button>
