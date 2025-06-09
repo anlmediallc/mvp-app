@@ -48,6 +48,7 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
     const [confirmPassword, setConfirmPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+    const [acceptedTerms, setAcceptedTerms] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
@@ -57,7 +58,8 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
         lastName &&
         email &&
         password &&
-        confirmPassword
+        confirmPassword &&
+        acceptedTerms
       ) {
         onRegister({ firstName, lastName, email, password, confirmPassword });
       }
@@ -75,7 +77,7 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
       <div
         ref={ref}
         className={cn(
-          "w-full max-w-md mx-auto bg-white rounded-3xl p-8 shadow-lg font-inter",
+          "w-full max-w-md mx-auto bg-white rounded-3xl p-6 shadow-lg font-inter",
           className,
         )}
         style={{
@@ -83,72 +85,60 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          // Mobile responsive background from Builder.io
+          ...(window.innerWidth <= 640 && {
+            backgroundImage:
+              "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F3e3b118899d545fe8107825676bfdf48)",
+          }),
         }}
         {...props}
       >
         {/* Title */}
-        <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-800 text-center mb-8 sm:mt-0 max-sm:mt-7">
           Register
         </h1>
 
-        {/* Registration Form */}
+        {/* Register Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Name Fields Row */}
+          {/* Name Fields */}
           <div className="grid grid-cols-2 gap-4">
-            {/* First Name */}
             <div className="space-y-2">
-              <label
-                htmlFor="firstName"
-                className="text-sm font-medium text-gray-700"
-              >
+              <div className="text-sm font-medium text-gray-700">
                 First Name
-              </label>
+              </div>
               <Input
-                id="firstName"
                 type="text"
                 placeholder="Dinesh"
                 value={firstName}
                 onChange={(e) => setFirstName(e.target.value)}
                 className={cn(
-                  "h-12 text-base rounded-xl focus:ring-orange-500",
-                  firstNameError
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-gray-200 focus:border-orange-500",
+                  "h-12 rounded-xl border-gray-300 text-base",
+                  firstNameError && "border-red-500 focus:border-red-500",
                 )}
                 required
               />
               {firstNameError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
+                <div className="flex items-center gap-2 text-red-600 text-sm mt-1">
                   <AlertCircle className="h-4 w-4" />
                   <span>{firstNameError}</span>
                 </div>
               )}
             </div>
-
-            {/* Last Name */}
             <div className="space-y-2">
-              <label
-                htmlFor="lastName"
-                className="text-sm font-medium text-gray-700"
-              >
-                Last Name
-              </label>
+              <div className="text-sm font-medium text-gray-700">Last Name</div>
               <Input
-                id="lastName"
                 type="text"
                 placeholder="VG"
                 value={lastName}
                 onChange={(e) => setLastName(e.target.value)}
                 className={cn(
-                  "h-12 text-base rounded-xl focus:ring-orange-500",
-                  lastNameError
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-gray-200 focus:border-orange-500",
+                  "h-12 rounded-xl border-gray-300 text-base",
+                  lastNameError && "border-red-500 focus:border-red-500",
                 )}
                 required
               />
               {lastNameError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
+                <div className="flex items-center gap-2 text-red-600 text-sm mt-1">
                   <AlertCircle className="h-4 w-4" />
                   <span>{lastNameError}</span>
                 </div>
@@ -157,29 +147,21 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
           </div>
 
           {/* Email Field */}
-          <div className="space-y-2">
-            <label
-              htmlFor="email"
-              className="text-sm font-medium text-gray-700"
-            >
-              E-mail
-            </label>
+          <div className="space-y-2 max-sm:mt-2">
+            <div className="text-sm font-medium text-gray-700">E-mail</div>
             <Input
-              id="email"
               type="email"
               placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className={cn(
-                "h-12 text-base rounded-xl focus:ring-orange-500",
-                emailError
-                  ? "border-red-500 focus:border-red-500"
-                  : "border-gray-200 focus:border-orange-500",
+                "h-12 rounded-xl border-gray-300 text-base",
+                emailError && "border-red-500 focus:border-red-500",
               )}
               required
             />
             {emailError && (
-              <div className="flex items-center gap-2 text-red-500 text-sm">
+              <div className="flex items-center gap-2 text-red-600 text-sm mt-1">
                 <AlertCircle className="h-4 w-4" />
                 <span>{emailError}</span>
               </div>
@@ -187,32 +169,24 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
           </div>
 
           {/* Password Field */}
-          <div className="space-y-2">
-            <label
-              htmlFor="password"
-              className="text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <div className="relative">
+          <div className="space-y-2 max-sm:mt-2">
+            <div className="text-sm font-medium text-gray-700">Password</div>
+            <div className="relative mt-2">
               <Input
-                id="password"
                 type={showPassword ? "text" : "password"}
-                placeholder="*********"
+                placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className={cn(
-                  "h-12 text-base rounded-xl focus:ring-orange-500 pr-12",
-                  passwordError
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-gray-200 focus:border-orange-500",
+                  "h-12 rounded-xl border-gray-300 text-base pr-12",
+                  passwordError && "border-red-500 focus:border-red-500",
                 )}
                 required
               />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
               >
                 {showPassword ? (
                   <EyeOff className="h-5 w-5" />
@@ -221,9 +195,8 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
                 )}
               </button>
             </div>
-            <p className="text-sm text-gray-500">must contain 8 char.</p>
             {passwordError && (
-              <div className="flex items-center gap-2 text-red-500 text-sm">
+              <div className="flex items-center gap-2 text-red-600 text-sm mt-1">
                 <AlertCircle className="h-4 w-4" />
                 <span>{passwordError}</span>
               </div>
@@ -231,32 +204,26 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
           </div>
 
           {/* Confirm Password Field */}
-          <div className="space-y-2">
-            <label
-              htmlFor="confirmPassword"
-              className="text-sm font-medium text-gray-700"
-            >
+          <div className="space-y-2 max-sm:mt-2">
+            <div className="text-sm font-medium text-gray-700">
               Confirm Password
-            </label>
-            <div className="relative">
+            </div>
+            <div className="relative mt-2">
               <Input
-                id="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
-                placeholder="*********"
+                placeholder="Confirm your password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className={cn(
-                  "h-12 text-base rounded-xl focus:ring-orange-500 pr-12",
-                  confirmPasswordError
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-gray-200 focus:border-orange-500",
+                  "h-12 rounded-xl border-gray-300 text-base pr-12",
+                  confirmPasswordError && "border-red-500 focus:border-red-500",
                 )}
                 required
               />
               <button
                 type="button"
                 onClick={toggleConfirmPasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
               >
                 {showConfirmPassword ? (
                   <EyeOff className="h-5 w-5" />
@@ -266,42 +233,64 @@ const RegisterForm = React.forwardRef<HTMLDivElement, RegisterFormProps>(
               </button>
             </div>
             {confirmPasswordError && (
-              <div className="flex items-center gap-2 text-red-500 text-sm">
+              <div className="flex items-center gap-2 text-red-600 text-sm mt-1">
                 <AlertCircle className="h-4 w-4" />
                 <span>{confirmPasswordError}</span>
               </div>
             )}
           </div>
 
-          {/* Create Account Button */}
+          {/* Terms and Privacy */}
+          <div className="flex items-start gap-3 max-sm:mt-1">
+            <input
+              type="checkbox"
+              id="terms"
+              checked={acceptedTerms}
+              onChange={(e) => setAcceptedTerms(e.target.checked)}
+              className="mt-1 h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
+              required
+            />
+            <label htmlFor="terms" className="text-sm text-gray-600 leading-5">
+              I agree to the{" "}
+              <button
+                type="button"
+                onClick={onTermsClick}
+                className="text-orange-500 underline hover:text-orange-600"
+              >
+                Terms of Service
+              </button>{" "}
+              and{" "}
+              <button
+                type="button"
+                onClick={onPrivacyClick}
+                className="text-orange-500 underline hover:text-orange-600"
+              >
+                Privacy Policy
+              </button>
+            </label>
+          </div>
+
+          {/* Submit Button */}
           <Button
             type="submit"
-            disabled={isLoading}
+            disabled={isLoading || !acceptedTerms}
             className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white font-medium rounded-xl text-base disabled:opacity-50 mt-8"
           >
             {isLoading ? "Creating Account..." : "Create Account"}
           </Button>
         </form>
 
-        {/* Terms and Privacy */}
-        <div className="mt-6 text-center text-sm text-gray-500">
-          <span>By continuing, you agree to our </span>
+        {/* Login Link */}
+        <div className="mt-8 text-center">
+          <span className="text-gray-600 text-sm">
+            Already have an account?{" "}
+          </span>
           <button
             type="button"
-            onClick={onTermsClick}
-            className="text-orange-500 font-medium hover:text-orange-600 underline"
+            className="text-orange-500 text-sm font-medium underline hover:text-orange-600 focus:outline-none"
           >
-            Terms of Service
+            Sign In
           </button>
-          <span> and </span>
-          <button
-            type="button"
-            onClick={onPrivacyClick}
-            className="text-orange-500 font-medium hover:text-orange-600 underline"
-          >
-            Privacy Policy
-          </button>
-          <span>.</span>
         </div>
       </div>
     );
