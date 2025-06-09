@@ -6,7 +6,9 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 export interface ResetPasswordFormProps {
+  email?: string;
   onResetPassword?: (password: string, confirmPassword: string) => void;
+  onBackToLogin?: () => void;
   passwordError?: string;
   confirmPasswordError?: string;
   isLoading?: boolean;
@@ -19,7 +21,9 @@ const ResetPasswordForm = React.forwardRef<
 >(
   (
     {
+      email = "johndoe@gmail.com",
       onResetPassword,
+      onBackToLogin,
       passwordError,
       confirmPasswordError,
       isLoading = false,
@@ -52,7 +56,7 @@ const ResetPasswordForm = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "w-full max-w-md mx-auto bg-white rounded-3xl p-8 shadow-lg font-inter",
+          "w-full max-w-md mx-auto bg-white rounded-3xl p-6 shadow-lg font-inter",
           className,
         )}
         style={{
@@ -60,53 +64,48 @@ const ResetPasswordForm = React.forwardRef<
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
+          // Mobile responsive background from Builder.io
+          ...(window.innerWidth <= 640 && {
+            backgroundImage:
+              "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2F3e3b118899d545fe8107825676bfdf48)",
+          }),
         }}
         {...props}
       >
         {/* Title */}
-        <h1 className="text-3xl font-bold text-gray-800 text-center mb-8">
+        <h1 className="text-3xl font-bold text-gray-800 text-center mb-8 sm:mt-0 max-sm:mt-7">
           Create New Password
         </h1>
 
         {/* Description */}
-        <div className="text-center mb-8 space-y-2">
-          <p className="text-gray-600 leading-relaxed">
-            Please enter and confirm your new password.
-          </p>
-          <p className="text-gray-600 leading-relaxed">
-            You will need to login after you reset.
-          </p>
+        <div className="text-center mb-6">
+          <p className="text-gray-600 text-sm">Create a new password for</p>
+          <p className="text-gray-800 font-medium">{email}</p>
         </div>
 
         {/* Reset Form */}
         <form onSubmit={handleSubmit} className="space-y-6">
-          {/* Password Field */}
+          {/* New Password Field */}
           <div className="space-y-2">
-            <label
-              htmlFor="password"
-              className="text-sm font-medium text-gray-700"
-            >
-              Password
-            </label>
-            <div className="relative">
+            <div className="text-sm font-medium text-gray-700">
+              New Password
+            </div>
+            <div className="relative mt-2">
               <Input
-                id="password"
                 type={showPassword ? "text" : "password"}
-                placeholder="*********"
+                placeholder="Enter new password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 className={cn(
-                  "h-12 text-base rounded-xl focus:ring-orange-500 pr-12",
-                  passwordError
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-gray-200 focus:border-orange-500",
+                  "h-12 rounded-xl border-gray-300 text-base pr-12",
+                  passwordError && "border-red-500 focus:border-red-500",
                 )}
                 required
               />
               <button
                 type="button"
                 onClick={togglePasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
               >
                 {showPassword ? (
                   <EyeOff className="h-5 w-5" />
@@ -115,9 +114,8 @@ const ResetPasswordForm = React.forwardRef<
                 )}
               </button>
             </div>
-            <p className="text-sm text-gray-500">must contain 8 char.</p>
             {passwordError && (
-              <div className="flex items-center gap-2 text-red-500 text-sm">
+              <div className="flex items-center gap-2 text-red-600 text-sm mt-1">
                 <AlertCircle className="h-4 w-4" />
                 <span>{passwordError}</span>
               </div>
@@ -125,32 +123,26 @@ const ResetPasswordForm = React.forwardRef<
           </div>
 
           {/* Confirm Password Field */}
-          <div className="space-y-2">
-            <label
-              htmlFor="confirmPassword"
-              className="text-sm font-medium text-gray-700"
-            >
+          <div className="space-y-2 max-sm:mt-2">
+            <div className="text-sm font-medium text-gray-700">
               Confirm Password
-            </label>
-            <div className="relative">
+            </div>
+            <div className="relative mt-2">
               <Input
-                id="confirmPassword"
                 type={showConfirmPassword ? "text" : "password"}
-                placeholder="*********"
+                placeholder="Confirm new password"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
                 className={cn(
-                  "h-12 text-base rounded-xl focus:ring-orange-500 pr-12",
-                  confirmPasswordError
-                    ? "border-red-500 focus:border-red-500"
-                    : "border-gray-200 focus:border-orange-500",
+                  "h-12 rounded-xl border-gray-300 text-base pr-12",
+                  confirmPasswordError && "border-red-500 focus:border-red-500",
                 )}
                 required
               />
               <button
                 type="button"
                 onClick={toggleConfirmPasswordVisibility}
-                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700 focus:outline-none"
               >
                 {showConfirmPassword ? (
                   <EyeOff className="h-5 w-5" />
@@ -160,22 +152,36 @@ const ResetPasswordForm = React.forwardRef<
               </button>
             </div>
             {confirmPasswordError && (
-              <div className="flex items-center gap-2 text-red-500 text-sm">
+              <div className="flex items-center gap-2 text-red-600 text-sm mt-1">
                 <AlertCircle className="h-4 w-4" />
                 <span>{confirmPasswordError}</span>
               </div>
             )}
           </div>
 
-          {/* Reset Password Button */}
+          {/* Submit Button */}
           <Button
             type="submit"
-            disabled={isLoading || !password || !confirmPassword}
+            disabled={isLoading}
             className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white font-medium rounded-xl text-base disabled:opacity-50 mt-12"
           >
-            {isLoading ? "Resetting..." : "Reset Password"}
+            {isLoading ? "Updating..." : "Update Password"}
           </Button>
         </form>
+
+        {/* Back to Login */}
+        <div className="mt-8 text-center">
+          <span className="text-gray-600 text-sm">
+            Remember your password?{" "}
+          </span>
+          <button
+            type="button"
+            onClick={onBackToLogin}
+            className="text-orange-500 text-sm font-medium underline hover:text-orange-600 focus:outline-none"
+          >
+            Back to Login
+          </button>
+        </div>
       </div>
     );
   },
