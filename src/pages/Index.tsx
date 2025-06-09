@@ -80,15 +80,20 @@ const Index = () => {
               </ul>
             </div>
             <div>
-              <strong>Verification:</strong>
+              <strong>Forgot Password:</strong>
               <ul className="ml-2 space-y-1">
-                <li>
-                  • <code className="bg-gray-100 px-1 rounded">1234</code> =
-                  Correct code
-                </li>
-                <li>• Any other 4-digit code = Invalid error</li>
-                <li>• Auto countdown timer for resend</li>
+                <li>• <code className="bg-gray-100 px-1 rounded">notfound@example.com</code> = Email not found error</li>
+                <li>• Any valid email = Sends to verification</li>
               </ul>
+            </div>
+            <div>
+              <strong>Reset Password:</strong>
+              <ul className="ml-2 space-y-1">
+                <li>• Password must be 8+ characters</li>
+                <li>• Passwords must match</li>
+                <li>• Success redirects to login</li>
+              </ul>
+            </div>
             </div>
             <div>
               <strong>Forgot Password:</strong>
@@ -120,6 +125,9 @@ const Index = () => {
           </Button>
           <Button asChild variant="ghost">
             <Link to="/forgot-password">🔑 Forgot Password</Link>
+          </Button>
+          <Button asChild variant="ghost">
+            <Link to="/reset-password">🔐 Reset Password</Link>
           </Button>
           <Button asChild variant="destructive">
             <Link to="/login-error">❌ Login Error Screen</Link>

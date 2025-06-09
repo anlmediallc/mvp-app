@@ -26,11 +26,10 @@ const Verification = () => {
       setIsLoading(false);
 
       if (isPasswordReset) {
-        // For password reset, would typically go to reset password form
-        navigate("/login", {
+        // For password reset, go to reset password form
+        navigate("/reset-password", {
           state: {
-            message:
-              "Verification successful! You can now reset your password.",
+            email: email,
           },
         });
       } else {
