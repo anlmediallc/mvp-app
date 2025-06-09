@@ -28,41 +28,18 @@ const Index = () => {
       }}
     >
       <div className="text-center">
-        {/* App Logo/Icon - Location Pin with Bus */}
+        {/* App Logo/Icon - Simple Circle with Bus */}
         <div className="mb-8">
-          <div className="relative w-20 h-24 mx-auto">
-            {/* Location Pin Shape matching Figma exactly */}
+          <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg mx-auto">
             <svg
-              className="w-20 h-24 drop-shadow-lg"
-              viewBox="0 0 80 96"
-              fill="none"
+              className="w-10 h-10 text-orange-500"
+              fill="currentColor"
+              viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
-              {/* Pin shape - perfect teardrop */}
-              <path
-                d="M40 0C18 0 0 18 0 40C0 62 40 96 40 96C40 96 80 62 80 40C80 18 62 0 40 0Z"
-                fill="white"
-              />
-              {/* Simple Bus icon inside pin - matching Figma exactly */}
-              <g transform="translate(40, 28)">
-                {/* Bus body - compact rectangle */}
-                <rect
-                  x="-12"
-                  y="-5"
-                  width="24"
-                  height="10"
-                  rx="1.5"
-                  fill="#F97316"
-                />
-                {/* Bus wheels */}
-                <circle cx="-7" cy="7" r="1.5" fill="#F97316" />
-                <circle cx="7" cy="7" r="1.5" fill="#F97316" />
-                {/* Bus windows - 4 small windows */}
-                <rect x="-10" y="-3" width="3" height="2.5" fill="white" />
-                <rect x="-5" y="-3" width="3" height="2.5" fill="white" />
-                <rect x="0" y="-3" width="3" height="2.5" fill="white" />
-                <rect x="5" y="-3" width="3" height="2.5" fill="white" />
-              </g>
+              <path d="M4 6h16v10H4zm2 2v6h12V8H6zm1 1h2v2H7V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zm3 0h2v2h-2V9zM7 12h2v2H7v-2zm3 0h2v2h-2v-2zm3 0h2v2h-2v-2zm3 0h2v2h-2v-2z" />
+              <circle cx="7" cy="18" r="2" />
+              <circle cx="17" cy="18" r="2" />
             </svg>
           </div>
         </div>
