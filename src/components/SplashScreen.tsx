@@ -48,20 +48,20 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
         {/* Logo Container */}
         <div className="relative z-10 flex flex-col items-center justify-center">
           {/* Icon Badge */}
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-white shadow-lg">
-            <Bus className="h-8 w-8 text-orange-500" strokeWidth={2} />
+          <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-white shadow-lg">
+            <Bus className="h-6 w-6 text-orange-500" strokeWidth={2} />
           </div>
 
           {/* App Name */}
-          <h1 className="text-3xl font-bold text-white tracking-wide">
+          <h1 className="text-2xl font-bold text-white tracking-wide">
             {appName}
           </h1>
         </div>
 
         {/* Tap hint for manual advance */}
         {!autoAdvance && onTap && (
-          <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
-            <p className="text-white/80 text-sm font-medium">Tap to continue</p>
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+            <p className="text-white/80 text-xs font-medium">Tap to continue</p>
           </div>
         )}
       </div>
