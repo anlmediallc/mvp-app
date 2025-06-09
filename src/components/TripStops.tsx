@@ -69,7 +69,7 @@ export default function TripStops({ onBack, onOptionsMenu }: TripStopsProps) {
       </div>
 
       {/* Content */}
-      <div className="flex-1 bg-white overflow-hidden pb-20">
+      <div className="flex-1 bg-white overflow-y-auto scrollbar-hide pb-20">
         {/* Trip Info Card - Simplified */}
         <div className="bg-white p-4 border-b border-gray-100">
           {/* Transport Header */}
