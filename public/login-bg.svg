@@ -1,11 +1,11 @@
 <svg width="375" height="812" viewBox="0 0 375 812" fill="none" xmlns="http://www.w3.org/2000/svg">
-<rect width="375" height="812" rx="20" fill="#F9F9F9"/>
-<rect width="375" height="812" rx="20" fill="url(#paint0_clean_minimal)" fill-opacity="0.08"/>
+<rect width="375" height="812" rx="20" fill="#FAFAFA"/>
+<rect width="375" height="812" rx="20" fill="url(#paint0_ultra_clean)" fill-opacity="0.04"/>
 <defs>
-<radialGradient id="paint0_clean_minimal" cx="0.5" cy="0.4" r="0.8" gradientUnits="objectBoundingBox">
+<linearGradient id="paint0_ultra_clean" x1="187.5" y1="0" x2="187.5" y2="812" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FFFFFF"/>
-<stop offset="0.5" stop-color="#FCFCFC"/>
-<stop offset="1" stop-color="#F6F6F6"/>
-</radialGradient>
+<stop offset="0.5" stop-color="#FDFDFD"/>
+<stop offset="1" stop-color="#F8F8F8"/>
+</linearGradient>
 </defs>
 </svg>
