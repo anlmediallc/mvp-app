@@ -29,10 +29,10 @@ const Index = () => {
       }}
     >
       <div className="text-center">
-        {/* App Logo/Icon - Simple Circle with Tabler Bus Icon */}
+        {/* App Logo/Icon - Simple Circle with Lucide Bus Icon */}
         <div className="mb-8">
           <div className="w-20 h-20 bg-white rounded-full flex items-center justify-center shadow-lg mx-auto">
-            <i className="ti ti-bus text-4xl text-orange-500"></i>
+            <Bus className="h-10 w-10 text-orange-500" strokeWidth={2} />
           </div>
         </div>
         {/* App Name */}
