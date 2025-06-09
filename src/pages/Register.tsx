@@ -71,7 +71,11 @@ const Register = () => {
     // Successful registration simulation
     console.log("Registration successful:", data);
     setIsLoading(false);
-    navigate("/login");
+    navigate("/verification", {
+      state: {
+        email: data.email,
+      },
+    });
   };
 
   const handleTermsClick = () => {

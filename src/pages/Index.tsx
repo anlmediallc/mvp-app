@@ -68,13 +68,19 @@ const Index = () => {
             <div>
               <strong>Register:</strong>
               <ul className="ml-2 space-y-1">
-                <li>
-                  •{" "}
-                  <code className="bg-gray-100 px-1 rounded">
-                    existing@example.com
-                  </code>{" "}
-                  = Email exists error
-                </li>
+                <li>• <code className="bg-gray-100 px-1 rounded">existing@example.com</code> = Email exists error</li>
+                <li>• Short names or passwords = Validation errors</li>
+                <li>• Mismatched passwords = Confirm error</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Verification:</strong>
+              <ul className="ml-2 space-y-1">
+                <li>• <code className="bg-gray-100 px-1 rounded">1234</code> = Correct code</li>
+                <li>• Any other 4-digit code = Invalid error</li>
+                <li>• Auto countdown timer for resend</li>
+              </ul>
+            </div>
                 <li>• Short names or passwords = Validation errors</li>
                 <li>• Mismatched passwords = Confirm error</li>
               </ul>
@@ -90,6 +96,9 @@ const Index = () => {
           </Button>
           <Button asChild variant="secondary">
             <Link to="/register">✍️ Register Form</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link to="/verification">🔐 Verification Screen</Link>
           </Button>
           <Button asChild variant="destructive">
             <Link to="/login-error">❌ Login Error Screen</Link>
