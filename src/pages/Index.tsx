@@ -37,9 +37,12 @@ const Index = () => {
         <p className="mt-4 text-slate-600 max-w-md">
           Your onboarding screen has been successfully integrated
         </p>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-col gap-3">
           <Button asChild>
-            <Link to="/onboarding">View Onboarding Screen</Link>
+            <Link to="/onboarding">Single Onboarding Screen</Link>
+          </Button>
+          <Button asChild variant="outline">
+            <Link to="/onboarding-flow">Multi-Screen Flow</Link>
           </Button>
         </div>
       </div>
