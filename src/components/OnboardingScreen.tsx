@@ -40,6 +40,17 @@ const OnboardingScreen = React.forwardRef<
         {/* Background Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00]" />
 
+        {/* Background Illustration */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: "url('/onboarding-illustration.svg')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
+
         {/* Skip Button */}
         {showSkip && (
           <div className="relative z-10 flex justify-end p-6 pt-16">

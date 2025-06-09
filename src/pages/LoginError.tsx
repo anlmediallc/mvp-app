@@ -25,7 +25,15 @@ const LoginError = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div
+      className="min-h-screen flex items-center justify-center p-4"
+      style={{
+        backgroundImage: "url('/login-background.svg')",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+      }}
+    >
       <LoginErrorScreen
         onLogin={handleLogin}
         onForgotPassword={handleForgotPassword}

@@ -37,13 +37,24 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
         ref={ref}
         onClick={onTap}
         className={cn(
-          "relative flex h-screen w-full max-w-md mx-auto flex-col items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-[#F7960F] to-[#FF8C00] font-inter cursor-pointer",
+          "relative flex h-screen w-full max-w-md mx-auto flex-col items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 font-inter cursor-pointer",
           className,
         )}
         {...props}
       >
         {/* Background Gradient */}
-        <div className="absolute inset-0 bg-gradient-to-br from-orange-500 to-orange-600" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00]" />
+
+        {/* Background Illustration */}
+        <div
+          className="absolute inset-0 opacity-20"
+          style={{
+            backgroundImage: "url('/bus-illustration.svg')",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center bottom",
+            backgroundSize: "contain",
+          }}
+        />
 
         {/* Logo Container */}
         <div className="relative z-10 flex flex-col items-center justify-center">
