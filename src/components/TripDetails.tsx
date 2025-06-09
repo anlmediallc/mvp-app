@@ -367,25 +367,26 @@ export default function TripDetails({
           ) : (
             <div className="text-xs text-gray-500">No seats selected</div>
           )}
-        </div>
-        {/* Action Buttons */}
-        <div className="flex gap-2">
-          <button
-            onClick={onAddPassenger}
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-blue-50 text-blue-600 rounded-xl font-medium relative"
-          >
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500 rounded-full"></div>
-            <UserPlus className="h-4 w-4" />
-            <span className="text-sm">Add Passenger</span>
-          </button>
-          <button
-            onClick={onAddLuggage}
-            className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-blue-50 text-blue-600 rounded-xl font-medium relative"
-          >
-            <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500 rounded-full"></div>
-            <Package className="h-4 w-4" />
-            <span className="text-sm">Add Luggage</span>
-          </button>
+
+          {/* Action Buttons */}
+          <div className="flex gap-2">
+            <button
+              onClick={onAddPassenger}
+              className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-blue-50 text-blue-600 rounded-xl font-medium relative"
+            >
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500 rounded-full"></div>
+              <UserPlus className="h-4 w-4" />
+              <span className="text-sm">Add Passenger</span>
+            </button>
+            <button
+              onClick={onAddLuggage}
+              className="flex-1 flex items-center justify-center gap-2 py-3 px-4 bg-blue-50 text-blue-600 rounded-xl font-medium relative"
+            >
+              <div className="absolute -top-1 -right-1 w-3 h-3 bg-orange-500 rounded-full"></div>
+              <Package className="h-4 w-4" />
+              <span className="text-sm">Add Luggage</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
