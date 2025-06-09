@@ -3,7 +3,6 @@ import { useState } from "react";
 import { ArrowLeft, Upload, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
   SelectContent,
@@ -11,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
+import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 
 export interface LuggageCheckInFormProps {
@@ -19,14 +18,12 @@ export interface LuggageCheckInFormProps {
     luggageType: string;
     weight: string;
     specialInstructions: string;
-    imageFile?: File;
-    confirmsGuidelines: boolean;
+    imageFile: File | null;
   }) => void;
   onBack?: () => void;
   luggageTypeError?: string;
   weightError?: string;
   imageError?: string;
-  guidelinesError?: string;
   isLoading?: boolean;
   className?: string;
 }
@@ -42,7 +39,6 @@ const LuggageCheckInForm = React.forwardRef<
       luggageTypeError,
       weightError,
       imageError,
-      guidelinesError,
       isLoading = false,
       className,
       ...props
@@ -53,22 +49,21 @@ const LuggageCheckInForm = React.forwardRef<
     const [weight, setWeight] = useState("");
     const [specialInstructions, setSpecialInstructions] = useState("");
     const [imageFile, setImageFile] = useState<File | null>(null);
-    const [confirmsGuidelines, setConfirmsGuidelines] = useState(false);
+    const [agreedToGuidelines, setAgreedToGuidelines] = useState(false);
 
     const handleSubmit = (e: React.FormEvent) => {
       e.preventDefault();
-      if (onSubmit) {
+      if (onSubmit && luggageType && weight && agreedToGuidelines) {
         onSubmit({
           luggageType,
           weight,
           specialInstructions,
-          imageFile: imageFile || undefined,
-          confirmsGuidelines,
+          imageFile,
         });
       }
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
       const file = e.target.files?.[0];
       if (file) {
         setImageFile(file);
@@ -79,9 +74,15 @@ const LuggageCheckInForm = React.forwardRef<
       <div
         ref={ref}
         className={cn(
-          "w-full max-w-md mx-auto h-screen bg-white font-inter overflow-hidden",
+          "w-full max-w-md mx-auto h-screen font-inter overflow-hidden relative",
           className,
         )}
+        style={{
+          backgroundImage: "url(/orange-bg.svg)",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
         {...props}
       >
         {/* Status Bar */}
@@ -102,7 +103,7 @@ const LuggageCheckInForm = React.forwardRef<
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 pb-6">
+        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4">
           <div className="flex items-center">
             <button
               onClick={onBack}
@@ -114,178 +115,143 @@ const LuggageCheckInForm = React.forwardRef<
           </div>
         </div>
 
-        {/* Form Content */}
-        <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 overflow-y-auto">
-          <form onSubmit={handleSubmit} className="space-y-6">
-            {/* Luggage Type */}
-            <div className="space-y-2">
-              <label className="text-sm font-medium text-gray-700">
-                Luggage Type
-              </label>
-              <Select value={luggageType} onValueChange={setLuggageType}>
-                <SelectTrigger
-                  className={cn(
-                    "h-12 rounded-xl border-gray-200",
-                    luggageTypeError ? "border-red-500" : "",
-                  )}
-                >
-                  <SelectValue placeholder="Suitcase" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="suitcase">Suitcase</SelectItem>
-                  <SelectItem value="backpack">Backpack</SelectItem>
-                  <SelectItem value="duffel-bag">Duffel Bag</SelectItem>
-                  <SelectItem value="travel-bag">Travel Bag</SelectItem>
-                  <SelectItem value="sports-equipment">
-                    Sports Equipment
-                  </SelectItem>
-                  <SelectItem value="other">Other</SelectItem>
-                </SelectContent>
-              </Select>
-              {luggageTypeError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
-                  <AlertCircle className="h-4 w-4" />
-                  <span>{luggageTypeError}</span>
-                </div>
-              )}
-            </div>
-
-            {/* Luggage Weight */}
-            <div className="space-y-2">
-              <label
-                htmlFor="weight"
-                className="text-sm font-medium text-gray-700"
-              >
-                Luggage Weight
-              </label>
-              <Input
-                id="weight"
-                type="number"
-                placeholder="Enter weight (in kg)"
-                value={weight}
-                onChange={(e) => setWeight(e.target.value)}
-                className={cn(
-                  "h-12 rounded-xl border-gray-200",
-                  weightError ? "border-red-500" : "",
-                )}
-                min="0"
-                max="50"
-                step="0.1"
-              />
-              {weightError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
-                  <AlertCircle className="h-4 w-4" />
-                  <span>{weightError}</span>
-                </div>
-              )}
-            </div>
-
-            {/* Special Instructions */}
-            <div className="space-y-2">
-              <label
-                htmlFor="instructions"
-                className="text-sm font-medium text-gray-700"
-              >
-                Luggage Type
-              </label>
-              <Textarea
-                id="instructions"
-                placeholder="Special instructions (fragile, oversized, etc.)..."
-                value={specialInstructions}
-                onChange={(e) => setSpecialInstructions(e.target.value)}
-                className="min-h-32 rounded-xl border-gray-200 resize-none"
-                rows={4}
-              />
-            </div>
-
-            {/* File Upload */}
-            <div className="space-y-2">
-              <div className="border-2 border-dashed border-gray-200 rounded-xl p-6 text-center">
-                <input
-                  type="file"
-                  id="luggage-image"
-                  accept="image/*"
-                  onChange={handleFileChange}
-                  className="hidden"
-                />
-                <label
-                  htmlFor="luggage-image"
-                  className="cursor-pointer flex flex-col items-center gap-3"
-                >
-                  <div className="w-12 h-12 bg-orange-100 rounded-full flex items-center justify-center">
-                    <Upload className="h-6 w-6 text-orange-500" />
-                  </div>
-                  <div>
-                    <span className="text-orange-500 font-medium">
-                      Click to Upload
-                    </span>
-                    <span className="text-gray-600 ml-1">
-                      Upload Image of Luggage
-                    </span>
-                  </div>
-                  <span className="text-gray-500 text-sm">
-                    (Max. File size: 25 MB)
-                  </span>
+        {/* White Form Container */}
+        <div className="flex-1 p-4">
+          <div className="bg-white rounded-2xl p-6 h-full overflow-y-auto shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Luggage Type */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700">
+                  Luggage Type
                 </label>
-                {imageFile && (
-                  <div className="mt-3 text-sm text-green-600">
-                    ✓ {imageFile.name} uploaded
+                <Select value={luggageType} onValueChange={setLuggageType}>
+                  <SelectTrigger className="h-12 rounded-xl border-gray-300">
+                    <SelectValue placeholder="Suitcase" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="suitcase">Suitcase</SelectItem>
+                    <SelectItem value="backpack">Backpack</SelectItem>
+                    <SelectItem value="duffel">Duffel Bag</SelectItem>
+                    <SelectItem value="garment">Garment Bag</SelectItem>
+                    <SelectItem value="other">Other</SelectItem>
+                  </SelectContent>
+                </Select>
+                {luggageTypeError && (
+                  <div className="flex items-center gap-2 text-red-600 text-sm">
+                    <AlertCircle className="h-4 w-4" />
+                    <span>{luggageTypeError}</span>
                   </div>
                 )}
               </div>
-              {imageError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
-                  <AlertCircle className="h-4 w-4" />
-                  <span>{imageError}</span>
-                </div>
-              )}
-            </div>
 
-            {/* Confirmation Checkbox */}
-            <div className="space-y-3">
-              <div className="flex items-start space-x-3">
-                <Checkbox
-                  id="guidelines"
-                  checked={confirmsGuidelines}
-                  onCheckedChange={(checked) =>
-                    setConfirmsGuidelines(checked as boolean)
-                  }
-                  className="mt-0.5"
+              {/* Luggage Weight */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700">
+                  Luggage Weight
+                </label>
+                <Input
+                  type="text"
+                  placeholder="Enter weight (in kg)"
+                  value={weight}
+                  onChange={(e) => setWeight(e.target.value)}
+                  className={cn(
+                    "h-12 rounded-xl border-gray-300",
+                    weightError && "border-red-500 focus:border-red-500",
+                  )}
                 />
-                <label
-                  htmlFor="guidelines"
-                  className="text-sm text-gray-700 leading-relaxed"
-                >
+                {weightError && (
+                  <div className="flex items-center gap-2 text-red-600 text-sm">
+                    <AlertCircle className="h-4 w-4" />
+                    <span>{weightError}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Special Instructions */}
+              <div className="space-y-2">
+                <label className="text-sm font-medium text-gray-700">
+                  Luggage Type
+                </label>
+                <Textarea
+                  placeholder="Special instructions (fragile, oversized, etc.)"
+                  value={specialInstructions}
+                  onChange={(e) => setSpecialInstructions(e.target.value)}
+                  className="min-h-[120px] rounded-xl border-gray-300 resize-none"
+                />
+              </div>
+
+              {/* Image Upload Area */}
+              <div className="space-y-2">
+                <div className="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center bg-gray-50">
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    className="hidden"
+                    id="luggage-upload"
+                  />
+                  <label
+                    htmlFor="luggage-upload"
+                    className="cursor-pointer flex flex-col items-center"
+                  >
+                    <Upload className="h-8 w-8 text-orange-500 mb-2" />
+                    <div className="text-orange-500 font-medium">
+                      Click to Upload
+                    </div>
+                    <div className="text-gray-600 text-sm">
+                      Upload Image of Luggage
+                    </div>
+                    <div className="text-gray-500 text-xs mt-1">
+                      (Max file size 25 MB)
+                    </div>
+                  </label>
+                  {imageFile && (
+                    <div className="mt-2 text-sm text-gray-600">
+                      Selected: {imageFile.name}
+                    </div>
+                  )}
+                </div>
+                {imageError && (
+                  <div className="flex items-center gap-2 text-red-600 text-sm">
+                    <AlertCircle className="h-4 w-4" />
+                    <span>{imageError}</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Guidelines Checkbox */}
+              <div className="flex items-start gap-3">
+                <input
+                  type="checkbox"
+                  id="guidelines"
+                  checked={agreedToGuidelines}
+                  onChange={(e) => setAgreedToGuidelines(e.target.checked)}
+                  className="mt-1 h-4 w-4 text-orange-600 focus:ring-orange-500 border-gray-300 rounded"
+                />
+                <label htmlFor="guidelines" className="text-sm text-gray-600">
                   I Confirm My Luggage Meets Size And Weight Guidelines.
                 </label>
               </div>
-              {guidelinesError && (
-                <div className="flex items-center gap-2 text-red-500 text-sm">
-                  <AlertCircle className="h-4 w-4" />
-                  <span>{guidelinesError}</span>
-                </div>
-              )}
-            </div>
 
-            {/* Action Buttons */}
-            <div className="flex gap-3 pt-4">
-              <Button
-                type="button"
-                variant="outline"
-                className="flex-1 h-12 rounded-xl border-gray-300 text-gray-700"
-                disabled={isLoading}
-              >
-                Add Luggage
-              </Button>
-              <Button
-                type="submit"
-                disabled={isLoading || !confirmsGuidelines}
-                className="flex-1 h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
-              >
-                {isLoading ? "Adding..." : "Add Luggage"}
-              </Button>
-            </div>
-          </form>
+              {/* Action Buttons */}
+              <div className="flex gap-3 pt-4">
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="flex-1 h-12 rounded-xl border-orange-500 text-orange-500 hover:bg-orange-50"
+                >
+                  Add Luggage
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={isLoading || !agreedToGuidelines}
+                  className="flex-1 h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
+                >
+                  {isLoading ? "Adding..." : "Add Luggage"}
+                </Button>
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     );
