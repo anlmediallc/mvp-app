@@ -47,6 +47,37 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
 
         {/* Logo Container */}
         <div className="relative z-10 flex flex-col items-center justify-center">
+          {/* App Icon at the top */}
+          <div className="mb-4">
+            <svg
+              width="60"
+              height="60"
+              viewBox="0 0 60 60"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              className="w-15 h-15"
+            >
+              {/* Orange rounded square background */}
+              <rect width="60" height="60" rx="12" fill="#E97B00" />
+              {/* White location pin shape */}
+              <path
+                d="M30 8C22.268 8 16 14.268 16 22C16 29.732 22.268 36 30 36C37.732 36 44 29.732 44 22C44 14.268 37.732 8 30 8Z"
+                fill="white"
+              />
+              {/* Location pin point */}
+              <path d="M30 36L26 42H34L30 36Z" fill="white" />
+              {/* Bus icon inside the pin */}
+              <g transform="translate(22, 16)">
+                <rect x="2" y="4" width="12" height="8" rx="1" fill="#E97B00" />
+                <rect x="3" y="2" width="10" height="2" rx="1" fill="#E97B00" />
+                <circle cx="5" cy="10" r="1" fill="white" />
+                <circle cx="11" cy="10" r="1" fill="white" />
+                <rect x="1" y="6" width="1" height="2" fill="#E97B00" />
+                <rect x="14" y="6" width="1" height="2" fill="#E97B00" />
+              </g>
+            </svg>
+          </div>
+
           {/* Direct Bus Icon from Figma */}
           <div
             className="mb-6"
