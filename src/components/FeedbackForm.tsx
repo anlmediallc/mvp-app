@@ -94,11 +94,11 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
               key={star}
               type="button"
               onClick={() => onRate(star)}
-              className="p-0.5"
+              className="p-1"
             >
               <Star
                 className={cn(
-                  "h-4 w-4 transition-colors",
+                  "h-5 w-5 transition-colors",
                   star <= rating
                     ? "fill-orange-400 text-orange-400"
                     : "text-gray-300",
@@ -114,7 +114,7 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
       <div
         ref={ref}
         className={cn(
-          "w-full max-w-md mx-auto h-screen bg-white font-inter overflow-hidden flex flex-col",
+          "w-full max-w-md mx-auto h-screen bg-white font-inter overflow-hidden",
           className,
         )}
         {...props}
@@ -137,7 +137,7 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-3">
+        <div className="bg-gradient-to-r from-[#F7960F] to-[#FF8C00] text-white px-4 py-4 pb-6">
           <div className="flex items-center">
             <button
               onClick={onBack}
@@ -150,26 +150,37 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
         </div>
 
         {/* Form Content */}
-        <div className="flex-1 bg-white rounded-t-3xl -mt-2 relative z-10 p-4 overflow-hidden">
-          <form onSubmit={handleSubmit} className="h-full flex flex-col">
-            {/* Happy Icon */}
-            <div className="text-center mb-4">
-              <div className="text-4xl mb-2">😊</div>
+        <div className="flex-1 bg-white rounded-t-3xl -mt-3 relative z-10 p-6 overflow-y-auto">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Happy Icon with Stars */}
+            <div className="text-center mb-6">
+              <div className="relative inline-block">
+                <div className="text-6xl mb-2">😊</div>
+                <div className="absolute -top-2 -left-2 text-orange-400">
+                  <Star className="h-4 w-4 fill-current" />
+                </div>
+                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 text-orange-400">
+                  <Star className="h-5 w-5 fill-current" />
+                </div>
+                <div className="absolute -top-2 -right-2 text-orange-400">
+                  <Star className="h-4 w-4 fill-current" />
+                </div>
+              </div>
             </div>
 
             {/* Overall Rating Question */}
-            <div className="text-center mb-4">
-              <h2 className="text-gray-600 text-base mb-3">
+            <div className="text-center mb-8">
+              <h2 className="text-gray-600 text-lg mb-6">
                 How was your travel experience?
               </h2>
-              <div className="flex justify-center gap-2">
+              <div className="flex justify-center gap-4">
                 {emojiRatings.map((item) => (
                   <button
                     key={item.value}
                     type="button"
                     onClick={() => setOverallRating(item.value)}
                     className={cn(
-                      "w-10 h-10 rounded-full flex items-center justify-center text-xl transition-all",
+                      "w-12 h-12 rounded-full flex items-center justify-center text-2xl transition-all",
                       overallRating === item.value
                         ? `${item.bg} ring-2 ring-orange-400 scale-110`
                         : "bg-orange-50 hover:bg-orange-100",
@@ -182,13 +193,13 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
             </div>
 
             {/* Rating Categories */}
-            <div className="space-y-3 mb-4 flex-1">
+            <div className="space-y-6 mb-8">
               {categories.map((category) => (
                 <div
                   key={category.key}
                   className="flex justify-between items-center"
                 >
-                  <span className="text-gray-700 text-sm font-medium">
+                  <span className="text-gray-700 font-medium">
                     {category.label}
                   </span>
                   {renderStars(
@@ -200,15 +211,13 @@ const FeedbackForm = React.forwardRef<HTMLDivElement, FeedbackFormProps>(
             </div>
 
             {/* Submit Button */}
-            <div className="pt-2">
-              <Button
-                type="submit"
-                disabled={isLoading || overallRating === 0}
-                className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
-              >
-                {isLoading ? "Submitting..." : "Submit Feedback"}
-              </Button>
-            </div>
+            <Button
+              type="submit"
+              disabled={isLoading || overallRating === 0}
+              className="w-full h-12 bg-gradient-to-r from-[#F7960F] to-[#FF8C00] hover:from-orange-600 hover:to-orange-700 text-white rounded-xl disabled:opacity-50"
+            >
+              {isLoading ? "Submitting..." : "Submit Feedback"}
+            </Button>
           </form>
         </div>
       </div>

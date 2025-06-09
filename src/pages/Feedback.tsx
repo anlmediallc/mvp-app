@@ -53,7 +53,15 @@ const Feedback = () => {
   };
 
   return (
-    <div className="h-screen bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center p-0 overflow-hidden">
+    <div
+      className="min-h-screen bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center p-0"
+      style={{
+        backgroundImage: "url(/orange-bg.svg)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
       <FeedbackForm
         onSubmit={handleSubmit}
         onBack={handleBack}
