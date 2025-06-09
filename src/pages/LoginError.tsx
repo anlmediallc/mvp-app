@@ -15,8 +15,8 @@ const LoginError = () => {
   };
 
   const handleCreateAccount = () => {
-    console.log("Create account clicked");
-    // navigate("/signup");
+    // Navigate to register page
+    navigate("/register");
   };
 
   const handleSocialLogin = (provider: "facebook" | "google") => {

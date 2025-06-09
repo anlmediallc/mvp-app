@@ -43,9 +43,8 @@ const Login = () => {
   };
 
   const handleCreateAccount = () => {
-    // Navigate to signup page (would be implemented later)
-    console.log("Create account clicked");
-    // navigate("/signup");
+    // Navigate to register page
+    navigate("/register");
   };
 
   const handleSocialLogin = (provider: "facebook" | "google") => {

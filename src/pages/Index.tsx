@@ -39,15 +39,26 @@ const Index = () => {
           states.
         </p>
         <div className="mt-4 p-4 bg-white rounded-lg shadow-sm text-left max-w-md">
-          <h3 className="font-semibold text-slate-700 mb-2">
-            🧪 Test Login Form:
-          </h3>
-          <ul className="text-sm text-slate-600 space-y-1">
-            <li>
-              • <code className="bg-gray-100 px-1 rounded">test@test.com</code>{" "}
-              + <code className="bg-gray-100 px-1 rounded">wrongpassword</code>{" "}
-              = Password error
-            </li>
+          <h3 className="font-semibold text-slate-700 mb-2">🧪 Test Forms:</h3>
+          <div className="text-sm text-slate-600 space-y-2">
+            <div>
+              <strong>Login:</strong>
+              <ul className="ml-2 space-y-1">
+                <li>• <code className="bg-gray-100 px-1 rounded">test@test.com</code> + <code className="bg-gray-100 px-1 rounded">wrongpassword</code> = Password error</li>
+                <li>• <code className="bg-gray-100 px-1 rounded">invalid@email.com</code> + any password = Email error</li>
+                <li>• Any other email + password = Success</li>
+              </ul>
+            </div>
+            <div>
+              <strong>Register:</strong>
+              <ul className="ml-2 space-y-1">
+                <li>• <code className="bg-gray-100 px-1 rounded">existing@example.com</code> = Email exists error</li>
+                <li>• Short names or passwords = Validation errors</li>
+                <li>• Mismatched passwords = Confirm error</li>
+              </ul>
+            </div>
+          </div>
+        </div>
             <li>
               •{" "}
               <code className="bg-gray-100 px-1 rounded">
@@ -64,6 +75,9 @@ const Index = () => {
           </Button>
           <Button asChild>
             <Link to="/login">📝 Login Form</Link>
+          </Button>
+          <Button asChild variant="secondary">
+            <Link to="/register">✍️ Register Form</Link>
           </Button>
           <Button asChild variant="destructive">
             <Link to="/login-error">❌ Login Error Screen</Link>
