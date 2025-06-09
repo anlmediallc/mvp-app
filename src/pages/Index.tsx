@@ -38,6 +38,9 @@ const Index = () => {
           Your onboarding screen has been successfully integrated
         </p>
         <div className="mt-6 flex flex-col gap-3">
+          <Button asChild size="lg">
+            <Link to="/splash">🚌 Buscomfy+ Splash</Link>
+          </Button>
           <Button asChild>
             <Link to="/onboarding">Single Onboarding Screen</Link>
           </Button>
