@@ -1,3 +1,6 @@
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+
 const Index = () => {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200">
@@ -29,12 +32,16 @@ const Index = () => {
               strokeDashoffset="75"
             />
           </svg>
-          Generating your app...
+          App Ready!
         </h1>
         <p className="mt-4 text-slate-600 max-w-md">
-          Watch the chat on the left for updates that might need your attention
-          to finish generating
+          Your onboarding screen has been successfully integrated
         </p>
+        <div className="mt-6">
+          <Button asChild>
+            <Link to="/onboarding">View Onboarding Screen</Link>
+          </Button>
+        </div>
       </div>
     </div>
   );
