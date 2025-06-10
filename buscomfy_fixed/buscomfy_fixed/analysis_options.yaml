@@ -1,0 +1,27 @@
+linter:
+  rules:
+    - avoid_print
+    - prefer_const_constructors
+    - unnecessary_new
+    - always_specify_types
+    - prefer_final_fields
+    - sort_constructors_first
+    - prefer_single_quotes
+    - curly_braces_in_flow_control_structures
+    - public_member_api_docs
+    - lines_longer_than_80_chars
+    - type_annotate_public_apis
+    - unnecessary_lambdas
+    - prefer_is_empty
+    - prefer_is_not_empty
+    - avoid_renaming_method_parameters
+    - prefer_adjacent_string_concatenation
+    - avoid_types_on_closure_parameters
+    - prefer_mixin
+    - prefer_typing_uninitialized_variables
+    - unnecessary_this
+    - prefer_const_literals_to_create_immutables
+    - prefer_final_locals
+    - unnecessary_getters_setters
+    - avoid_bool_literals_in_conditional_expressions
+    - prefer_trailing_comma

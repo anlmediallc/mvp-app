@@ -7,7 +7,7 @@ android {
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "com.example.buscomfy_app"
+        applicationId = "com.yourcompany.buscomfy"
         minSdk = 21
         targetSdk = 33
         versionCode = 1
