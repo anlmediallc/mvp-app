@@ -16,12 +16,7 @@ class BuscomfyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
         fontFamily: 'Inter',
       ),
-      home: const BuscomfySplashScreen(
-        onTap: () {
-          print('Splash screen tapped!');
-          // Add navigation to other screens here later
-        },
-      ),
+      home: BuscomfySplashScreen(), // Removed const and onTap
       debugShowCheckedModeBanner: false,
     );
   }
