@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'screens/splash_screen.dart';
+import 'screens/onboarding_screen.dart';
+import 'screens/trip_details_screen.dart';
+import 'screens/trip_stops_screen.dart';
+import 'screens/verification_screen.dart';
 
 void main() {
   runApp(const BuscomfyApp());
@@ -16,7 +20,14 @@ class BuscomfyApp extends StatelessWidget {
         primarySwatch: Colors.orange,
         fontFamily: 'Inter',
       ),
-      home: BuscomfySplashScreen(), // Removed const and onTap
+      initialRoute: '/',
+      routes: {
+        '/': (context) => BuscomfySplashScreen(),
+        '/onboarding': (context) => OnboardingScreen(),
+        '/trip-details': (context) => TripDetailsScreen(),
+        '/trip-stops': (context) => TripStopsScreen(),
+        '/verification': (context) => VerificationScreen(),
+      },
       debugShowCheckedModeBanner: false,
     );
   }
