@@ -69,9 +69,9 @@ class MyAccountScreen extends StatelessWidget {
                             ),
                           ],
                         ),
-                        
+
                         SizedBox(height: 24),
-                        
+
                         // User profile section
                         Row(
                           children: [
@@ -96,9 +96,9 @@ class MyAccountScreen extends StatelessWidget {
                                 ),
                               ),
                             ),
-                            
+
                             SizedBox(width: 16),
-                            
+
                             // User info
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,7 +128,7 @@ class MyAccountScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
+
                   // Main content area
                   Expanded(
                     child: Container(
@@ -158,18 +158,17 @@ class MyAccountScreen extends StatelessWidget {
                                 ),
                               ),
                               SizedBox(height: 16),
-                              
+
                               // Personal Info menu item
                               _buildMenuItem(
                                 context,
                                 icon: Icons.person_outline,
                                 title: 'Personal Info',
                                 onTap: () {
-                                  // Navigate to personal info screen
-                                  print('Navigate to personal info');
+                                  Navigator.pushNamed(context, '/personal-info');
                                 },
                               ),
-                              
+
                               // Change Password menu item
                               _buildMenuItem(
                                 context,
@@ -179,7 +178,7 @@ class MyAccountScreen extends StatelessWidget {
                                   Navigator.pushNamed(context, '/forgot-password');
                                 },
                               ),
-                              
+
                               // Notification Preferences menu item
                               _buildMenuItem(
                                 context,
@@ -190,7 +189,7 @@ class MyAccountScreen extends StatelessWidget {
                                   print('Navigate to notifications');
                                 },
                               ),
-                              
+
                               // Privacy Settings menu item
                               _buildMenuItem(
                                 context,
@@ -201,7 +200,7 @@ class MyAccountScreen extends StatelessWidget {
                                   print('Navigate to help center');
                                 },
                               ),
-                              
+
                               // Logout menu item
                               _buildMenuItem(
                                 context,
@@ -266,7 +265,7 @@ class MyAccountScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                
+
                 // Chevron right arrow
                 Icon(
                   Icons.chevron_right,

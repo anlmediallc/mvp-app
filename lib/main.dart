@@ -9,6 +9,7 @@ import 'screens/register_screen.dart';
 import 'screens/my_account_screen.dart';
 import 'screens/luggage_check_in_screen.dart';
 import 'screens/notification_center_screen.dart';
+import 'screens/personal_info_screen.dart';
 import 'screens/trip_details_screen.dart';
 import 'screens/trip_stops_screen.dart';
 import 'screens/verification_screen.dart';
@@ -40,6 +41,7 @@ class BuscomfyApp extends StatelessWidget {
           '/my-account': (context) => MyAccountScreen(),
           '/luggage-check-in': (context) => LuggageCheckInScreen(),
           '/notifications': (context) => NotificationCenterScreen(),
+          '/personal-info': (context) => PersonalInfoScreen(),
           '/trip-details': (context) => TripDetailsScreen(),
           '/trip-stops': (context) => TripStopsScreen(),
           '/verification': (context) => VerificationScreen(),
