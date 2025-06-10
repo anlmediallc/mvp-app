@@ -33,45 +33,34 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
     }, [autoAdvance, onTap, delay]);
 
     return (
-      <>
-        {/* Custom CSS for responsive background */}
-        <style jsx>{`
-          .splash-background {
-            background: linear-gradient(to bottom right, #f7960f, #ff8c00);
-          }
-
-          @media (max-width: 991px) {
-            .splash-background {
-              background-image: url("https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2Fa353560963de4121ab0b9d86f096f4db");
-              background-repeat: no-repeat;
-              background-position: center;
-              background-size: cover;
-            }
-          }
-        `}</style>
-
+      <div
+        ref={ref}
+        onClick={onTap}
+        className={cn(
+          "relative flex h-[550px] w-full max-w-md mx-auto flex-col items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 font-inter cursor-pointer",
+          className,
+        )}
+        {...props}
+      >
+        {/* Background with Builder.io image */}
         <div
-          ref={ref}
-          onClick={onTap}
-          className={cn(
-            "relative flex h-[550px] w-full max-w-md mx-auto flex-col items-center justify-center overflow-hidden rounded-3xl bg-gradient-to-br from-orange-500 to-orange-600 font-inter cursor-pointer",
-            className,
-          )}
-          {...props}
-        >
-          {/* Background with responsive behavior */}
-          <div className="absolute inset-0 splash-background" />
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2Fa353560963de4121ab0b9d86f096f4db)",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+          }}
+        />
 
-          {/* Tap hint for manual advance */}
-          {!autoAdvance && onTap && (
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-              <p className="text-white/80 text-xs font-medium">
-                Tap to continue
-              </p>
-            </div>
-          )}
-        </div>
-      </>
+        {/* Tap hint for manual advance */}
+        {!autoAdvance && onTap && (
+          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+            <p className="text-white/80 text-xs font-medium">Tap to continue</p>
+          </div>
+        )}
+      </div>
     );
   },
 );
