@@ -40,7 +40,7 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
             background: linear-gradient(to bottom right, #f7960f, #ff8c00);
           }
 
-          @media (max-width: 640px) {
+          @media (max-width: 991px) {
             .splash-background {
               background-image: url("https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2Fa353560963de4121ab0b9d86f096f4db");
               background-repeat: no-repeat;
@@ -60,18 +60,7 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
           {...props}
         >
           {/* Background with responsive behavior */}
-          <div
-            className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00]"
-            style={{
-              "@media (max-width: 991px)": {
-                backgroundImage:
-                  "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2Fa353560963de4121ab0b9d86f096f4db)",
-                backgroundRepeat: "no-repeat",
-                backgroundPosition: "center",
-                backgroundSize: "cover",
-              },
-            }}
-          />
+          <div className="absolute inset-0 splash-background" />
 
           {/* Tap hint for manual advance */}
           {!autoAdvance && onTap && (
