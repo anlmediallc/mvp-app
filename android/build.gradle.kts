@@ -1,13 +1,4 @@
-buildscript {
-    dependencies {
-        classpath("com.android.tools.build:gradle:7.3.0")
-        }
-        repositories {
-        google()
-        mavenCentral()
-    }
-}
-        allprojects {
+allprojects {
     repositories {
         google()
         mavenCentral()
