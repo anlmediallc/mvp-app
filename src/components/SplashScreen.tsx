@@ -60,10 +60,18 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
           {...props}
         >
           {/* Background with responsive behavior */}
-          <div className="absolute inset-0 splash-background" />
-
-          {/* Logo Container */}
-          <div className="relative z-10 flex flex-col items-center justify-center" />
+          <div
+            className="absolute inset-0 bg-gradient-to-br from-[#F7960F] to-[#FF8C00]"
+            style={{
+              "@media (max-width: 991px)": {
+                backgroundImage:
+                  "url(https://cdn.builder.io/api/v1/image/assets%2F47bedcd915494a2c9d8c3faf11622396%2Fa353560963de4121ab0b9d86f096f4db)",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center",
+                backgroundSize: "cover",
+              },
+            }}
+          />
 
           {/* Tap hint for manual advance */}
           {!autoAdvance && onTap && (
