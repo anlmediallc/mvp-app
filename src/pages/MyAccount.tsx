@@ -66,7 +66,7 @@ const MyAccount = () => {
     >
       <MyAccountComponent
         onBack={handleBack}
-        onMenuItemClick={handleMenuItemClick}
+        onMenuItemClick={handleMenuClick}
         onNavItemClick={handleNavItemClick}
         userInfo={userInfo}
       />
