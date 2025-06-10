@@ -196,8 +196,7 @@ class MyAccountScreen extends StatelessWidget {
                                 icon: Icons.privacy_tip_outlined,
                                 title: 'Privacy Settings',
                                 onTap: () {
-                                  // Navigate to help center
-                                  print('Navigate to help center');
+                                  Navigator.pushNamed(context, '/help-center');
                                 },
                               ),
 
