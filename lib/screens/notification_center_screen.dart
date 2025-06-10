@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/bottom_navigation_bar.dart';
 
 class NotificationCenterScreen extends StatelessWidget {
   // Sample notification data
@@ -48,8 +49,10 @@ class NotificationCenterScreen extends StatelessWidget {
                 color: Colors.white,
                 fontFamily: 'Inter',
               ),
-              child: Column(
+              child: Stack(
                 children: [
+                  Column(
+                    children: [
                   // Header section with background image
                   Container(
                     decoration: BoxDecoration(
@@ -97,7 +100,7 @@ class NotificationCenterScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
+
                   // White content section with rounded top corners
                   Expanded(
                     child: Container(
@@ -133,15 +136,15 @@ class NotificationCenterScreen extends StatelessWidget {
                                           ),
                                         ),
                                         SizedBox(height: 8),
-                                        
+
                                         // Notification items
-                                        ...notifications.take(2).map((notification) => 
+                                        ...notifications.take(2).map((notification) =>
                                           _buildNotificationItem(notification)
                                         ).toList(),
                                       ],
                                     ),
                                   ),
-                                  
+
                                   // Earlier section
                                   Container(
                                     margin: EdgeInsets.only(bottom: 16),
@@ -158,9 +161,9 @@ class NotificationCenterScreen extends StatelessWidget {
                                           ),
                                         ),
                                         SizedBox(height: 8),
-                                        
+
                                         // Earlier notification items
-                                        ...notifications.skip(2).map((notification) => 
+                                        ...notifications.skip(2).map((notification) =>
                                           _buildNotificationItem(notification)
                                         ).toList(),
                                       ],
@@ -172,6 +175,23 @@ class NotificationCenterScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                    ],
+                  ),
+
+                  // Bottom Navigation
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: CustomBottomNavigationBar(
+                      currentRoute: '/notifications',
+                      onNavItemTap: (route) {
+                        if (route != '/notifications') {
+                          Navigator.pushReplacementNamed(context, route);
+                        }
+                      },
                     ),
                   ),
                 ],
@@ -216,9 +236,9 @@ class NotificationCenterScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                
+
                 SizedBox(width: 8),
-                
+
                 // Notification content
                 Expanded(
                   child: Column(

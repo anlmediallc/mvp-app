@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/bottom_navigation_bar.dart';
 
 class TripStopsScreen extends StatelessWidget {
   // Sample stops data
@@ -61,8 +62,10 @@ class TripStopsScreen extends StatelessWidget {
                 color: Colors.white,
                 fontFamily: 'Inter',
               ),
-              child: Column(
+              child: Stack(
                 children: [
+                  Column(
+                    children: [
                   // Status bar
                   Container(
                     decoration: BoxDecoration(
@@ -162,7 +165,7 @@ class TripStopsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
+
                   // Header with back button and title
                   Container(
                     decoration: BoxDecoration(
@@ -204,7 +207,7 @@ class TripStopsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
+
                   // Main content
                   Expanded(
                     child: SingleChildScrollView(
@@ -274,7 +277,7 @@ class TripStopsScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          
+
                           // Stops timeline
                           Container(
                             padding: EdgeInsets.all(16),
@@ -291,13 +294,13 @@ class TripStopsScreen extends StatelessWidget {
                                   ),
                                 ),
                                 SizedBox(height: 16),
-                                
+
                                 // Timeline items
                                 ...stops.asMap().entries.map((entry) {
                                   int index = entry.key;
                                   Map<String, dynamic> stop = entry.value;
                                   bool isLast = index == stops.length - 1;
-                                  
+
                                   return _buildTimelineItem(
                                     stop: stop,
                                     isLast: isLast,
@@ -308,6 +311,23 @@ class TripStopsScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                    ],
+                  ),
+
+                  // Bottom Navigation
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: CustomBottomNavigationBar(
+                      currentRoute: '/trip-stops',
+                      onNavItemTap: (route) {
+                        if (route != '/trip-stops') {
+                          Navigator.pushReplacementNamed(context, route);
+                        }
+                      },
                     ),
                   ),
                 ],
@@ -377,9 +397,9 @@ class TripStopsScreen extends StatelessWidget {
               ],
             ),
           ),
-          
+
           SizedBox(width: 16),
-          
+
           // Timeline indicator column
           Column(
             children: [
@@ -399,7 +419,7 @@ class TripStopsScreen extends StatelessWidget {
                   ),
                 ),
               ),
-              
+
               // Connecting line (if not last item)
               if (!isLast)
                 Container(
@@ -412,9 +432,9 @@ class TripStopsScreen extends StatelessWidget {
                 ),
             ],
           ),
-          
+
           SizedBox(width: 16),
-          
+
           // Stop information column
           Expanded(
             child: Column(

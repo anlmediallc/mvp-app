@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/bottom_navigation_bar.dart';
 
 class TripDetailsScreen extends StatelessWidget {
   @override
@@ -17,7 +18,9 @@ class TripDetailsScreen extends StatelessWidget {
                 color: Colors.white,
                 fontFamily: 'Inter',
               ),
-              child: Column(
+              child: Stack(
+                children: [
+                  Column(
                 children: [
                   // Status bar
                   Container(
@@ -118,7 +121,7 @@ class TripDetailsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
+
                   // Header with back button and title
                   Container(
                     decoration: BoxDecoration(
@@ -160,7 +163,7 @@ class TripDetailsScreen extends StatelessWidget {
                       ],
                     ),
                   ),
-                  
+
                   // Main content
                   Expanded(
                     child: SingleChildScrollView(
@@ -232,9 +235,9 @@ class TripDetailsScreen extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                
+
                                 SizedBox(height: 16),
-                                
+
                                 // Route information
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -270,7 +273,7 @@ class TripDetailsScreen extends StatelessWidget {
                                         ),
                                       ],
                                     ),
-                                    
+
                                     // Route visualization
                                     Expanded(
                                       child: Container(
@@ -333,7 +336,7 @@ class TripDetailsScreen extends StatelessWidget {
                                         ),
                                       ),
                                     ),
-                                    
+
                                     // Arrival info
                                     Column(
                                       crossAxisAlignment: CrossAxisAlignment.center,
@@ -370,7 +373,7 @@ class TripDetailsScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          
+
                           // Trip information cards
                           Container(
                             padding: EdgeInsets.all(16),
@@ -403,7 +406,7 @@ class TripDetailsScreen extends StatelessWidget {
                               ],
                             ),
                           ),
-                          
+
                           // Action buttons
                           Container(
                             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -434,7 +437,7 @@ class TripDetailsScreen extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                
+
                                 // Download Ticket button
                                 Container(
                                   width: double.infinity,
@@ -485,11 +488,27 @@ class TripDetailsScreen extends StatelessWidget {
                     ),
                   ),
                 ],
+                  ),
+
+                  // Bottom Navigation
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: CustomBottomNavigationBar(
+                      currentRoute: '/trip-details',
+                      onNavItemTap: (route) {
+                        if (route != '/trip-details') {
+                          Navigator.pushReplacementNamed(context, route);
+                        }
+                      },
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
         ),
-      ),
     );
   }
 

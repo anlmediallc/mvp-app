@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/bottom_navigation_bar.dart';
 
 class MyAccountScreen extends StatelessWidget {
   // Demo user info - in a real app this would come from user context/API
@@ -28,8 +29,10 @@ class MyAccountScreen extends StatelessWidget {
                 color: Colors.white,
                 fontFamily: 'Inter',
               ),
-              child: Column(
+              child: Stack(
                 children: [
+                  Column(
+                    children: [
                   // Header section with background image
                   Container(
                     decoration: BoxDecoration(
@@ -214,6 +217,23 @@ class MyAccountScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+                    ),
+                  ),
+                    ],
+                  ),
+
+                  // Bottom Navigation
+                  Positioned(
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    child: CustomBottomNavigationBar(
+                      currentRoute: '/my-account',
+                      onNavItemTap: (route) {
+                        if (route != '/my-account') {
+                          Navigator.pushReplacementNamed(context, route);
+                        }
+                      },
                     ),
                   ),
                 ],
