@@ -4,6 +4,7 @@ import 'screens/onboarding_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/login_error_screen.dart';
 import 'screens/forgot_password_screen.dart';
+import 'screens/create_new_password_screen.dart';
 import 'screens/trip_details_screen.dart';
 import 'screens/trip_stops_screen.dart';
 import 'screens/verification_screen.dart';
@@ -30,6 +31,7 @@ class BuscomfyApp extends StatelessWidget {
           '/login': (context) => LoginScreen(),
           '/login-error': (context) => LoginErrorScreen(),
           '/forgot-password': (context) => ForgotPasswordScreen(),
+          '/create-new-password': (context) => CreateNewPasswordScreen(),
           '/trip-details': (context) => TripDetailsScreen(),
           '/trip-stops': (context) => TripStopsScreen(),
           '/verification': (context) => VerificationScreen(),
