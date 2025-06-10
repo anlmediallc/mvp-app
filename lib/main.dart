@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/splash_screen.dart';
 import 'screens/onboarding_screen.dart';
 import 'screens/login_screen.dart';
+import 'screens/login_error_screen.dart';
 import 'screens/trip_details_screen.dart';
 import 'screens/trip_stops_screen.dart';
 import 'screens/verification_screen.dart';
@@ -26,6 +27,7 @@ class BuscomfyApp extends StatelessWidget {
           '/': (context) => BuscomfySplashScreen(),
           '/onboarding': (context) => OnboardingScreen(),
           '/login': (context) => LoginScreen(),
+          '/login-error': (context) => LoginErrorScreen(),
           '/trip-details': (context) => TripDetailsScreen(),
           '/trip-stops': (context) => TripStopsScreen(),
           '/verification': (context) => VerificationScreen(),
