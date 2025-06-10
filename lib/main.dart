@@ -18,8 +18,8 @@ class BuscomfyApp extends StatelessWidget {
       ),
       home: const BuscomfySplashScreen(
         onTap: () {
-          // Add navigation to next screen here later
           print('Splash screen tapped!');
+          // Add navigation to other screens here later
         },
       ),
       debugShowCheckedModeBanner: false,
