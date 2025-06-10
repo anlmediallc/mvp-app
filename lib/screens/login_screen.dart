@@ -55,7 +55,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       SizedBox(height: 28),
-                      
+
                       // Login Title
                       Text(
                         'Login',
@@ -67,9 +67,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      
+
                       SizedBox(height: 32),
-                      
+
                       // Email Field
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -128,9 +128,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
-                      
+
                       SizedBox(height: 24),
-                      
+
                       // Password Field
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -205,16 +205,15 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
-                      
+
                       SizedBox(height: 24),
-                      
+
                       // Forgot Password Link
                       Align(
                         alignment: Alignment.centerRight,
                         child: GestureDetector(
                           onTap: () {
-                            // Handle forgot password
-                            print('Forgot password tapped');
+                            Navigator.pushNamed(context, '/forgot-password');
                           },
                           child: Text(
                             'Forgot Password?',
@@ -228,9 +227,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      
+
                       SizedBox(height: 24),
-                      
+
                       // Login Button
                       Container(
                         height: 48,
@@ -276,9 +275,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      
+
                       SizedBox(height: 32),
-                      
+
                       // Divider with "Or continue with"
                       Row(
                         children: [
@@ -308,9 +307,9 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ],
                       ),
-                      
+
                       SizedBox(height: 24),
-                      
+
                       // Facebook Login Button
                       Container(
                         height: 48,
@@ -354,7 +353,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                       ),
-                      
+
                       SizedBox(height: 24),
                     ],
                   ),

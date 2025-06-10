@@ -55,7 +55,7 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       SizedBox(height: 28),
-                      
+
                       // Login Title
                       Text(
                         'Login',
@@ -67,9 +67,9 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                         ),
                         textAlign: TextAlign.center,
                       ),
-                      
+
                       SizedBox(height: 32),
-                      
+
                       // Email Field (no error state)
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -120,9 +120,9 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                           ),
                         ],
                       ),
-                      
+
                       SizedBox(height: 24),
-                      
+
                       // Password Field (with error state)
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -190,7 +190,7 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                               height: 1.5,
                             ),
                           ),
-                          
+
                           // Error Message
                           SizedBox(height: 8),
                           Row(
@@ -214,16 +214,15 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                           ),
                         ],
                       ),
-                      
+
                       SizedBox(height: 24),
-                      
+
                       // Forgot Password Link
                       Align(
                         alignment: Alignment.centerRight,
                         child: GestureDetector(
                           onTap: () {
-                            // Handle forgot password
-                            print('Forgot password tapped');
+                            Navigator.pushNamed(context, '/forgot-password');
                           },
                           child: Text(
                             'Forgot Password?',
@@ -237,9 +236,9 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                           ),
                         ),
                       ),
-                      
+
                       SizedBox(height: 24),
-                      
+
                       // Login Button
                       Container(
                         height: 48,
@@ -283,9 +282,9 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                           ),
                         ),
                       ),
-                      
+
                       SizedBox(height: 32),
-                      
+
                       // Divider with "Or continue with"
                       Row(
                         children: [
@@ -315,9 +314,9 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                           ),
                         ],
                       ),
-                      
+
                       SizedBox(height: 24),
-                      
+
                       // Facebook Login Button
                       Container(
                         height: 48,
@@ -361,7 +360,7 @@ class _LoginErrorScreenState extends State<LoginErrorScreen> {
                           ),
                         ),
                       ),
-                      
+
                       SizedBox(height: 24),
                     ],
                   ),
