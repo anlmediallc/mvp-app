@@ -3,7 +3,7 @@ workflows:
     name: Build Flutter APK
     environment:
       flutter: stable
-    working_directory: Desktop/MVP/buscomfy_app
+    working_directory: .
     scripts:
       - flutter pub get
       - flutter build apk --debug
