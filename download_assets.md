@@ -1,6 +1,6 @@
-# Download Assets from Builder.io
+# Complete Assets Download Guide for Codemagic
 
-## Required Images for Codemagic Build
+## 🎨 Background Images (Required)
 
 ### 1. Splash Background Image
 
@@ -8,13 +8,13 @@
 - **Save as:** `assets/images/splash_background.jpg`
 - **Used in:** Splash screen background
 
-### 2. Orange Background
+### 2. Orange Background SVG
 
 - **URL:** `https://2ac212472ec64c4582e1703c57c9c27f-b99b23cf3e5141f3b8ba63a73.projects.builder.codes/orange-bg.svg`
 - **Save as:** `assets/backgrounds/orange_bg.svg`
 - **Used in:** Various screen backgrounds
 
-### 3. Login Background
+### 3. Login Background SVG
 
 - **URL:** `https://2ac212472ec64c4582e1703c57c9c27f-b99b23cf3e5141f3b8ba63a73.fly.dev/login-bg.svg`
 - **Save as:** `assets/backgrounds/login_bg.svg`
@@ -32,27 +32,95 @@
 - **Save as:** `assets/images/form_background.jpg`
 - **Used in:** Login, register, and form screens
 
-## How to Download:
+## 🔤 Fonts (Required)
 
-1. **Right-click each URL above**
-2. **Select "Save link as" or copy URL to browser**
-3. **Save in the specified folder with the exact filename**
-4. **Replace the placeholder files**
+### Inter Font Family
 
-## For Codemagic:
+1. **Go to:** https://fonts.google.com/specimen/Inter
+2. **Click:** "Download family"
+3. **Extract** the ZIP file
+4. **Copy these files** to `assets/fonts/`:
+   - `Inter-Regular.ttf` → `assets/fonts/Inter-Regular.ttf`
+   - `Inter-Medium.ttf` → `assets/fonts/Inter-Medium.ttf`
+   - `Inter-SemiBold.ttf` → `assets/fonts/Inter-SemiBold.ttf`
+   - `Inter-Bold.ttf` → `assets/fonts/Inter-Bold.ttf`
 
-After downloading all assets, your folder structure should look like:
+## 🚀 App Icons (Create These)
+
+### Main App Icon
+
+- **Create:** 1024x1024 PNG
+- **Design:** Buscomfy+ logo (bus + location pin on orange background)
+- **Save as:** `assets/icons/icon-1024.png`
+
+### Android Adaptive Icons
+
+1. **Background:** 1080x1080 PNG (orange gradient)
+   - **Save as:** `assets/icons/adaptive-icon-background.png`
+2. **Foreground:** 1080x1080 PNG (logo on transparent background)
+   - **Save as:** `assets/icons/adaptive-icon-foreground.png`
+
+### iOS Splash Screens
+
+1. **iPad Pro:** 2048x2732 PNG
+   - **Save as:** `assets/images/ios-splash-2048x2732.png`
+2. **iPhone:** 1179x2556 PNG
+   - **Save as:** `assets/images/ios-splash-1179x2556.png`
+
+## 📱 Dependencies to Add
+
+Add these to your `pubspec.yaml`:
+
+```yaml
+dev_dependencies:
+  flutter_launcher_icons: ^0.13.1
+  flutter_native_splash: ^2.3.10
+```
+
+## 🛠️ Setup Commands
+
+After downloading all assets, run:
+
+```bash
+# Install dependencies
+flutter pub get
+
+# Generate app icons
+flutter pub run flutter_launcher_icons
+
+# Generate splash screens
+flutter pub run flutter_native_splash:create
+```
+
+## ✅ Final Folder Structure
 
 ```
 assets/
 ├── backgrounds/
-│   ├── orange_bg.svg
-│   └── login_bg.svg
+│   ├── orange_bg.svg ✅
+│   └── login_bg.svg ✅
+├── fonts/
+│   ├── Inter-Regular.ttf ✅
+│   ├── Inter-Medium.ttf ✅
+│   ├── Inter-SemiBold.ttf ✅
+│   └── Inter-Bold.ttf ✅
 ├── images/
-│   ├── splash_background.jpg
-│   ├── trip_header_bg.jpg
-│   ├── form_background.jpg
-│   └── any_other_images.jpg
+│   ├── splash_background.jpg ✅
+│   ├── trip_header_bg.jpg ✅
+│   ├── form_background.jpg ✅
+│   ├── ios-splash-2048x2732.png ✅
+│   └── ios-splash-1179x2556.png ✅
 └── icons/
-    └── app_icon.png
+    ├── icon-1024.png ✅
+    ├── adaptive-icon-background.png ✅
+    └── adaptive-icon-foreground.png ✅
 ```
+
+## 🎯 Priority Order
+
+1. **Download images** (backgrounds and form images)
+2. **Download Inter fonts**
+3. **Create app icon** (1024x1024)
+4. **Create adaptive icons** (Android)
+5. **Create splash screens** (iOS)
+6. **Run setup commands**

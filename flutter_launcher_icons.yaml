@@ -1,0 +1,22 @@
+# Flutter Launcher Icons Configuration
+# Run: flutter pub get && flutter pub run flutter_launcher_icons
+
+flutter_icons:
+  android: true
+  ios: true
+
+  # Main app icon (1024x1024)
+  image_path: "assets/icons/icon-1024.png"
+
+  # Android specific
+  android_icon_path: "assets/icons/icon-1024.png"
+  adaptive_icon_background: "assets/icons/adaptive-icon-background.png"
+  adaptive_icon_foreground: "assets/icons/adaptive-icon-foreground.png"
+
+  # iOS specific
+  ios_icon_path: "assets/icons/icon-1024.png"
+
+  # Web
+  web:
+    generate: true
+    image_path: "assets/icons/icon-1024.png"

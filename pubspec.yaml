@@ -1,5 +1,5 @@
 name: buscomfy_app
-description: "A new Flutter project."
+description: "Buscomfy+ - Your Travel Companion"
 publish_to: "none"
 
 version: 1.0.0+1
@@ -20,16 +20,21 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Add assets here
+  # Assets - All images and icons for Codemagic
   assets:
     - assets/images/
     - assets/icons/
     - assets/backgrounds/
 
-  # Add custom fonts if needed
-  # fonts:
-  #   - family: Inter
-  #     fonts:
-  #       - asset: assets/fonts/Inter-Regular.ttf
-  #       - asset: assets/fonts/Inter-Bold.ttf
-  #         weight: 700
+  # Fonts - Inter font family for consistent typography
+  fonts:
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Inter-Bold.ttf
+          weight: 700

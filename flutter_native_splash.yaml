@@ -1,0 +1,22 @@
+# Flutter Native Splash Configuration
+# Run: flutter pub get && flutter pub run flutter_native_splash:create
+
+flutter_native_splash:
+  # Background color (your orange gradient start)
+  color: "#F97316"
+
+  # Your app logo/icon
+  image: assets/icons/icon-1024.png
+
+  # Android specific
+  android: true
+  android_gravity: center
+  android_fullscreen: true
+
+  # iOS specific
+  ios: true
+  ios_content_mode: center
+
+  # Web specific
+  web: true
+  web_image_mode: center
