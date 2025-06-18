@@ -85,6 +85,17 @@ const OnboardingFlow = () => {
               ))}
             </div>
 
+            {/* Title and subtitle positioned as overlay */}
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center z-20 px-4">
+              <h1 className="text-white text-xl font-semibold leading-tight pointer-events-auto mb-3 sm:mt-1">
+                {screens[currentScreen].title}
+              </h1>
+
+              <p className="text-white/90 text-sm font-medium leading-tight mb-4 max-w-xs pointer-events-auto">
+                {screens[currentScreen].subtitle}
+              </p>
+            </div>
+
             {/* Continue Button positioned as overlay */}
             <Button
               onClick={handleContinue}
@@ -94,16 +105,6 @@ const OnboardingFlow = () => {
             </Button>
           </div>
         </div>
-      </div>
-
-      <div className="flex flex-col">
-        <h1 className="text-white text-xl font-semibold leading-tight pointer-events-auto sm:mt-1 -mt-91 mb-3">
-          {screens[currentScreen].title}
-        </h1>
-
-        <p className="text-white/90 text-sm font-medium leading-tight mb-4 max-w-xs pointer-events-auto">
-          {screens[currentScreen].subtitle}
-        </p>
       </div>
     </>
   );
