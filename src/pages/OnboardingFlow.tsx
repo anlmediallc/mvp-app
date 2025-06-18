@@ -9,7 +9,7 @@ const OnboardingFlow = () => {
 
   const screens = [
     {
-      title: "Your Journey, Smarter & Smoother!",
+      title: "Your Journey, Smarter &amp; Smoother!",
       subtitle:
         "Experience seamless travel with real-time tracking, digital tickets, and in-trip comfortable in one app.",
     },
