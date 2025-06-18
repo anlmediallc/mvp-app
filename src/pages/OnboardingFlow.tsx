@@ -90,9 +90,9 @@ const OnboardingFlow = () => {
               className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center text-center z-20 px-4"
               style={{
                 ...(window.innerWidth <= 640 && {
-                  top: "180px",
-                  width: "377px",
-                  left: "91px",
+                  top: "79px",
+                  left: "9px",
+                  width: "364px",
                   transform: "none",
                 }),
               }}
