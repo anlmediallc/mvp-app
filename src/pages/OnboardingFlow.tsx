@@ -57,7 +57,7 @@ const OnboardingFlow = () => {
           <div className="font-normal pointer-events-auto" />
 
           <div
-            className="min-h-screen bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center p-4 font-normal pointer-events-auto sm:bg-orange-400"
+            className="relative min-h-screen bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center p-4 font-normal pointer-events-auto sm:bg-orange-400"
             style={{
               backgroundImage:
                 "url(https://2ac212472ec64c4582e1703c57c9c27f-b99b23cf3e5141f3b8ba63a73.projects.builder.codes/orange-bg.svg)",
@@ -72,7 +72,7 @@ const OnboardingFlow = () => {
             }}
           >
             {/* Progress Indicator */}
-            <div className="absolute bottom-4 left-1/2 transform -translate-x-5 flex font-normal pointer-events-auto">
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-5 flex font-normal pointer-events-auto z-20">
               {screens.map((_, index) => (
                 <div
                   key={index}
@@ -84,14 +84,15 @@ const OnboardingFlow = () => {
                 />
               ))}
             </div>
-          </div>
 
-          <Button
-            onClick={handleContinue}
-            className="w-full bg-white text-orange-500 hover:bg-white/95 rounded-full text-sm font-medium h-9 leading-5 whitespace-nowrap transition-all pointer-events-auto border-transparent sm:text-orange-500 p-3"
-          >
-            Continue
-          </Button>
+            {/* Continue Button positioned as overlay */}
+            <Button
+              onClick={handleContinue}
+              className="absolute bottom-16 left-4 right-4 bg-white text-orange-500 hover:bg-white/95 rounded-full text-sm font-medium h-9 leading-5 whitespace-nowrap transition-all pointer-events-auto border-transparent sm:text-orange-500 p-3 z-10"
+            >
+              Continue
+            </Button>
+          </div>
         </div>
       </div>
 
