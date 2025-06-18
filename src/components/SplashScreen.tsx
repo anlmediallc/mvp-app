@@ -53,13 +53,6 @@ const SplashScreen = React.forwardRef<HTMLDivElement, SplashScreenProps>(
             backgroundSize: "cover",
           }}
         />
-
-        {/* Tap hint for manual advance */}
-        {!autoAdvance && onTap && (
-          <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
-            <p className="text-white/80 text-xs font-medium">Tap to continue</p>
-          </div>
-        )}
       </div>
     );
   },
